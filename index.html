@@ -1,0 +1,4012 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Zombie Rush</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+-webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+width:100%;
+height:100%;
+overflow:hidden;
+background:#080d0a;
+font-family:Arial,sans-serif;
+touch-action:none;
+}
+
+#game{
+width:100%;
+height:100%;
+position:relative;
+overflow:hidden;
+}
+
+/* =====================================================
+MENU
+===================================================== */
+
+#menu{
+
+position:absolute;
+inset:0;
+
+z-index:100;
+
+display:flex;
+flex-direction:column;
+
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+color:white;
+
+background:
+linear-gradient(
+to bottom,
+#071b12,
+#123a25,
+#17251d
+);
+
+}
+
+.logo{
+
+font-size:46px;
+
+font-weight:900;
+
+letter-spacing:3px;
+
+color:#73e36d;
+
+text-shadow:
+0 5px 0 #286b2b,
+0 0 20px rgba(80,220,90,.4);
+
+}
+
+.subtitle{
+
+margin-top:8px;
+
+margin-bottom:55px;
+
+font-size:15px;
+
+letter-spacing:4px;
+
+color:#d5ead6;
+
+}
+
+.play-button{
+
+border:0;
+
+background:#e94f4f;
+
+color:white;
+
+font-size:27px;
+
+font-weight:bold;
+
+padding:18px 55px;
+
+border-radius:18px;
+
+box-shadow:
+0 7px 0 #8e2929;
+
+}
+
+.play-button:active{
+
+transform:
+translateY(5px);
+
+box-shadow:
+0 2px 0 #8e2929;
+
+}
+
+.instructions{
+
+margin-top:35px;
+
+color:#bfd3c2;
+
+font-size:14px;
+
+line-height:1.5;
+
+}
+
+
+/* =====================================================
+GAME
+===================================================== */
+
+#gameScreen{
+
+position:absolute;
+
+inset:0;
+
+display:none;
+
+}
+
+
+/* =====================================================
+ESCENARIOS
+===================================================== */
+
+#world{
+
+position:absolute;
+
+inset:0 7% 0 7%;
+
+overflow:hidden;
+
+border-left:
+5px solid #151b17;
+
+border-right:
+5px solid #151b17;
+
+transition:
+background .8s ease;
+
+}
+
+
+/* CIUDAD */
+
+.world1{
+
+background:
+linear-gradient(
+to bottom,
+#4b7894 0%,
+#91b5bd 30%,
+#596467 30%,
+#272c2c 43%,
+#191d1b 100%
+);
+
+}
+
+
+/* COMERCIAL */
+
+.world2{
+
+background:
+linear-gradient(
+to bottom,
+#293d52 0%,
+#66849a 30%,
+#45484a 30%,
+#202322 43%,
+#111512 100%
+);
+
+}
+
+
+/* METRO */
+
+.world3{
+
+background:
+linear-gradient(
+to bottom,
+#111722 0%,
+#26374a 30%,
+#3b3e42 30%,
+#171a1c 43%,
+#0d1010 100%
+);
+
+}
+
+
+/* HOSPITAL */
+
+.world4{
+
+background:
+linear-gradient(
+to bottom,
+#b6d8d0 0%,
+#e1eee7 30%,
+#64736e 30%,
+#252b2a 43%,
+#151918 100%
+);
+
+}
+
+
+/* CIUDAD DESTRUIDA */
+
+.world5{
+
+background:
+linear-gradient(
+to bottom,
+#352a2b 0%,
+#725957 30%,
+#47403e 30%,
+#20201d 43%,
+#11110f 100%
+);
+
+}
+
+
+/* CUARENTENA */
+
+.world6{
+
+background:
+linear-gradient(
+to bottom,
+#071b14 0%,
+#174d3a 30%,
+#39463f 30%,
+#151c19 43%,
+#080c0a 100%
+);
+
+}
+
+
+/* =====================================================
+DECORACIÓN
+===================================================== */
+
+.skyObject{
+
+position:absolute;
+
+z-index:2;
+
+font-size:45px;
+
+opacity:.8;
+
+}
+
+.city1{
+
+left:8%;
+top:12%;
+
+}
+
+.city2{
+
+right:12%;
+top:17%;
+
+font-size:38px;
+
+}
+
+.world3 .skyObject{
+
+filter:
+drop-shadow(
+0 0 8px rgba(100,180,255,.5)
+);
+
+}
+
+.world5 .skyObject{
+
+opacity:.6;
+
+}
+
+.world6 .skyObject{
+
+filter:
+drop-shadow(
+0 0 12px rgba(70,255,140,.5)
+);
+
+}
+
+
+/* =====================================================
+CALLE
+===================================================== */
+
+#road{
+
+position:absolute;
+
+top:36%;
+
+left:0;
+
+right:0;
+
+height:7%;
+
+background:#252b29;
+
+z-index:3;
+
+}
+
+.world3 #road{
+
+background:#111518;
+
+}
+
+.world5 #road{
+
+background:#302b29;
+
+}
+
+.world6 #road{
+
+background:#121a16;
+
+}
+
+
+/* =====================================================
+LINEAS
+===================================================== */
+
+.roadLine{
+
+position:absolute;
+
+top:50%;
+
+width:65px;
+
+height:4px;
+
+background:#d9dedb;
+
+}
+
+.rl1{left:5%}
+.rl2{left:28%}
+.rl3{left:51%}
+.rl4{left:74%}
+
+
+/* =====================================================
+SEÑAL
+===================================================== */
+
+#zone{
+
+position:absolute;
+
+top:25%;
+
+left:50%;
+
+transform:
+translateX(-50%);
+
+z-index:5;
+
+background:#39704b;
+
+color:white;
+
+border:
+3px solid white;
+
+border-radius:6px;
+
+padding:6px 15px;
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+.world2 #zone{
+background:#9b6735;
+}
+
+.world3 #zone{
+background:#4555a4;
+}
+
+.world4 #zone{
+background:#347d76;
+}
+
+.world5 #zone{
+background:#8b3e3e;
+}
+
+.world6 #zone{
+background:#238b61;
+}
+
+
+/* =====================================================
+CARRILES
+===================================================== */
+
+#runArea{
+
+position:absolute;
+
+top:40%;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+z-index:5;
+
+}
+
+.lane{
+
+position:absolute;
+
+top:0;
+
+bottom:0;
+
+width:3px;
+
+background:
+
+repeating-linear-gradient(
+to bottom,
+rgba(220,230,225,.65) 0,
+rgba(220,230,225,.65) 45px,
+transparent 45px,
+transparent 90px
+);
+
+}
+
+.lane1{
+left:33.333%;
+}
+
+.lane2{
+left:66.666%;
+}
+
+
+/* =====================================================
+HUD
+===================================================== */
+
+#hud{
+
+position:absolute;
+
+top:18px;
+
+left:18px;
+
+right:18px;
+
+display:flex;
+
+justify-content:space-between;
+
+z-index:20;
+
+color:white;
+
+font-size:17px;
+
+font-weight:bold;
+
+}
+
+.hudBox{
+
+background:
+rgba(0,0,0,.5);
+
+padding:9px 13px;
+
+border-radius:12px;
+
+}
+
+#level{
+
+position:absolute;
+
+top:68px;
+
+left:50%;
+
+transform:
+translateX(-50%);
+
+z-index:20;
+
+color:#8bea7d;
+
+background:
+rgba(0,0,0,.5);
+
+padding:5px 11px;
+
+border-radius:10px;
+
+font-size:12px;
+
+font-weight:bold;
+
+}
+
+#shield{
+
+position:absolute;
+
+top:105px;
+
+left:50%;
+
+transform:
+translateX(-50%);
+
+z-index:20;
+
+padding:6px 12px;
+
+border-radius:12px;
+
+background:
+rgba(0,0,0,.5);
+
+color:#c8d8ce;
+
+font-size:13px;
+
+font-weight:bold;
+
+text-align:center;
+
+min-width:145px;
+
+}
+
+
+/* =====================================================
+ESCUDO ACTIVO
+===================================================== */
+
+#shield.active{
+
+color:white;
+
+background:
+rgba(30,150,90,.9);
+
+box-shadow:
+0 0 18px rgba(90,255,150,.7);
+
+}
+
+
+/* =====================================================
+PERSONAJE
+===================================================== */
+
+#player{
+
+position:absolute;
+
+width:62px;
+
+height:82px;
+
+bottom:92px;
+
+z-index:15;
+
+transition:
+left .07s ease;
+
+}
+
+.head{
+
+position:absolute;
+
+width:42px;
+
+height:42px;
+
+left:10px;
+
+top:0;
+
+background:#d89b77;
+
+border-radius:45%;
+
+border:
+3px solid #38231d;
+
+}
+
+.hair{
+
+position:absolute;
+
+width:42px;
+
+height:18px;
+
+left:10px;
+
+top:0;
+
+background:#201c19;
+
+border-radius:
+50% 50% 25% 25%;
+
+z-index:2;
+
+}
+
+.eye{
+
+position:absolute;
+
+width:5px;
+
+height:7px;
+
+background:#111;
+
+border-radius:50%;
+
+top:19px;
+
+z-index:3;
+
+}
+
+.eye.left{
+left:20px;
+}
+
+.eye.right{
+right:20px;
+}
+
+.body{
+
+position:absolute;
+
+width:48px;
+
+height:43px;
+
+left:7px;
+
+top:37px;
+
+background:#5a9b57;
+
+border-radius:
+12px 12px 8px 8px;
+
+border:
+3px solid #315b30;
+
+}
+
+.backpack{
+
+position:absolute;
+
+width:15px;
+
+height:30px;
+
+left:0;
+
+top:44px;
+
+background:#704c39;
+
+border-radius:6px;
+
+}
+
+.leg{
+
+position:absolute;
+
+width:12px;
+
+height:25px;
+
+background:#252c2c;
+
+top:75px;
+
+border-radius:5px;
+
+}
+
+.leg.left{
+left:15px;
+}
+
+.leg.right{
+right:15px;
+}
+
+.running .leg.left{
+
+animation:
+run1 .18s infinite alternate;
+
+}
+
+.running .leg.right{
+
+animation:
+run2 .18s infinite alternate;
+
+}
+
+@keyframes run1{
+
+from{
+transform:rotate(20deg);
+}
+
+to{
+transform:rotate(-20deg);
+}
+
+}
+
+@keyframes run2{
+
+from{
+transform:rotate(-20deg);
+}
+
+to{
+transform:rotate(20deg);
+}
+
+}
+
+
+/* =====================================================
+ESCUDO VISUAL
+===================================================== */
+
+#player.shielded:after{
+
+content:"";
+
+position:absolute;
+
+width:82px;
+
+height:102px;
+
+left:-10px;
+
+top:-10px;
+
+border:
+4px solid #6dffb0;
+
+border-radius:45%;
+
+background:
+rgba(80,255,150,.1);
+
+box-shadow:
+0 0 20px rgba(80,255,150,.8);
+
+z-index:-1;
+
+animation:
+shieldPulse 1s infinite alternate;
+
+}
+
+@keyframes shieldPulse{
+
+from{
+transform:scale(.97);
+}
+
+to{
+transform:scale(1.04);
+}
+
+}
+
+
+/* =====================================================
+ZOMBIES
+===================================================== */
+
+.zombie{
+
+position:absolute;
+
+width:48px;
+
+height:58px;
+
+z-index:10;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:48px;
+
+filter:
+drop-shadow(
+0 3px 2px rgba(0,0,0,.6)
+);
+
+}
+
+.zombie.fast{
+
+font-size:45px;
+
+filter:
+drop-shadow(
+0 0 8px rgba(255,100,70,.5)
+);
+
+}
+
+.zombie.big{
+
+font-size:62px;
+
+}
+
+.zombie.toxic{
+
+filter:
+drop-shadow(
+0 0 10px rgba(80,255,100,.8)
+);
+
+}
+
+
+/* =====================================================
+MONEDAS
+===================================================== */
+
+.coin{
+
+position:absolute;
+
+width:31px;
+
+height:31px;
+
+border-radius:50%;
+
+background:#ffd83d;
+
+border:
+4px solid #b88708;
+
+z-index:12;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:#8c6414;
+
+font-weight:bold;
+
+box-shadow:
+0 0 10px rgba(255,215,50,.7);
+
+animation:
+coinPulse .7s infinite alternate;
+
+}
+
+@keyframes coinPulse{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.1);
+}
+
+}
+
+
+/* =====================================================
+MENSAJES
+===================================================== */
+
+.worldMessage{
+
+position:absolute;
+
+top:42%;
+
+left:50%;
+
+transform:
+translate(-50%,-50%)
+scale(.8);
+
+z-index:60;
+
+color:white;
+
+font-size:25px;
+
+font-weight:900;
+
+text-align:center;
+
+white-space:nowrap;
+
+text-shadow:
+0 3px 5px rgba(0,0,0,.8);
+
+animation:
+worldMessage 2.2s forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes worldMessage{
+
+0%{
+opacity:0;
+transform:
+translate(-50%,-50%)
+scale(.7);
+}
+
+20%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(1.05);
+}
+
+75%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:
+translate(-50%,-65%)
+scale(1);
+}
+
+}
+
+
+.reward{
+
+position:absolute;
+
+left:50%;
+
+top:45%;
+
+transform:
+translate(-50%,-50%);
+
+z-index:40;
+
+color:#ffe25a;
+
+font-size:25px;
+
+font-weight:900;
+
+text-shadow:
+0 3px 0 #6d5310;
+
+animation:
+reward .8s forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes reward{
+
+0%{
+opacity:0;
+transform:
+translate(-50%,-20%)
+scale(.5);
+}
+
+25%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(1.15);
+}
+
+100%{
+opacity:0;
+transform:
+translate(-50%,-90%)
+scale(1);
+}
+
+}
+
+
+/* =====================================================
+DESAFÍO
+===================================================== */
+
+.challengeMessage{
+
+position:absolute;
+
+top:34%;
+
+left:50%;
+
+transform:
+translate(-50%,-50%);
+
+z-index:70;
+
+color:#ffcf45;
+
+background:
+rgba(100,20,20,.85);
+
+border:
+2px solid #ffcf45;
+
+border-radius:12px;
+
+padding:10px 17px;
+
+font-size:15px;
+
+font-weight:bold;
+
+white-space:nowrap;
+
+animation:
+challengeAnimation 2.5s forwards;
+
+pointer-events:none;
+
+}
+
+@keyframes challengeAnimation{
+
+0%{
+opacity:0;
+transform:
+translate(-50%,-40%)
+scale(.75);
+}
+
+20%{
+opacity:1;
+transform:
+translate(-50%,-50%)
+scale(1.05);
+}
+
+70%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+transform:
+translate(-50%,-60%)
+scale(1);
+}
+
+}
+
+
+/* =====================================================
+CONTROLES
+===================================================== */
+
+#controls{
+
+position:absolute;
+
+bottom:25px;
+
+left:0;
+
+right:0;
+
+display:flex;
+
+justify-content:space-around;
+
+padding:0 45px;
+
+z-index:30;
+
+}
+
+.control{
+
+width:72px;
+
+height:72px;
+
+border:none;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.20);
+
+color:white;
+
+font-size:30px;
+
+font-weight:bold;
+
+border:
+2px solid rgba(255,255,255,.45);
+
+}
+
+.control:active{
+
+background:
+rgba(255,255,255,.42);
+
+transform:scale(.95);
+
+}
+
+
+/* =====================================================
+GAME OVER
+===================================================== */
+
+#gameOver{
+
+position:absolute;
+
+inset:0;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+background:
+rgba(4,10,20,.93);
+
+color:white;
+
+z-index:100;
+
+text-align:center;
+
+}
+
+#gameOver h2{
+
+font-size:40px;
+
+color:#ff6464;
+
+margin-bottom:12px;
+
+}
+
+#finalScore{
+
+font-size:21px;
+
+margin-bottom:8px;
+
+}
+
+#finalCoins{
+
+font-size:19px;
+
+color:#ffd83d;
+
+margin-bottom:25px;
+
+}
+
+.continueButton{
+
+border:none;
+
+background:#27c96f;
+
+color:white;
+
+font-size:18px;
+
+font-weight:bold;
+
+padding:15px 25px;
+
+border-radius:14px;
+
+box-shadow:
+0 5px 0 #168448;
+
+margin-bottom:18px;
+
+}
+
+.continueButton.disabled{
+
+background:#53606b;
+
+box-shadow:
+0 4px 0 #39434b;
+
+}
+
+.restart{
+
+border:none;
+
+background:#ffd34f;
+
+color:#382800;
+
+font-size:19px;
+
+font-weight:bold;
+
+padding:14px 30px;
+
+border-radius:15px;
+
+}
+
+
+/* =====================================================
+ANUNCIO
+===================================================== */
+
+#adOverlay{
+
+position:absolute;
+
+inset:0;
+
+z-index:200;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+background:
+rgba(5,8,13,.96);
+
+color:white;
+
+text-align:center;
+
+}
+
+.adLabel{
+
+position:absolute;
+
+top:15px;
+
+right:15px;
+
+color:#9ca3af;
+
+font-size:11px;
+
+}
+
+.adBox{
+
+width:80%;
+
+max-width:330px;
+
+min-height:300px;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+135deg,
+#182b42,
+#243b55
+);
+
+border:
+2px solid #42556b;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+padding:25px;
+
+box-shadow:
+0 15px 50px rgba(0,0,0,.5);
+
+}
+
+.adIcon{
+
+font-size:65px;
+
+margin-bottom:18px;
+
+}
+
+.adTitle{
+
+font-size:25px;
+
+font-weight:900;
+
+margin-bottom:10px;
+
+}
+
+.adText{
+
+color:#b8c5d3;
+
+font-size:14px;
+
+line-height:1.4;
+
+}
+
+#adCountdown{
+
+margin-top:25px;
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+background:#ffd34f;
+
+color:#302600;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:25px;
+
+font-weight:900;
+
+}
+
+#adContinueText{
+
+margin-top:18px;
+
+color:#9ca3af;
+
+font-size:13px;
+
+}
+
+
+/* =====================================================
+CONTINUAR
+===================================================== */
+
+#continueScreen{
+
+position:absolute;
+
+inset:0;
+
+z-index:190;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+background:
+rgba(4,10,20,.88);
+
+color:white;
+
+text-align:center;
+
+}
+
+.continueTitle{
+
+font-size:34px;
+
+font-weight:900;
+
+color:#6dffb0;
+
+margin-bottom:10px;
+
+}
+
+.continueSub{
+
+color:#cbd5e1;
+
+font-size:15px;
+
+margin-bottom:25px;
+
+}
+
+.continueNow{
+
+border:none;
+
+background:#27c96f;
+
+color:white;
+
+font-size:21px;
+
+font-weight:bold;
+
+padding:15px 35px;
+
+border-radius:15px;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="game">
+
+
+<!-- ===================================================
+MENU
+=================================================== -->
+
+<div id="menu">
+
+<div class="logo">
+ZOMBIE RUSH
+</div>
+
+<div class="subtitle">
+RUN • DODGE • SURVIVE
+</div>
+
+<button
+class="play-button"
+onclick="startGame()">
+
+🧟 JUGAR
+
+</button>
+
+<div class="instructions">
+
+Esquiva los zombies y recoge monedas.<br>
+
+Consigue 25 monedas para activar un escudo.
+
+</div>
+
+</div>
+
+
+<!-- ===================================================
+GAME
+=================================================== -->
+
+<div id="gameScreen">
+
+
+<div id="hud">
+
+<div class="hudBox">
+
+🏆
+<span id="score">0</span>
+
+</div>
+
+<div class="hudBox">
+
+🪙
+<span id="coins">0</span>/25
+
+</div>
+
+</div>
+
+
+<div id="level">
+NIVEL 1 • x1.0
+</div>
+
+
+<div id="shield">
+🪙 0/25
+</div>
+
+
+<!-- ===================================================
+WORLD
+=================================================== -->
+
+<div id="world" class="world1">
+
+
+<div class="skyObject city1">
+🏢
+</div>
+
+<div class="skyObject city2">
+🏚️
+</div>
+
+
+<div id="road">
+
+<div class="roadLine rl1"></div>
+<div class="roadLine rl2"></div>
+<div class="roadLine rl3"></div>
+<div class="roadLine rl4"></div>
+
+</div>
+
+
+<div id="zone">
+DISTRITO 1
+</div>
+
+
+<!-- ===================================================
+RUN AREA
+=================================================== -->
+
+<div id="runArea">
+
+<div class="lane lane1"></div>
+<div class="lane lane2"></div>
+
+
+<div id="player">
+
+<div class="hair"></div>
+
+<div class="head">
+
+<div class="eye left"></div>
+<div class="eye right"></div>
+
+</div>
+
+<div class="backpack"></div>
+
+<div class="body"></div>
+
+<div class="leg left"></div>
+<div class="leg right"></div>
+
+</div>
+
+</div>
+
+
+<div id="controls">
+
+<button
+class="control"
+id="leftButton">
+
+◀
+
+</button>
+
+<button
+class="control"
+id="rightButton">
+
+▶
+
+</button>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- ===================================================
+GAME OVER
+=================================================== -->
+
+<div id="gameOver">
+
+<h2>
+🧟 ¡TE HAN ATRAPADO!
+</h2>
+
+<div id="finalScore">
+Puntuación: 0
+</div>
+
+<div id="finalCoins">
+🪙 Monedas: 0
+</div>
+
+<button
+class="continueButton"
+id="watchAdButton"
+onclick="watchAd()">
+
+📺 VER ANUNCIO Y CONTINUAR
+
+</button>
+
+<button
+class="restart"
+onclick="restartGame()">
+
+🔄 NUEVA PARTIDA
+
+</button>
+
+</div>
+
+
+<!-- ===================================================
+ANUNCIO
+=================================================== -->
+
+<div id="adOverlay">
+
+<div class="adLabel">
+ANUNCIO SIMULADO
+</div>
+
+<div class="adBox">
+
+<div class="adIcon">
+🧟
+</div>
+
+<div class="adTitle">
+ZOMBIE RUSH
+</div>
+
+<div class="adText">
+¡Sobrevive un poco más!
+</div>
+
+<div id="adCountdown">
+5
+</div>
+
+<div id="adContinueText">
+El anuncio termina en...
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===================================================
+CONTINUAR
+=================================================== -->
+
+<div id="continueScreen">
+
+<div class="continueTitle">
+🚀 ¡SIGUES VIVO!
+</div>
+
+<div class="continueSub">
+Mismo nivel · mismo escenario
+</div>
+
+<button
+class="continueNow"
+onclick="continueGame()">
+
+▶ CONTINUAR
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+VARIABLES
+===================================================== */
+
+let player;
+
+let gameRunning=false;
+
+let playerLane=1;
+
+let score=0;
+
+let coins=0;
+
+let level=1;
+
+let gameTime=0;
+
+
+/*
+VELOCIDAD
+
+Nivel 1 = 4.6
+Nivel 2 = 5.0
+Nivel 3 = 5.4
+Nivel 4 = 5.8
+Nivel 5 = 6.2
+
+Nivel 6 = 7.0
+Nivel 7 = 7.5
+Nivel 8 = 8.0
+Nivel 9 = 8.5
+Nivel 10 = 9.0
+Nivel 11 = 9.5
+Nivel 12+ = 10.0
+*/
+
+let obstacleSpeed=4.6;
+
+let spawnDelay=1100;
+
+
+/* DESAFÍO */
+
+let hardMode=false;
+
+
+/* OBJETOS */
+
+let obstacles=[];
+
+
+/*
+Patrones recientes.
+Esto evita que el modo desafío
+repita continuamente las mismas
+secuencias.
+*/
+
+let recentPatterns=[];
+
+
+/* MONEDA */
+
+let rewardActive=false;
+
+let rewardObject=null;
+
+
+/* ESCUDO */
+
+let shieldActive=false;
+
+
+/* CONTINUACIÓN */
+
+let continueUsed=false;
+
+
+/* RÉCORD */
+
+let highScore=
+Number(
+localStorage.getItem(
+"zombie_high_score"
+)||0
+);
+
+
+/* TIMERS */
+
+let spawnTimer=null;
+
+let difficultyTimer=null;
+
+let scoreTimer=null;
+
+let gameTimeTimer=null;
+
+let coinTimer=null;
+
+let adTimer=null;
+
+
+/* =====================================================
+LOAD
+===================================================== */
+
+window.addEventListener(
+"load",
+function(){
+
+player=
+document.getElementById(
+"player"
+);
+
+}
+);
+
+
+/* =====================================================
+START
+===================================================== */
+
+function startGame(){
+
+clearAllTimers();
+
+removeObjects();
+
+
+document
+.getElementById("menu")
+.style.display="none";
+
+
+document
+.getElementById("gameScreen")
+.style.display="block";
+
+
+document
+.getElementById("gameOver")
+.style.display="none";
+
+
+document
+.getElementById("adOverlay")
+.style.display="none";
+
+
+document
+.getElementById("continueScreen")
+.style.display="none";
+
+
+score=0;
+
+coins=0;
+
+level=1;
+
+gameTime=0;
+
+playerLane=1;
+
+obstacleSpeed=4.6;
+
+spawnDelay=1100;
+
+hardMode=false;
+
+recentPatterns=[];
+
+obstacles=[];
+
+rewardActive=false;
+
+rewardObject=null;
+
+shieldActive=false;
+
+continueUsed=false;
+
+
+updateHUD();
+
+updateLevel();
+
+updateShield();
+
+changeWorld();
+
+positionPlayer();
+
+
+player.classList.add(
+"running"
+);
+
+player.classList.remove(
+"shielded"
+);
+
+
+updateContinueButton();
+
+
+gameRunning=true;
+
+
+spawnTimer=
+setTimeout(
+spawnObstacle,
+750
+);
+
+
+startScore();
+
+startDifficulty();
+
+startCoins();
+
+
+gameTimeTimer=
+setInterval(
+function(){
+
+if(gameRunning){
+
+gameTime++;
+
+}
+
+},
+1000
+);
+
+}
+
+
+/* =====================================================
+POSICIÓN
+===================================================== */
+
+function positionPlayer(){
+
+const area=
+document.getElementById(
+"runArea"
+);
+
+const laneWidth=
+area.clientWidth/3;
+
+const x=
+laneWidth*playerLane+
+laneWidth/2-
+31;
+
+player.style.left=
+x+"px";
+
+}
+
+
+/* =====================================================
+MOVIMIENTO
+===================================================== */
+
+function moveLeft(){
+
+if(!gameRunning)return;
+
+if(playerLane>0){
+
+playerLane--;
+
+positionPlayer();
+
+}
+
+}
+
+
+function moveRight(){
+
+if(!gameRunning)return;
+
+if(playerLane<2){
+
+playerLane++;
+
+positionPlayer();
+
+}
+
+}
+
+
+/* =====================================================
+CONTROLES
+===================================================== */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="ArrowLeft"){
+
+moveLeft();
+
+}
+
+if(e.key==="ArrowRight"){
+
+moveRight();
+
+}
+
+}
+);
+
+
+document
+.getElementById("leftButton")
+.addEventListener(
+"touchstart",
+function(e){
+
+e.preventDefault();
+
+moveLeft();
+
+}
+);
+
+
+document
+.getElementById("rightButton")
+.addEventListener(
+"touchstart",
+function(e){
+
+e.preventDefault();
+
+moveRight();
+
+}
+);
+
+
+/* =====================================================
+CARRILES LIBRES
+===================================================== */
+
+function getAvailableLanes(){
+
+let available=[];
+
+
+for(
+let lane=0;
+lane<3;
+lane++
+){
+
+let blocked=false;
+
+
+for(
+const obstacle of obstacles
+){
+
+if(
+obstacle.lane!==lane
+){
+
+continue;
+
+}
+
+
+if(
+obstacle.y>-190 &&
+obstacle.y<330
+){
+
+blocked=true;
+
+break;
+
+}
+
+}
+
+
+if(!blocked){
+
+available.push(lane);
+
+}
+
+}
+
+
+return available;
+
+}
+
+
+/* =====================================================
+PATRÓN NORMAL
+===================================================== */
+
+function createNormalPattern(){
+
+const available=
+getAvailableLanes();
+
+
+if(
+available.length===0
+){
+
+return [];
+
+}
+
+
+const lane=
+available[
+Math.floor(
+Math.random()*
+available.length
+)
+];
+
+
+return [lane];
+
+}
+
+
+/* =====================================================
+PATRÓN DESAFÍO
+===================================================== */
+
+function createChallengePattern(){
+
+const available=
+getAvailableLanes();
+
+
+if(
+available.length===0
+){
+
+return [];
+
+}
+
+
+let patterns=[];
+
+
+/* UNA */
+
+available.forEach(
+function(lane){
+
+patterns.push([
+lane
+]);
+
+}
+);
+
+
+/* DOS */
+
+if(
+available.length>=2
+){
+
+for(
+let i=0;
+i<available.length;
+i++
+){
+
+for(
+let j=i+1;
+j<available.length;
+j++
+){
+
+patterns.push([
+available[i],
+available[j]
+]);
+
+}
+
+}
+
+}
+
+
+/*
+Filtrar patrones recientes.
+*/
+
+let fresh=
+patterns.filter(
+function(pattern){
+
+const key=
+pattern
+.slice()
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
+
+return !recentPatterns.includes(
+key
+);
+
+}
+);
+
+
+/*
+Si se agotaron,
+permitimos reutilizar pero
+nunca el último.
+*/
+
+if(
+fresh.length===0
+){
+
+fresh=
+patterns.filter(
+function(pattern){
+
+const key=
+pattern
+.slice()
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
+
+return (
+recentPatterns.length===0 ||
+key!==recentPatterns[
+recentPatterns.length-1
+]
+);
+
+}
+);
+
+}
+
+
+if(
+fresh.length===0
+){
+
+fresh=patterns;
+
+}
+
+
+/*
+Elegir aleatoriamente.
+*/
+
+const selected=
+fresh[
+Math.floor(
+Math.random()*
+fresh.length
+)
+];
+
+
+/*
+Guardar historial.
+*/
+
+const key=
+selected
+.slice()
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
+
+
+recentPatterns.push(key);
+
+
+if(
+recentPatterns.length>4
+){
+
+recentPatterns.shift();
+
+}
+
+
+/*
+Orden aleatorio.
+*/
+
+return selected.sort(
+function(){
+
+return Math.random()-.5;
+
+}
+);
+
+}
+
+
+/* =====================================================
+PATRÓN GENERAL
+===================================================== */
+
+function createObstaclePattern(){
+
+if(hardMode){
+
+return createChallengePattern();
+
+}
+
+return createNormalPattern();
+
+}
+
+
+/* =====================================================
+SPAWN
+===================================================== */
+
+function spawnObstacle(){
+
+if(!gameRunning)return;
+
+
+const lanes=
+createObstaclePattern();
+
+
+lanes.forEach(
+function(lane){
+
+createZombie(
+lane
+);
+
+}
+);
+
+
+scheduleObstacle();
+
+}
+
+
+/* =====================================================
+CREAR ZOMBIE
+===================================================== */
+
+function createZombie(
+lane
+){
+
+const area=
+document.getElementById(
+"runArea"
+);
+
+const laneWidth=
+area.clientWidth/3;
+
+
+const zombie=
+document.createElement(
+"div"
+);
+
+
+zombie.className=
+"zombie";
+
+
+let type="normal";
+
+
+/*
+Tipos progresivos.
+*/
+
+if(level>=4){
+
+const roll=
+Math.random();
+
+if(roll<0.15){
+
+type="fast";
+
+}
+
+}
+
+
+if(level>=6){
+
+const roll=
+Math.random();
+
+if(roll<0.12){
+
+type="big";
+
+}
+
+}
+
+
+if(level>=9){
+
+const roll=
+Math.random();
+
+if(roll<0.10){
+
+type="toxic";
+
+}
+
+}
+
+
+if(type==="normal"){
+
+zombie.textContent="🧟";
+
+}
+
+if(type==="fast"){
+
+zombie.textContent="🏃";
+
+zombie.classList.add(
+"fast"
+);
+
+}
+
+if(type==="big"){
+
+zombie.textContent="🧟‍♂️";
+
+zombie.classList.add(
+"big"
+);
+
+}
+
+if(type==="toxic"){
+
+zombie.textContent="☣️";
+
+zombie.classList.add(
+"toxic"
+);
+
+}
+
+
+zombie.style.left=
+(
+laneWidth*lane+
+laneWidth/2-
+24
+)+"px";
+
+
+let y=-90;
+
+zombie.style.top=
+y+"px";
+
+
+area.appendChild(
+zombie
+);
+
+
+const object={
+
+element:zombie,
+
+lane:lane,
+
+y:y
+
+};
+
+
+obstacles.push(
+object
+);
+
+
+animateZombie(
+object
+);
+
+}
+
+
+/* =====================================================
+SIGUIENTE OLEADA
+===================================================== */
+
+function scheduleObstacle(){
+
+if(!gameRunning)return;
+
+
+const variation=
+Math.random()*120-60;
+
+
+const delay=
+Math.max(
+280,
+spawnDelay+
+variation
+);
+
+
+spawnTimer=
+setTimeout(
+spawnObstacle,
+delay
+);
+
+}
+
+
+/* =====================================================
+ANIMACIÓN
+===================================================== */
+
+function animateZombie(
+obstacle
+){
+
+if(!gameRunning){
+
+removeObstacle(
+obstacle
+);
+
+return;
+
+}
+
+
+obstacle.y+=
+obstacleSpeed;
+
+
+obstacle.element.style.top=
+obstacle.y+"px";
+
+
+const playerRect=
+player.getBoundingClientRect();
+
+const obstacleRect=
+obstacle.element
+.getBoundingClientRect();
+
+
+if(
+playerRect.left<
+obstacleRect.right &&
+
+playerRect.right>
+obstacleRect.left &&
+
+playerRect.top<
+obstacleRect.bottom &&
+
+playerRect.bottom>
+obstacleRect.top
+){
+
+if(shieldActive){
+
+useShield();
+
+removeObstacle(
+obstacle
+);
+
+return;
+
+}
+
+
+endGame();
+
+return;
+
+}
+
+
+if(
+obstacle.y<
+document
+.getElementById("runArea")
+.clientHeight+
+120
+){
+
+requestAnimationFrame(
+function(){
+
+animateZombie(
+obstacle
+);
+
+}
+);
+
+}else{
+
+removeObstacle(
+obstacle
+);
+
+}
+
+}
+
+
+/* =====================================================
+ELIMINAR
+===================================================== */
+
+function removeObstacle(
+obstacle
+){
+
+const index=
+obstacles.indexOf(
+obstacle
+);
+
+
+if(index!==-1){
+
+obstacles.splice(
+index,
+1
+);
+
+}
+
+
+if(
+obstacle.element &&
+obstacle.element.parentNode
+){
+
+obstacle.element.remove();
+
+}
+
+}
+
+
+/* =====================================================
+DIFICULTAD
+===================================================== */
+
+function startDifficulty(){
+
+difficultyTimer=
+setInterval(
+function(){
+
+if(!gameRunning)return;
+
+
+level++;
+
+
+/*
+NIVELES 1-5
+*/
+
+if(level<=5){
+
+obstacleSpeed=
+4.6+
+(level-1)*0.4;
+
+spawnDelay=
+Math.max(
+600,
+1100-
+(level-1)*80
+);
+
+}
+
+
+/*
+NIVEL 6+
+*/
+
+if(level>=6){
+
+hardMode=true;
+
+
+obstacleSpeed=
+Math.min(
+10,
+7.0+
+(level-6)*0.5
+);
+
+
+spawnDelay=
+Math.max(
+280,
+850-
+(level-6)*60
+);
+
+
+if(level===6){
+
+showChallengeMessage(
+"🔥 MODO DESAFÍO"
+);
+
+}
+
+}
+
+
+changeWorld();
+
+updateLevel();
+
+score+=100;
+
+updateHUD();
+
+},
+25000
+);
+
+}
+
+
+/* =====================================================
+MENSAJE DESAFÍO
+===================================================== */
+
+function showChallengeMessage(
+text
+){
+
+const message=
+document.createElement(
+"div"
+);
+
+message.className=
+"challengeMessage";
+
+message.textContent=
+text;
+
+document
+.getElementById(
+"gameScreen"
+)
+.appendChild(
+message
+);
+
+setTimeout(
+function(){
+
+message.remove();
+
+},
+2500
+);
+
+}
+
+
+/* =====================================================
+PUNTUACIÓN
+===================================================== */
+
+function startScore(){
+
+scoreTimer=
+setInterval(
+function(){
+
+if(!gameRunning)return;
+
+score++;
+
+updateHUD();
+
+},
+1000
+);
+
+}
+
+
+/* =====================================================
+MONEDAS
+===================================================== */
+
+function startCoins(){
+
+coinTimer=
+setInterval(
+function(){
+
+if(
+gameRunning &&
+!rewardActive &&
+gameTime>=4
+){
+
+spawnCoin();
+
+}
+
+},
+1900
+);
+
+}
+
+
+/* =====================================================
+CARRIL MONEDA
+===================================================== */
+
+function chooseCoinLane(){
+
+const available=
+getAvailableLanes();
+
+
+if(
+available.length===0
+){
+
+return -1;
+
+}
+
+
+return available[
+Math.floor(
+Math.random()*
+available.length
+)
+];
+
+}
+
+
+/* =====================================================
+CREAR MONEDA
+===================================================== */
+
+function spawnCoin(){
+
+if(rewardActive)return;
+
+
+const lane=
+chooseCoinLane();
+
+
+if(lane===-1)return;
+
+
+const area=
+document.getElementById(
+"runArea"
+);
+
+const laneWidth=
+area.clientWidth/3;
+
+
+const coin=
+document.createElement(
+"div"
+);
+
+
+coin.className=
+"coin";
+
+coin.textContent=
+"€";
+
+
+coin.style.left=
+(
+laneWidth*lane+
+laneWidth/2-
+15
+)+"px";
+
+
+let y=-60;
+
+
+coin.style.top=
+y+"px";
+
+
+area.appendChild(
+coin
+);
+
+
+rewardActive=true;
+
+rewardObject=coin;
+
+
+function animateCoin(){
+
+if(!gameRunning){
+
+finishCoin();
+
+return;
+
+}
+
+
+/*
+MISMA VELOCIDAD
+QUE LOS ZOMBIES.
+*/
+
+y+=
+obstacleSpeed;
+
+
+coin.style.top=
+y+"px";
+
+
+const playerRect=
+player.getBoundingClientRect();
+
+const coinRect=
+coin.getBoundingClientRect();
+
+
+if(
+playerRect.left<
+coinRect.right &&
+
+playerRect.right>
+coinRect.left &&
+
+playerRect.top<
+coinRect.bottom &&
+
+playerRect.bottom>
+coinRect.top
+){
+
+collectCoin();
+
+return;
+
+}
+
+
+if(
+y<
+area.clientHeight+
+100
+){
+
+requestAnimationFrame(
+animateCoin
+);
+
+}else{
+
+finishCoin();
+
+}
+
+}
+
+
+requestAnimationFrame(
+animateCoin
+);
+
+}
+
+
+/* =====================================================
+RECOGER MONEDA
+===================================================== */
+
+function collectCoin(){
+
+if(!rewardObject)return;
+
+
+const coin=
+rewardObject;
+
+rewardObject=null;
+
+rewardActive=false;
+
+
+coin.remove();
+
+
+/*
+Con escudo:
+NO suma para siguiente escudo.
+*/
+
+if(shieldActive){
+
+score+=50;
+
+showReward(
+"🪙 +1"
+);
+
+updateHUD();
+
+updateShield();
+
+return;
+
+}
+
+
+coins++;
+
+score+=75;
+
+
+showReward(
+"🪙 +1"
+);
+
+
+/*
+25 = escudo.
+*/
+
+if(
+coins>=25 &&
+!shieldActive
+){
+
+coins=0;
+
+activateShield();
+
+}
+
+
+updateHUD();
+
+updateShield();
+
+}
+
+
+/* =====================================================
+FINAL MONEDA
+===================================================== */
+
+function finishCoin(){
+
+if(
+rewardObject &&
+rewardObject.parentNode
+){
+
+rewardObject.remove();
+
+}
+
+
+rewardObject=null;
+
+rewardActive=false;
+
+}
+
+
+/* =====================================================
+ESCUDO
+===================================================== */
+
+function activateShield(){
+
+shieldActive=true;
+
+player.classList.add(
+"shielded"
+);
+
+updateShield();
+
+showReward(
+"🛡️ ¡ESCUDO!"
+);
+
+}
+
+
+/* =====================================================
+ROMPER ESCUDO
+===================================================== */
+
+function useShield(){
+
+shieldActive=false;
+
+coins=0;
+
+player.classList.remove(
+"shielded"
+);
+
+updateShield();
+
+updateHUD();
+
+showReward(
+"💥 ¡ESCUDO ROTO!"
+);
+
+}
+
+
+/* =====================================================
+HUD ESCUDO
+===================================================== */
+
+function updateShield(){
+
+const shield=
+document.getElementById(
+"shield"
+);
+
+
+if(shieldActive){
+
+shield.innerHTML=
+"🛡️ ESCUDO ACTIVO<br>"+
+"<small>🪙 Siguiente: 0/25</small>";
+
+shield.classList.add(
+"active"
+);
+
+}else{
+
+shield.innerHTML=
+"🪙 "+
+coins+
+"/25";
+
+shield.classList.remove(
+"active"
+);
+
+}
+
+}
+
+
+/* =====================================================
+ESCENARIOS
+===================================================== */
+
+function changeWorld(){
+
+const world=
+document.getElementById(
+"world"
+);
+
+
+world.classList.remove(
+"world1",
+"world2",
+"world3",
+"world4",
+"world5",
+"world6"
+);
+
+
+let number=
+Math.floor(
+(level-1)/2
+)+1;
+
+
+number=
+Math.min(
+6,
+number
+);
+
+
+world.classList.add(
+"world"+
+number
+);
+
+
+const zones=[
+
+"DISTRITO 1",
+
+"ZONA COMERCIAL",
+
+"METRO ABANDONADO",
+
+"HOSPITAL INFECTADO",
+
+"CIUDAD DESTRUIDA",
+
+"ZONA DE CUARENTENA"
+
+];
+
+
+document
+.getElementById(
+"zone"
+)
+.textContent=
+zones[
+number-1
+];
+
+
+if(
+level>1 &&
+level%2===1
+){
+
+showWorldMessage(
+zones[
+number-1
+]
+);
+
+}
+
+}
+
+
+/* =====================================================
+MENSAJE ESCENARIO
+===================================================== */
+
+function showWorldMessage(
+text
+){
+
+const message=
+document.createElement(
+"div"
+);
+
+message.className=
+"worldMessage";
+
+message.textContent=
+text;
+
+document
+.getElementById(
+"gameScreen"
+)
+.appendChild(
+message
+);
+
+setTimeout(
+function(){
+
+message.remove();
+
+},
+2200
+);
+
+}
+
+
+/* =====================================================
+RECOMPENSA
+===================================================== */
+
+function showReward(
+text
+){
+
+const reward=
+document.createElement(
+"div"
+);
+
+reward.className=
+"reward";
+
+reward.textContent=
+text;
+
+document
+.getElementById(
+"gameScreen"
+)
+.appendChild(
+reward
+);
+
+setTimeout(
+function(){
+
+reward.remove();
+
+},
+800
+);
+
+}
+
+
+/* =====================================================
+HUD
+===================================================== */
+
+function updateHUD(){
+
+document
+.getElementById(
+"score"
+)
+.textContent=
+score;
+
+document
+.getElementById(
+"coins"
+)
+.textContent=
+coins;
+
+}
+
+
+function updateLevel(){
+
+document
+.getElementById(
+"level"
+)
+.textContent=
+"NIVEL "+
+level+
+" • x"+
+(
+obstacleSpeed/
+4.6
+).toFixed(1);
+
+}
+
+
+/* =====================================================
+GAME OVER
+===================================================== */
+
+function endGame(){
+
+if(!gameRunning)return;
+
+
+gameRunning=false;
+
+
+clearTimeout(
+spawnTimer
+);
+
+clearInterval(
+difficultyTimer
+);
+
+clearInterval(
+scoreTimer
+);
+
+clearInterval(
+gameTimeTimer
+);
+
+clearInterval(
+coinTimer
+);
+
+
+player.classList.remove(
+"running"
+);
+
+player.classList.remove(
+"shielded"
+);
+
+
+if(
+score>highScore
+){
+
+highScore=score;
+
+
+localStorage.setItem(
+"zombie_high_score",
+highScore
+);
+
+}
+
+
+document
+.getElementById(
+"finalScore"
+)
+.textContent=
+"Puntuación: "+
+score+
+" • Récord: "+
+highScore;
+
+
+document
+.getElementById(
+"finalCoins"
+)
+.textContent=
+"🪙 Monedas: "+
+coins;
+
+
+updateContinueButton();
+
+
+document
+.getElementById(
+"gameOver"
+)
+.style.display=
+"flex";
+
+}
+
+
+/* =====================================================
+BOTÓN CONTINUAR
+===================================================== */
+
+function updateContinueButton(){
+
+const button=
+document
+.getElementById(
+"watchAdButton"
+);
+
+
+if(continueUsed){
+
+button.textContent=
+"📺 CONTINUACIÓN USADA";
+
+button.classList.add(
+"disabled"
+);
+
+button.disabled=true;
+
+}else{
+
+button.textContent=
+"📺 VER ANUNCIO Y CONTINUAR";
+
+button.classList.remove(
+"disabled"
+);
+
+button.disabled=false;
+
+}
+
+}
+
+
+/* =====================================================
+ANUNCIO
+===================================================== */
+
+function watchAd(){
+
+if(continueUsed)return;
+
+
+continueUsed=true;
+
+updateContinueButton();
+
+
+document
+.getElementById(
+"gameOver"
+)
+.style.display=
+"none";
+
+
+document
+.getElementById(
+"adOverlay"
+)
+.style.display=
+"flex";
+
+
+let seconds=5;
+
+
+document
+.getElementById(
+"adCountdown"
+)
+.textContent=
+seconds;
+
+
+clearInterval(
+adTimer
+);
+
+
+adTimer=
+setInterval(
+function(){
+
+seconds--;
+
+
+document
+.getElementById(
+"adCountdown"
+)
+.textContent=
+seconds;
+
+
+if(seconds<=0){
+
+clearInterval(
+adTimer
+);
+
+
+document
+.getElementById(
+"adOverlay"
+)
+.style.display=
+"none";
+
+
+document
+.getElementById(
+"continueScreen"
+)
+.style.display=
+"flex";
+
+}
+
+},
+1000
+);
+
+}
+
+
+/* =====================================================
+CONTINUAR
+===================================================== */
+
+function continueGame(){
+
+document
+.getElementById(
+"continueScreen"
+)
+.style.display=
+"none";
+
+
+document
+.querySelectorAll(
+".zombie"
+)
+.forEach(
+element=>
+element.remove()
+);
+
+
+document
+.querySelectorAll(
+".coin"
+)
+.forEach(
+element=>
+element.remove()
+);
+
+
+obstacles=[];
+
+rewardActive=false;
+
+rewardObject=null;
+
+
+playerLane=1;
+
+positionPlayer();
+
+
+clearTimeout(
+spawnTimer
+);
+
+clearInterval(
+difficultyTimer
+);
+
+clearInterval(
+scoreTimer
+);
+
+clearInterval(
+gameTimeTimer
+);
+
+clearInterval(
+coinTimer
+);
+
+
+gameRunning=true;
+
+
+player.classList.add(
+"running"
+);
+
+
+spawnTimer=
+setTimeout(
+spawnObstacle,
+1400
+);
+
+
+startScore();
+
+startDifficulty();
+
+startCoins();
+
+
+gameTimeTimer=
+setInterval(
+function(){
+
+if(gameRunning){
+
+gameTime++;
+
+}
+
+},
+1000
+);
+
+
+updateShield();
+
+showReward(
+"🚀 ¡SIGUES VIVO!"
+);
+
+}
+
+
+/* =====================================================
+REINICIAR
+===================================================== */
+
+function restartGame(){
+
+clearAllTimers();
+
+removeObjects();
+
+
+document
+.getElementById(
+"gameOver"
+)
+.style.display=
+"none";
+
+
+document
+.getElementById(
+"adOverlay"
+)
+.style.display=
+"none";
+
+
+document
+.getElementById(
+"continueScreen"
+)
+.style.display=
+"none";
+
+
+startGame();
+
+}
+
+
+/* =====================================================
+LIMPIAR TIMERS
+===================================================== */
+
+function clearAllTimers(){
+
+clearTimeout(
+spawnTimer
+);
+
+clearInterval(
+difficultyTimer
+);
+
+clearInterval(
+scoreTimer
+);
+
+clearInterval(
+gameTimeTimer
+);
+
+clearInterval(
+coinTimer
+);
+
+clearInterval(
+adTimer
+);
+
+}
+
+
+/* =====================================================
+LIMPIAR OBJETOS
+===================================================== */
+
+function removeObjects(){
+
+document
+.querySelectorAll(
+".zombie,.coin,.reward,.worldMessage,.challengeMessage"
+)
+.forEach(
+element=>
+element.remove()
+);
+
+
+obstacles=[];
+
+rewardActive=false;
+
+rewardObject=null;
+
+}
+
+
+/* =====================================================
+RESIZE
+===================================================== */
+
+window.addEventListener(
+"resize",
+function(){
+
+if(gameRunning){
+
+positionPlayer();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

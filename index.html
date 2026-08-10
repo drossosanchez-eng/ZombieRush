@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>Zombie Rush</title>
 
 <style>
-
-/* =====================================================
-GENERAL
-===================================================== */
-
 *{
 box-sizing:border-box;
 margin:0;
@@ -38,126 +30,81 @@ position:relative;
 overflow:hidden;
 }
 
-
-/* =====================================================
-MENU
-===================================================== */
+/* ================= MENU ================= */
 
 #menu{
 position:absolute;
 inset:0;
 z-index:100;
-
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-
 text-align:center;
 color:white;
-
-background:
-linear-gradient(
-to bottom,
-#071b12,
-#17452c,
-#18241d
-);
+background:linear-gradient(to bottom,#071b12,#17452c,#18241d);
 }
 
 .logo{
 font-size:46px;
 font-weight:900;
 letter-spacing:3px;
-
 color:#78ef75;
-
-text-shadow:
-0 5px 0 #275f2a,
-0 0 20px rgba(100,255,100,.35);
+text-shadow:0 5px 0 #275f2a;
 }
 
 .subtitle{
 margin-top:8px;
 margin-bottom:55px;
-
 font-size:15px;
 letter-spacing:4px;
-
 color:#dbeafe;
 }
 
 .play-button{
 border:0;
-
 background:#e84d4d;
-
 color:white;
-
 font-size:27px;
 font-weight:bold;
-
 padding:18px 55px;
-
 border-radius:18px;
-
-box-shadow:
-0 7px 0 #9d2d2d;
+box-shadow:0 7px 0 #9d2d2d;
 }
 
 .play-button:active{
 transform:translateY(5px);
-
-box-shadow:
-0 2px 0 #9d2d2d;
+box-shadow:0 2px 0 #9d2d2d;
 }
 
 .instructions{
 margin-top:35px;
-
 color:#c5d4c8;
-
 font-size:14px;
-
 line-height:1.5;
 }
 
-
-/* =====================================================
-GAME
-===================================================== */
+/* ================= GAME ================= */
 
 #gameScreen{
 position:absolute;
 inset:0;
-
 display:none;
 }
 
-
-/* =====================================================
-ESCENARIOS
-===================================================== */
+/* ================= ESCENARIO ================= */
 
 #world{
 position:absolute;
-
 inset:0 7% 0 7%;
-
 overflow:hidden;
-
 border-left:5px solid #202832;
 border-right:5px solid #202832;
-
 transition:background .8s ease;
 }
 
-
-/* CIUDAD */
-
 .world1{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #526f7b 0%,
 #a5b9b4 32%,
@@ -167,12 +114,8 @@ to bottom,
 );
 }
 
-
-/* SUPERMERCADO */
-
 .world2{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #27313b 0%,
 #76828a 32%,
@@ -182,12 +125,8 @@ to bottom,
 );
 }
 
-
-/* METRO */
-
 .world3{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #07101d 0%,
 #243b55 31%,
@@ -197,12 +136,8 @@ to bottom,
 );
 }
 
-
-/* HOSPITAL */
-
 .world4{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #8cb9b1 0%,
 #d9e9e5 31%,
@@ -212,12 +147,8 @@ to bottom,
 );
 }
 
-
-/* CIUDAD DESTRUIDA */
-
 .world5{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #3a2828 0%,
 #765653 30%,
@@ -227,12 +158,8 @@ to bottom,
 );
 }
 
-
-/* ZONA DE CUARENTENA */
-
 .world6{
-background:
-linear-gradient(
+background:linear-gradient(
 to bottom,
 #061a12 0%,
 #14543a 30%,
@@ -242,18 +169,12 @@ to bottom,
 );
 }
 
-
-/* =====================================================
-DECORACIÓN
-===================================================== */
+/* ================= DECORACIÓN ================= */
 
 .building{
 position:absolute;
-
 z-index:2;
-
 font-size:48px;
-
 opacity:.9;
 }
 
@@ -270,45 +191,25 @@ top:17%;
 .building3{
 left:44%;
 top:10%;
-
 font-size:38px;
 }
 
 .world3 .building{
-filter:
-drop-shadow(
-0 0 10px rgba(100,190,255,.6)
-);
+filter:drop-shadow(0 0 10px rgba(100,190,255,.6));
 }
 
 .world6 .building{
-filter:
-drop-shadow(
-0 0 10px rgba(80,255,130,.5)
-);
+filter:drop-shadow(0 0 10px rgba(80,255,130,.5));
 }
-
-
-/* =====================================================
-AMBIENTE
-===================================================== */
 
 .smoke{
 position:absolute;
-
 width:100px;
 height:100px;
-
 border-radius:50%;
-
-background:
-rgba(220,220,220,.08);
-
+background:rgba(220,220,220,.08);
 filter:blur(10px);
-
-animation:
-smokeMove 5s infinite alternate;
-
+animation:smokeMove 5s infinite alternate;
 z-index:3;
 }
 
@@ -320,42 +221,27 @@ top:19%;
 .smoke2{
 right:12%;
 top:23%;
-
 animation-delay:2s;
 }
 
 @keyframes smokeMove{
-
 from{
-transform:
-translateY(10px)
-scale(.9);
+transform:translateY(10px) scale(.9);
 }
-
 to{
-transform:
-translateY(-15px)
-scale(1.1);
+transform:translateY(-15px) scale(1.1);
+}
 }
 
-}
-
-
-/* =====================================================
-ROAD
-===================================================== */
+/* ================= ROAD ================= */
 
 #road{
 position:absolute;
-
 top:36%;
 left:0;
 right:0;
-
 height:6%;
-
 background:#30363d;
-
 z-index:4;
 }
 
@@ -373,12 +259,9 @@ background:#151c18;
 
 .roadLine{
 position:absolute;
-
 top:50%;
-
 width:65px;
 height:4px;
-
 background:#eee;
 }
 
@@ -387,66 +270,34 @@ background:#eee;
 .r3{left:51%}
 .r4{left:74%}
 
-
-/* =====================================================
-ZONA
-===================================================== */
+/* ================= ZONA ================= */
 
 #zone{
 position:absolute;
-
 top:27%;
 left:50%;
-
-transform:
-translateX(-50%);
-
+transform:translateX(-50%);
 background:#317044;
-
 color:white;
-
 border:3px solid white;
-
 border-radius:6px;
-
 padding:6px 15px;
-
 font-size:13px;
 font-weight:bold;
-
 z-index:5;
-
 white-space:nowrap;
 }
 
-.world2 #zone{
-background:#9a6a2e;
-}
+.world2 #zone{background:#9a6a2e}
+.world3 #zone{background:#5449a7}
+.world4 #zone{background:#327e73}
+.world5 #zone{background:#923c3c}
+.world6 #zone{background:#08734f}
 
-.world3 #zone{
-background:#5449a7;
-}
-
-.world4 #zone{
-background:#327e73;
-}
-
-.world5 #zone{
-background:#923c3c;
-}
-
-.world6 #zone{
-background:#08734f;
-}
-
-
-/* =====================================================
-CARRILES
-===================================================== */
+/* ================= CARRILES ================= */
 
 #runArea{
 position:absolute;
-
 top:40%;
 left:0;
 right:0;
@@ -455,12 +306,9 @@ bottom:0;
 
 .lane{
 position:absolute;
-
 top:0;
 bottom:0;
-
 width:3px;
-
 background:
 repeating-linear-gradient(
 to bottom,
@@ -471,966 +319,528 @@ transparent 90px
 );
 }
 
-.lane1{
-left:33.333%;
-}
+.lane1{left:33.333%}
+.lane2{left:66.666%}
 
-.lane2{
-left:66.666%;
-}
-
-
-/* =====================================================
-HUD
-===================================================== */
+/* ================= HUD ================= */
 
 #hud{
 position:absolute;
-
 top:18px;
 left:18px;
 right:18px;
-
 display:flex;
-
 justify-content:space-between;
-
 z-index:20;
-
 color:white;
-
 font-size:17px;
-
 font-weight:bold;
 }
 
 .hudBox{
 background:rgba(0,0,0,.45);
-
 padding:9px 13px;
-
 border-radius:12px;
 }
 
 #level{
 position:absolute;
-
 top:68px;
-
 left:50%;
-
 transform:translateX(-50%);
-
 z-index:20;
-
 color:#7df27b;
-
 background:rgba(0,0,0,.45);
-
 padding:5px 11px;
-
 border-radius:10px;
-
 font-size:12px;
-
 font-weight:bold;
 }
 
 #shield{
 position:absolute;
-
 top:105px;
-
 left:50%;
-
 transform:translateX(-50%);
-
 z-index:20;
-
 padding:6px 12px;
-
 border-radius:12px;
-
 background:rgba(0,0,0,.45);
-
 color:#b8d8e8;
-
 font-size:13px;
-
 font-weight:bold;
-
 opacity:.75;
-
 text-align:center;
 }
 
 #shield.active{
 opacity:1;
-
 color:white;
-
-background:
-rgba(20,150,90,.85);
-
-box-shadow:
-0 0 18px rgba(80,255,140,.9);
+background:rgba(20,150,90,.85);
+box-shadow:0 0 18px rgba(80,255,140,.9);
 }
 
-
-/* =====================================================
-PERSONAJE
-===================================================== */
+/* ================= PERSONAJE ================= */
 
 #player{
 position:absolute;
-
 width:62px;
 height:82px;
-
 bottom:92px;
-
 z-index:10;
-
 transition:left .07s ease;
 }
 
 .head{
 position:absolute;
-
 width:42px;
 height:42px;
-
 left:10px;
 top:0;
-
 background:#d99b76;
-
 border-radius:45%;
-
 border:3px solid #422d26;
 }
 
 .hair{
 position:absolute;
-
 width:42px;
 height:18px;
-
 left:10px;
 top:0;
-
 background:#2c231e;
-
-border-radius:
-50% 50% 25% 25%;
-
+border-radius:50% 50% 25% 25%;
 z-index:2;
 }
 
 .eye{
 position:absolute;
-
 width:5px;
 height:7px;
-
 background:#202020;
-
 border-radius:50%;
-
 top:19px;
-
 z-index:3;
 }
 
-.eye.left{
-left:20px;
-}
-
-.eye.right{
-right:20px;
-}
+.eye.left{left:20px}
+.eye.right{right:20px}
 
 .body{
 position:absolute;
-
 width:48px;
 height:43px;
-
 left:7px;
 top:37px;
-
 background:#4d914e;
-
-border-radius:
-12px 12px 8px 8px;
-
+border-radius:12px 12px 8px 8px;
 border:3px solid #285b2e;
 }
 
 .backpack{
 position:absolute;
-
 width:15px;
 height:30px;
-
 left:0;
 top:44px;
-
 background:#79533a;
-
 border-radius:6px;
 }
 
 .leg{
 position:absolute;
-
 width:12px;
 height:25px;
-
 background:#202c3b;
-
 top:75px;
-
 border-radius:5px;
 }
 
-.leg.left{
-left:15px;
-}
-
-.leg.right{
-right:15px;
-}
+.leg.left{left:15px}
+.leg.right{right:15px}
 
 .running .leg.left{
-animation:
-run1 .18s infinite alternate;
+animation:run1 .18s infinite alternate;
 }
 
 .running .leg.right{
-animation:
-run2 .18s infinite alternate;
+animation:run2 .18s infinite alternate;
 }
 
 @keyframes run1{
-
-from{
-transform:rotate(20deg);
-}
-
-to{
-transform:rotate(-20deg);
-}
-
+from{transform:rotate(20deg)}
+to{transform:rotate(-20deg)}
 }
 
 @keyframes run2{
-
-from{
-transform:rotate(-20deg);
+from{transform:rotate(-20deg)}
+to{transform:rotate(20deg)}
 }
 
-to{
-transform:rotate(20deg);
-}
-
-}
-
-
-/* =====================================================
-ESCUDO
-===================================================== */
+/* ================= ESCUDO ================= */
 
 #player.shielded:after{
-
 content:"";
-
 position:absolute;
-
 width:82px;
 height:102px;
-
 left:-10px;
 top:-10px;
-
 border:4px solid #6dffb0;
-
 border-radius:45%;
-
-background:
-rgba(80,255,150,.12);
-
-box-shadow:
-0 0 20px rgba(80,255,150,.8);
-
+background:rgba(80,255,150,.12);
+box-shadow:0 0 20px rgba(80,255,150,.8);
 z-index:-1;
-
-animation:
-shieldPulse 1s infinite alternate;
+animation:shieldPulse 1s infinite alternate;
 }
 
 @keyframes shieldPulse{
-
-from{
-transform:scale(.97);
+from{transform:scale(.97)}
+to{transform:scale(1.04)}
 }
 
-to{
-transform:scale(1.04);
-}
-
-}
-
-
-/* =====================================================
-ZOMBIES
-===================================================== */
+/* ================= ZOMBIES ================= */
 
 .zombie{
-
 position:absolute;
-
 width:44px;
 height:58px;
-
 z-index:8;
-
 display:flex;
-
 align-items:center;
 justify-content:center;
-
 font-size:48px;
-
-filter:
-drop-shadow(
-0 4px 4px rgba(0,0,0,.7)
-);
+filter:drop-shadow(0 4px 4px rgba(0,0,0,.7));
 }
 
-.zombie.fast{
-font-size:45px;
-
-filter:
-drop-shadow(
-0 0 8px rgba(255,70,50,.7)
-);
-}
-
-.zombie.big{
-font-size:56px;
-}
-
-.zombie.toxic{
-filter:
-drop-shadow(
-0 0 10px rgba(80,255,100,.8)
-);
-}
-
-
-/* =====================================================
-ANTÍDOTOS
-===================================================== */
+/* ================= ANTÍDOTOS ================= */
 
 .antidote{
-
 position:absolute;
-
 width:31px;
 height:36px;
-
 z-index:9;
-
 display:flex;
-
 justify-content:center;
 align-items:center;
-
 font-size:30px;
-
-filter:
-drop-shadow(
-0 0 10px rgba(80,255,150,.75)
-);
-
-animation:
-antidotePulse .7s infinite alternate;
+filter:drop-shadow(0 0 10px rgba(80,255,150,.75));
+animation:antidotePulse .7s infinite alternate;
 }
 
 @keyframes antidotePulse{
-
-from{
-transform:scale(1);
+from{transform:scale(1)}
+to{transform:scale(1.1)}
 }
 
-to{
-transform:scale(1.1);
-}
-
-}
-
-
-/* =====================================================
-MENSAJES
-===================================================== */
+/* ================= MENSAJES ================= */
 
 .worldMessage{
-
 position:absolute;
-
 top:42%;
-
 left:50%;
-
-transform:
-translate(-50%,-50%)
-scale(.8);
-
+transform:translate(-50%,-50%) scale(.8);
 z-index:60;
-
 color:white;
-
 font-size:25px;
-
 font-weight:900;
-
 text-align:center;
-
 white-space:nowrap;
-
-text-shadow:
-0 3px 5px rgba(0,0,0,.8);
-
-animation:
-worldMessage 2.2s forwards;
-
+text-shadow:0 3px 5px rgba(0,0,0,.8);
+animation:worldMessage 2.2s forwards;
 pointer-events:none;
 }
 
 @keyframes worldMessage{
-
 0%{
 opacity:0;
-
-transform:
-translate(-50%,-50%)
-scale(.7);
+transform:translate(-50%,-50%) scale(.7);
 }
-
 20%{
 opacity:1;
-
-transform:
-translate(-50%,-50%)
-scale(1.05);
+transform:translate(-50%,-50%) scale(1.05);
 }
-
-75%{
-opacity:1;
-}
-
+75%{opacity:1}
 100%{
 opacity:0;
-
-transform:
-translate(-50%,-65%)
-scale(1);
+transform:translate(-50%,-65%) scale(1);
 }
-
 }
 
 .reward{
-
 position:absolute;
-
 left:50%;
 top:45%;
-
-transform:
-translate(-50%,-50%);
-
+transform:translate(-50%,-50%);
 z-index:40;
-
 color:#75ffae;
-
 font-size:25px;
-
 font-weight:900;
-
-text-shadow:
-0 3px 0 #165b38;
-
-animation:
-reward .8s forwards;
-
+text-shadow:0 3px 0 #165b38;
+animation:reward .8s forwards;
 pointer-events:none;
 }
 
 @keyframes reward{
-
 0%{
 opacity:0;
-
-transform:
-translate(-50%,-20%)
-scale(.5);
+transform:translate(-50%,-20%) scale(.5);
 }
-
 25%{
 opacity:1;
-
-transform:
-translate(-50%,-50%)
-scale(1.15);
+transform:translate(-50%,-50%) scale(1.15);
 }
-
 100%{
 opacity:0;
-
-transform:
-translate(-50%,-90%)
-scale(1);
+transform:translate(-50%,-90%) scale(1);
+}
 }
 
-}
-
-
-/* =====================================================
-MODO DESAFÍO
-===================================================== */
+/* ================= DESAFÍO ================= */
 
 .challengeMessage{
-
 position:absolute;
-
 top:34%;
-
 left:50%;
-
-transform:
-translate(-50%,-50%);
-
+transform:translate(-50%,-50%);
 z-index:70;
-
 color:#ffcf45;
-
 background:rgba(100,20,20,.85);
-
 border:2px solid #ffcf45;
-
 border-radius:12px;
-
 padding:10px 17px;
-
 font-size:15px;
-
 font-weight:bold;
-
 white-space:nowrap;
-
-animation:
-challengeAnimation 2.5s forwards;
-
+animation:challengeAnimation 2.5s forwards;
 pointer-events:none;
 }
 
 @keyframes challengeAnimation{
-
 0%{
 opacity:0;
-
-transform:
-translate(-50%,-40%)
-scale(.75);
+transform:translate(-50%,-40%) scale(.75);
 }
-
 20%{
 opacity:1;
-
-transform:
-translate(-50%,-50%)
-scale(1.05);
+transform:translate(-50%,-50%) scale(1.05);
 }
-
-70%{
-opacity:1;
-}
-
+70%{opacity:1}
 100%{
 opacity:0;
-
-transform:
-translate(-50%,-60%)
-scale(1);
+transform:translate(-50%,-60%) scale(1);
+}
 }
 
-}
-
-
-/* =====================================================
-CONTROLES
-===================================================== */
+/* ================= CONTROLES ================= */
 
 #controls{
-
 position:absolute;
-
 bottom:25px;
-
 left:0;
 right:0;
-
 display:flex;
-
 justify-content:space-around;
-
 padding:0 45px;
-
 z-index:30;
 }
 
 .control{
-
 width:72px;
 height:72px;
-
 border:none;
-
 border-radius:50%;
-
-background:
-rgba(255,255,255,.20);
-
+background:rgba(255,255,255,.20);
 color:white;
-
 font-size:30px;
-
 font-weight:bold;
-
-border:
-2px solid rgba(255,255,255,.45);
+border:2px solid rgba(255,255,255,.45);
 }
 
 .control:active{
-
-background:
-rgba(255,255,255,.42);
-
+background:rgba(255,255,255,.42);
 transform:scale(.95);
 }
 
-
-/* =====================================================
-GAME OVER
-===================================================== */
+/* ================= GAME OVER ================= */
 
 #gameOver{
-
 position:absolute;
-
 inset:0;
-
 display:none;
-
 align-items:center;
-
 justify-content:center;
-
 flex-direction:column;
-
-background:
-rgba(4,10,20,.92);
-
+background:rgba(4,10,20,.92);
 color:white;
-
 z-index:100;
-
 text-align:center;
 }
 
 #gameOver h2{
-
 font-size:40px;
-
 color:#ff6464;
-
 margin-bottom:12px;
 }
 
 #finalScore{
-
 font-size:21px;
-
 margin-bottom:8px;
 }
 
 #finalAntidotes{
-
 font-size:19px;
-
 color:#75ffae;
-
 margin-bottom:25px;
 }
 
 .continueButton{
-
 border:none;
-
 background:#27c96f;
-
 color:white;
-
 font-size:18px;
-
 font-weight:bold;
-
 padding:15px 25px;
-
 border-radius:14px;
-
-box-shadow:
-0 5px 0 #168448;
-
+box-shadow:0 5px 0 #168448;
 margin-bottom:18px;
 }
 
 .continueButton.disabled{
-
 background:#53606b;
-
-box-shadow:
-0 4px 0 #39434b;
+box-shadow:0 4px 0 #39434b;
 }
 
 .restart{
-
 border:none;
-
 background:#ffd34f;
-
 color:#382800;
-
 font-size:19px;
-
 font-weight:bold;
-
 padding:14px 30px;
-
 border-radius:15px;
 }
 
-
-/* =====================================================
-ANUNCIO
-===================================================== */
+/* ================= ANUNCIO ================= */
 
 #adOverlay{
-
 position:absolute;
-
 inset:0;
-
 z-index:200;
-
 display:none;
-
 align-items:center;
-
 justify-content:center;
-
 flex-direction:column;
-
-background:
-rgba(5,8,13,.96);
-
+background:rgba(5,8,13,.96);
 color:white;
-
 text-align:center;
 }
 
 .adLabel{
-
 position:absolute;
-
 top:15px;
 right:15px;
-
 color:#9ca3af;
-
 font-size:11px;
 }
 
 .adBox{
-
 width:80%;
-
 max-width:330px;
-
 min-height:300px;
-
 border-radius:18px;
-
-background:
-linear-gradient(
-135deg,
-#182b42,
-#243b55
-);
-
-border:
-2px solid #42556b;
-
+background:linear-gradient(135deg,#182b42,#243b55);
+border:2px solid #42556b;
 display:flex;
-
 flex-direction:column;
-
 align-items:center;
-
 justify-content:center;
-
 padding:25px;
-
-box-shadow:
-0 15px 50px rgba(0,0,0,.5);
+box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
 
 .adIcon{
-
 font-size:65px;
-
 margin-bottom:18px;
 }
 
 .adTitle{
-
 font-size:25px;
-
 font-weight:900;
-
 margin-bottom:10px;
 }
 
 .adText{
-
 color:#b8c5d3;
-
 font-size:14px;
-
 line-height:1.4;
 }
 
 #adCountdown{
-
 margin-top:25px;
-
 width:65px;
 height:65px;
-
 border-radius:50%;
-
 background:#ffd34f;
-
 color:#302600;
-
 display:flex;
-
 align-items:center;
 justify-content:center;
-
 font-size:25px;
-
 font-weight:900;
 }
 
 #adContinueText{
-
 margin-top:18px;
-
 color:#9ca3af;
-
 font-size:13px;
 }
 
-
-/* =====================================================
-CONTINUAR
-===================================================== */
+/* ================= CONTINUAR ================= */
 
 #continueScreen{
-
 position:absolute;
-
 inset:0;
-
 z-index:190;
-
 display:none;
-
 align-items:center;
-
 justify-content:center;
-
 flex-direction:column;
-
-background:
-rgba(4,10,20,.88);
-
+background:rgba(4,10,20,.88);
 color:white;
-
 text-align:center;
 }
 
 .continueTitle{
-
 font-size:34px;
-
 font-weight:900;
-
 color:#6dffb0;
-
 margin-bottom:10px;
 }
 
 .continueSub{
-
 color:#cbd5e1;
-
 font-size:15px;
-
 margin-bottom:25px;
 }
 
 .continueNow{
-
 border:none;
-
 background:#27c96f;
-
 color:white;
-
 font-size:21px;
-
 font-weight:bold;
-
 padding:15px 35px;
-
 border-radius:15px;
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div id="game">
 
-
-<!-- =====================================================
-MENU
-===================================================== -->
+<!-- ================= MENU ================= -->
 
 <div id="menu">
 
@@ -1445,28 +855,20 @@ RUN • DODGE • SURVIVE
 <button
 class="play-button"
 onclick="startGame()">
-
 🧟 JUGAR
-
 </button>
 
 <div class="instructions">
-
 Esquiva los zombies y recoge antídotos.<br>
-
 Consigue 25 antídotos para activar un escudo.
-
 </div>
 
 </div>
 
 
-<!-- =====================================================
-GAME SCREEN
-===================================================== -->
+<!-- ================= GAME ================= -->
 
 <div id="gameScreen">
-
 
 <div id="hud">
 
@@ -1493,27 +895,18 @@ NIVEL 1 • x1.0
 </div>
 
 
-<!-- =====================================================
-WORLD
-===================================================== -->
+<div id="world" class="world1">
 
-<div id="world"
-class="world1">
-
-
-<div class="building building1"></div>
-<div class="building building2"></div>
-<div class="building building3"></div>
-
+<div class="building building1">🏢</div>
+<div class="building building2">🏚️</div>
+<div class="building building3">🏙️</div>
 
 <div class="smoke smoke1"></div>
 <div class="smoke smoke2"></div>
 
-
 <div id="zone">
 🌆 CIUDAD INFECTADA
 </div>
-
 
 <div id="road">
 
@@ -1524,10 +917,6 @@ class="world1">
 
 </div>
 
-
-<!-- =====================================================
-RUN AREA
-===================================================== -->
 
 <div id="runArea">
 
@@ -1558,26 +947,14 @@ RUN AREA
 </div>
 
 
-<!-- =====================================================
-CONTROLES
-===================================================== -->
-
 <div id="controls">
 
-<button
-class="control"
-id="leftButton">
-
+<button class="control" id="leftButton">
 ◀
-
 </button>
 
-<button
-class="control"
-id="rightButton">
-
+<button class="control" id="rightButton">
 ▶
-
 </button>
 
 </div>
@@ -1585,9 +962,7 @@ id="rightButton">
 </div>
 
 
-<!-- =====================================================
-GAME OVER
-===================================================== -->
+<!-- ================= GAME OVER ================= -->
 
 <div id="gameOver">
 
@@ -1623,9 +998,7 @@ onclick="restartGame()">
 </div>
 
 
-<!-- =====================================================
-ANUNCIO
-===================================================== -->
+<!-- ================= ANUNCIO ================= -->
 
 <div id="adOverlay">
 
@@ -1660,9 +1033,7 @@ El anuncio termina en...
 </div>
 
 
-<!-- =====================================================
-CONTINUAR
-===================================================== -->
+<!-- ================= CONTINUAR ================= -->
 
 <div id="continueScreen">
 
@@ -1683,7 +1054,6 @@ onclick="continueGame()">
 </button>
 
 </div>
-
 
 </div>
 
@@ -1710,7 +1080,9 @@ let gameTime=0;
 
 
 /*
-MISMA CURVA DE VELOCIDAD DE AIRPORT
+===============================
+MOTOR EXACTAMENTE COMO AIRPORT
+===============================
 
 Nivel 1 = 3.6
 Nivel 2 = 4.0
@@ -1731,47 +1103,17 @@ let obstacleSpeed=3.6;
 
 let spawnDelay=1250;
 
-
-/*
-MODO DESAFÍO
-*/
-
 let hardMode=false;
 
-
-/*
-OBJETOS
-*/
-
 let obstacles=[];
-
-
-/*
-ANTÍDOTOS
-*/
 
 let rewardActive=false;
 
 let rewardObject=null;
 
-
-/*
-ESCUDO
-*/
-
 let shieldActive=false;
 
-
-/*
-CONTINUACIÓN
-*/
-
 let continueUsed=false;
-
-
-/*
-RÉCORD
-*/
 
 let highScore=
 Number(
@@ -1780,30 +1122,17 @@ localStorage.getItem(
 )||0
 );
 
-
-/*
-TIMERS
-*/
-
 let spawnTimer=null;
-
 let difficultyTimer=null;
-
 let scoreTimer=null;
-
 let gameTimeTimer=null;
-
 let antidoteTimer=null;
-
 let adTimer=null;
 
 
 /*
-CONTROL DE PATRONES
-
-Guardamos las últimas combinaciones
-para evitar que el desafío repita
-constantemente la misma secuencia.
+Evita repetir constantemente
+la misma combinación en desafío.
 */
 
 let lastPatterns=[];
@@ -1836,26 +1165,21 @@ clearAllTimers();
 
 removeObjects();
 
-
 document
 .getElementById("menu")
 .style.display="none";
-
 
 document
 .getElementById("gameScreen")
 .style.display="block";
 
-
 document
 .getElementById("gameOver")
 .style.display="none";
 
-
 document
 .getElementById("adOverlay")
 .style.display="none";
-
 
 document
 .getElementById("continueScreen")
@@ -1873,10 +1197,13 @@ gameTime=0;
 playerLane=1;
 
 
+/*
+MISMA VELOCIDAD QUE AIRPORT
+*/
+
 obstacleSpeed=3.6;
 
 spawnDelay=1250;
-
 
 hardMode=false;
 
@@ -1884,11 +1211,9 @@ obstacles=[];
 
 lastPatterns=[];
 
-
 rewardActive=false;
 
 rewardObject=null;
-
 
 shieldActive=false;
 
@@ -1906,23 +1231,17 @@ changeWorld();
 positionPlayer();
 
 
-player.classList.add(
-"running"
-);
+player.classList.add("running");
 
-player.classList.remove(
-"shielded"
-);
-
+player.classList.remove("shielded");
 
 updateContinueButton();
-
 
 gameRunning=true;
 
 
 /*
-PRIMER ZOMBIE
+MISMO PRIMER SPAWN QUE AIRPORT
 */
 
 spawnTimer=
@@ -1930,7 +1249,6 @@ setTimeout(
 spawnZombie,
 950
 );
-
 
 startScore();
 
@@ -1944,9 +1262,7 @@ setInterval(
 function(){
 
 if(gameRunning){
-
 gameTime++;
-
 }
 
 },
@@ -1967,16 +1283,13 @@ document.getElementById(
 "runArea"
 );
 
-
 const laneWidth=
 area.clientWidth/3;
-
 
 const x=
 laneWidth*playerLane+
 laneWidth/2-
 31;
-
 
 player.style.left=
 x+"px";
@@ -2027,15 +1340,11 @@ document.addEventListener(
 function(e){
 
 if(e.key==="ArrowLeft"){
-
 moveLeft();
-
 }
 
 if(e.key==="ArrowRight"){
-
 moveRight();
-
 }
 
 }
@@ -2071,13 +1380,12 @@ moveRight();
 
 
 /* =====================================================
-CARRILES DISPONIBLES
+CARRILES LIBRES
 ===================================================== */
 
 function getAvailableLanes(){
 
 let available=[];
-
 
 for(
 let lane=0;
@@ -2087,7 +1395,6 @@ lane++
 
 let blocked=false;
 
-
 for(
 const obstacle of obstacles
 ){
@@ -2095,11 +1402,8 @@ const obstacle of obstacles
 if(
 obstacle.lane!==lane
 ){
-
 continue;
-
 }
-
 
 if(
 obstacle.y>-190 &&
@@ -2114,15 +1418,11 @@ break;
 
 }
 
-
 if(!blocked){
-
 available.push(lane);
-
 }
 
 }
-
 
 return available;
 
@@ -2138,23 +1438,16 @@ function createNormalPattern(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
-
 return [];
-
 }
 
 
 /*
-EXACTAMENTE COMO AIRPORT:
-
-Una amenaza normalmente.
-
-Esto mantiene el juego rápido
-pero siempre esquivable.
+EXACTAMENTE LA LÓGICA DE AIRPORT:
+UNA MALETA = UN ZOMBIE
 */
 
 const lane=
@@ -2164,7 +1457,6 @@ Math.random()*
 available.length
 )
 ];
-
 
 return [lane];
 
@@ -2180,47 +1472,32 @@ function createChallengePattern(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
-
 return [];
-
 }
 
-
-/*
-Creamos todas las combinaciones
-posibles de 1 o 2 carriles.
-
-Así no dependemos de una secuencia
-fija.
-*/
 
 let patterns=[];
 
 
 /*
-Un zombie.
+UN ZOMBIE
 */
 
 available.forEach(
 function(lane){
 
-patterns.push(
-[
-lane
-]
-);
+patterns.push([lane]);
 
-});
+}
+);
 
 
 /*
-Dos zombies.
-
-Siempre queda uno libre.
+DOS ZOMBIES.
+SIEMPRE QUEDA UN CARRIL LIBRE.
 */
 
 if(
@@ -2254,7 +1531,8 @@ available[j]
 
 
 /*
-Quitamos patrones usados recientemente.
+Eliminamos las combinaciones
+usadas recientemente.
 */
 
 let filtered=
@@ -2267,21 +1545,10 @@ pattern
 .sort()
 .join(",");
 
-
-return !lastPatterns.includes(
-key
-);
+return !lastPatterns.includes(key);
 
 });
 
-
-/*
-Si hemos usado demasiados,
-volvemos a permitirlos.
-
-Así nunca nos quedamos sin
-posibilidades.
-*/
 
 if(
 filtered.length===0
@@ -2292,10 +1559,6 @@ filtered=patterns;
 }
 
 
-/*
-Elegimos aleatoriamente.
-*/
-
 const selected=
 filtered[
 Math.floor(
@@ -2305,21 +1568,15 @@ filtered.length
 ];
 
 
-const selectedKey=
+const key=
 selected
 .slice()
 .sort()
 .join(",");
 
 
-lastPatterns.push(
-selectedKey
-);
+lastPatterns.push(key);
 
-
-/*
-Solo conservamos los últimos 5.
-*/
 
 if(
 lastPatterns.length>5
@@ -2391,15 +1648,12 @@ scheduleZombie();
 CREAR ZOMBIE
 ===================================================== */
 
-function createZombie(
-lane
-){
+function createZombie(lane){
 
 const area=
 document.getElementById(
 "runArea"
 );
-
 
 const laneWidth=
 area.clientWidth/3;
@@ -2410,88 +1664,9 @@ document.createElement(
 "div"
 );
 
-
-zombie.className=
-"zombie";
-
-
-/*
-TIPOS VISUALES.
-
-NO CAMBIAN LA MECÁNICA.
-*/
-
-let type="normal";
-
-
-if(
-level>=4 &&
-Math.random()<0.15
-){
-
-type="fast";
-
-}
-
-
-if(
-level>=7 &&
-Math.random()<0.12
-){
-
-type="big";
-
-}
-
-
-if(
-level>=10 &&
-Math.random()<0.10
-){
-
-type="toxic";
-
-}
-
-
-if(type==="normal"){
+zombie.className="zombie";
 
 zombie.textContent="🧟";
-
-}
-
-
-if(type==="fast"){
-
-zombie.textContent="🧟‍♂️";
-
-zombie.classList.add(
-"fast"
-);
-
-}
-
-
-if(type==="big"){
-
-zombie.textContent="🧟";
-
-zombie.classList.add(
-"big"
-);
-
-}
-
-
-if(type==="toxic"){
-
-zombie.textContent="☣️";
-
-zombie.classList.add(
-"toxic"
-);
-
-}
 
 
 zombie.style.left=
@@ -2504,14 +1679,9 @@ laneWidth/2-
 
 let y=-105;
 
+zombie.style.top=y+"px";
 
-zombie.style.top=
-y+"px";
-
-
-area.appendChild(
-zombie
-);
+area.appendChild(zombie);
 
 
 const object={
@@ -2525,14 +1695,9 @@ y:y
 };
 
 
-obstacles.push(
-object
-);
+obstacles.push(object);
 
-
-animateZombie(
-object
-);
+animateZombie(object);
 
 }
 
@@ -2547,10 +1712,7 @@ if(!gameRunning)return;
 
 
 /*
-MISMO SISTEMA DE AIRPORT.
-
-Variación aleatoria pero misma
-velocidad general.
+EXACTAMENTE IGUAL QUE AIRPORT
 */
 
 const variation=
@@ -2578,36 +1740,29 @@ delay
 ANIMAR ZOMBIE
 ===================================================== */
 
-function animateZombie(
-obstacle
-){
+function animateZombie(obstacle){
 
 if(!gameRunning){
 
-removeZombie(
-obstacle
-);
+removeZombie(obstacle);
 
 return;
 
 }
 
 
-obstacle.y+=
-obstacleSpeed;
+/*
+EXACTAMENTE IGUAL QUE AIRPORT
+*/
 
+obstacle.y+=obstacleSpeed;
 
 obstacle.element.style.top=
 obstacle.y+"px";
 
 
-/*
-COLISIÓN
-*/
-
 const playerRect=
 player.getBoundingClientRect();
-
 
 const zombieRect=
 obstacle.element
@@ -2632,14 +1787,11 @@ if(shieldActive){
 
 useShield();
 
-removeZombie(
-obstacle
-);
+removeZombie(obstacle);
 
 return;
 
 }
-
 
 endGame();
 
@@ -2647,10 +1799,6 @@ return;
 
 }
 
-
-/*
-SALIDA
-*/
 
 if(
 obstacle.y<
@@ -2663,18 +1811,14 @@ document
 requestAnimationFrame(
 function(){
 
-animateZombie(
-obstacle
-);
+animateZombie(obstacle);
 
 }
 );
 
 }else{
 
-removeZombie(
-obstacle
-);
+removeZombie(obstacle);
 
 }
 
@@ -2682,18 +1826,13 @@ obstacle
 
 
 /* =====================================================
-ELIMINAR ZOMBIE
+ELIMINAR
 ===================================================== */
 
-function removeZombie(
-obstacle
-){
+function removeZombie(obstacle){
 
 const index=
-obstacles.indexOf(
-obstacle
-);
-
+obstacles.indexOf(obstacle);
 
 if(index!==-1){
 
@@ -2703,7 +1842,6 @@ index,
 );
 
 }
-
 
 if(
 obstacle.element &&
@@ -2729,14 +1867,12 @@ function(){
 
 if(!gameRunning)return;
 
-
 level++;
 
 
 /*
 NIVELES 1-5
-
-MISMA VELOCIDAD AIRPORT
+MISMA CURVA AIRPORT
 */
 
 if(level<=5){
@@ -2744,7 +1880,6 @@ if(level<=5){
 obstacleSpeed=
 3.6+
 (level-1)*0.4;
-
 
 spawnDelay=
 1250-
@@ -2754,15 +1889,13 @@ spawnDelay=
 
 
 /*
+NIVEL 6+
 MODO DESAFÍO
-
-MISMA CURVA AIRPORT
 */
 
 if(level>=6){
 
 hardMode=true;
-
 
 obstacleSpeed=
 Math.min(
@@ -2770,7 +1903,6 @@ Math.min(
 5.8+
 (level-6)*0.5
 );
-
 
 spawnDelay=
 Math.max(
@@ -2801,6 +1933,29 @@ updateHUD();
 
 },
 25000
+);
+
+}
+
+
+/* =====================================================
+PUNTUACIÓN
+===================================================== */
+
+function startScore(){
+
+scoreTimer=
+setInterval(
+function(){
+
+if(!gameRunning)return;
+
+score++;
+
+updateHUD();
+
+},
+1000
 );
 
 }
@@ -2842,7 +1997,6 @@ function chooseAntidoteLane(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
@@ -2850,7 +2004,6 @@ available.length===0
 return -1;
 
 }
-
 
 return available[
 Math.floor(
@@ -2874,7 +2027,6 @@ if(rewardActive)return;
 const lane=
 chooseAntidoteLane();
 
-
 if(lane===-1)return;
 
 
@@ -2882,7 +2034,6 @@ const area=
 document.getElementById(
 "runArea"
 );
-
 
 const laneWidth=
 area.clientWidth/3;
@@ -2893,14 +2044,11 @@ document.createElement(
 "div"
 );
 
-
 antidote.className=
 "antidote";
 
-
 antidote.textContent=
 "🧪";
-
 
 antidote.style.left=
 (
@@ -2912,14 +2060,10 @@ laneWidth/2-
 
 let y=-60;
 
-
 antidote.style.top=
 y+"px";
 
-
-area.appendChild(
-antidote
-);
+area.appendChild(antidote);
 
 
 rewardActive=true;
@@ -2939,15 +2083,11 @@ return;
 
 
 /*
-MISMA VELOCIDAD QUE LOS ZOMBIES.
-
-ESTO ES IGUAL QUE LAS MONEDAS
-DE AIRPORT.
+EXACTAMENTE LA MISMA VELOCIDAD
+QUE LOS ZOMBIES/MALETAS
 */
 
-y+=
-obstacleSpeed;
-
+y+=obstacleSpeed;
 
 antidote.style.top=
 y+"px";
@@ -2955,7 +2095,6 @@ y+"px";
 
 const playerRect=
 player.getBoundingClientRect();
-
 
 const antidoteRect=
 antidote.getBoundingClientRect();
@@ -3020,30 +2159,28 @@ if(!rewardObject)return;
 const antidote=
 rewardObject;
 
-
 rewardObject=null;
 
 rewardActive=false;
-
 
 antidote.remove();
 
 
 /*
-CON ESCUDO:
-
-NO CUENTA PARA EL SIGUIENTE.
+Mientras tenemos escudo,
+los antídotos NO cuentan
+para el siguiente escudo.
 */
 
 if(shieldActive){
 
 score+=50;
 
-showReward(
-"🧪 +1"
-);
+showReward("🧪 +1");
 
 updateHUD();
+
+updateShield();
 
 return;
 
@@ -3054,15 +2191,8 @@ antidotes++;
 
 score+=75;
 
+showReward("🧪 +1");
 
-showReward(
-"🧪 +1"
-);
-
-
-/*
-25 ANTÍDOTOS = ESCUDO.
-*/
 
 if(
 antidotes>=25 &&
@@ -3098,7 +2228,6 @@ rewardObject.remove();
 
 }
 
-
 rewardObject=null;
 
 rewardActive=false;
@@ -3114,14 +2243,11 @@ function activateShield(){
 
 shieldActive=true;
 
-
 player.classList.add(
 "shielded"
 );
 
-
 updateShield();
-
 
 showReward(
 "🛡️ ¡ESCUDO!"
@@ -3140,27 +2266,20 @@ shieldActive=false;
 
 
 /*
-IMPORTANTE:
+AL ROMPERSE:
 
-Cuando se rompe,
-VOLVEMOS A CONTAR DESDE 0.
-
-No conservamos los antídotos
-recogidos durante el escudo.
+VOLVEMOS A 0/25
 */
 
 antidotes=0;
-
 
 player.classList.remove(
 "shielded"
 );
 
-
 updateShield();
 
 updateHUD();
-
 
 showReward(
 "💥 ¡ESCUDO ROTO!"
@@ -3184,9 +2303,7 @@ document.getElementById(
 if(shieldActive){
 
 shield.innerHTML=
-"🛡️ ESCUDO ACTIVO<br>"+
-"<small>🧪 0/25</small>";
-
+"🛡️ ESCUDO ACTIVO";
 
 shield.classList.add(
 "active"
@@ -3198,7 +2315,6 @@ shield.textContent=
 "🧪 "+
 antidotes+
 "/25";
-
 
 shield.classList.remove(
 "active"
@@ -3294,22 +2410,18 @@ worldNumber-1
 
 
 /* =====================================================
-MENSAJE ESCENARIO
+MENSAJES
 ===================================================== */
 
-function showWorldMessage(
-text
-){
+function showWorldMessage(text){
 
 const message=
 document.createElement(
 "div"
 );
 
-
 message.className=
 "worldMessage";
-
 
 message.textContent=
 text;
@@ -3319,9 +2431,7 @@ document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-message
-);
+.appendChild(message);
 
 
 setTimeout(
@@ -3336,23 +2446,15 @@ message.remove();
 }
 
 
-/* =====================================================
-MENSAJE DESAFÍO
-===================================================== */
-
-function showChallengeMessage(
-text
-){
+function showChallengeMessage(text){
 
 const message=
 document.createElement(
 "div"
 );
 
-
 message.className=
 "challengeMessage";
-
 
 message.textContent=
 text;
@@ -3362,9 +2464,7 @@ document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-message
-);
+.appendChild(message);
 
 
 setTimeout(
@@ -3383,31 +2483,23 @@ message.remove();
 RECOMPENSA
 ===================================================== */
 
-function showReward(
-text
-){
+function showReward(text){
 
 const reward=
 document.createElement(
 "div"
 );
 
+reward.className="reward";
 
-reward.className=
-"reward";
-
-
-reward.textContent=
-text;
+reward.textContent=text;
 
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-reward
-);
+.appendChild(reward);
 
 
 setTimeout(
@@ -3434,7 +2526,6 @@ document
 )
 .textContent=
 score;
-
 
 document
 .getElementById(
@@ -3476,25 +2567,15 @@ if(!gameRunning)return;
 gameRunning=false;
 
 
-clearTimeout(
-spawnTimer
-);
+clearTimeout(spawnTimer);
 
-clearInterval(
-difficultyTimer
-);
+clearInterval(difficultyTimer);
 
-clearInterval(
-scoreTimer
-);
+clearInterval(scoreTimer);
 
-clearInterval(
-gameTimeTimer
-);
+clearInterval(gameTimeTimer);
 
-clearInterval(
-antidoteTimer
-);
+clearInterval(antidoteTimer);
 
 
 player.classList.remove(
@@ -3506,12 +2587,9 @@ player.classList.remove(
 );
 
 
-if(
-score>highScore
-){
+if(score>highScore){
 
 highScore=score;
-
 
 localStorage.setItem(
 "zombie_rush_high_score",
@@ -3536,7 +2614,7 @@ document
 .getElementById(
 "finalAntidotes"
 )
-textContent=
+.textContent=
 "🧪 Antídotos: "+
 antidotes;
 
@@ -3555,7 +2633,7 @@ document
 
 
 /* =====================================================
-CONTINUAR
+BOTÓN CONTINUAR
 ===================================================== */
 
 function updateContinueButton(){
@@ -3572,11 +2650,9 @@ if(continueUsed){
 button.textContent=
 "📺 CONTINUACIÓN USADA";
 
-
 button.classList.add(
 "disabled"
 );
-
 
 button.disabled=true;
 
@@ -3585,11 +2661,9 @@ button.disabled=true;
 button.textContent=
 "📺 VER ANUNCIO Y CONTINUAR";
 
-
 button.classList.remove(
 "disabled"
 );
-
 
 button.disabled=false;
 
@@ -3608,7 +2682,6 @@ if(continueUsed)return;
 
 
 continueUsed=true;
-
 
 updateContinueButton();
 
@@ -3640,9 +2713,7 @@ document
 seconds;
 
 
-clearInterval(
-adTimer
-);
+clearInterval(adTimer);
 
 
 adTimer=
@@ -3650,7 +2721,6 @@ setInterval(
 function(){
 
 seconds--;
-
 
 document
 .getElementById(
@@ -3662,9 +2732,7 @@ seconds;
 
 if(seconds<=0){
 
-clearInterval(
-adTimer
-);
+clearInterval(adTimer);
 
 
 document
@@ -3692,7 +2760,7 @@ document
 
 
 /* =====================================================
-CONTINUAR PARTIDA
+CONTINUAR
 ===================================================== */
 
 function continueGame(){
@@ -3727,7 +2795,6 @@ element.remove()
 
 obstacles=[];
 
-
 rewardActive=false;
 
 rewardObject=null;
@@ -3738,25 +2805,15 @@ playerLane=1;
 positionPlayer();
 
 
-clearTimeout(
-spawnTimer
-);
+clearTimeout(spawnTimer);
 
-clearInterval(
-difficultyTimer
-);
+clearInterval(difficultyTimer);
 
-clearInterval(
-scoreTimer
-);
+clearInterval(scoreTimer);
 
-clearInterval(
-gameTimeTimer
-);
+clearInterval(gameTimeTimer);
 
-clearInterval(
-antidoteTimer
-);
+clearInterval(antidoteTimer);
 
 
 gameRunning=true;
@@ -3768,10 +2825,8 @@ player.classList.add(
 
 
 /*
-MISMA LÓGICA DE AIRPORT:
-
-Esperamos un poco y volvemos
-a lanzar obstáculos.
+MISMO TIEMPO DE REANUDACIÓN
+QUE AIRPORT
 */
 
 spawnTimer=
@@ -3856,29 +2911,17 @@ LIMPIAR TIMERS
 
 function clearAllTimers(){
 
-clearTimeout(
-spawnTimer
-);
+clearTimeout(spawnTimer);
 
-clearInterval(
-difficultyTimer
-);
+clearInterval(difficultyTimer);
 
-clearInterval(
-scoreTimer
-);
+clearInterval(scoreTimer);
 
-clearInterval(
-gameTimeTimer
-);
+clearInterval(gameTimeTimer);
 
-clearInterval(
-antidoteTimer
-);
+clearInterval(antidoteTimer);
 
-clearInterval(
-adTimer
-);
+clearInterval(adTimer);
 
 }
 
@@ -3900,7 +2943,6 @@ element.remove()
 
 
 obstacles=[];
-
 
 rewardActive=false;
 
@@ -3928,4 +2970,4 @@ positionPlayer();
 </script>
 
 </body>
-</html>
+</html> 

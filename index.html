@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<title>Airport Rush</title>
+<title>Zombie Rush</title>
 
 <style>
 
@@ -43,15 +43,15 @@ align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-background:linear-gradient(to bottom,#0d2745,#175477,#263b4b);
+background:linear-gradient(to bottom,#071b12,#17452c,#263b2d);
 }
 
 .logo{
 font-size:46px;
 font-weight:900;
 letter-spacing:3px;
-color:#ffd95a;
-text-shadow:0 5px 0 #936c0d;
+color:#79ef75;
+text-shadow:0 5px 0 #275f2a;
 }
 
 .subtitle{
@@ -80,7 +80,7 @@ box-shadow:0 2px 0 #a72d2d;
 
 .instructions{
 margin-top:35px;
-color:#c5d4e2;
+color:#c5d4c8;
 font-size:14px;
 line-height:1.5;
 }
@@ -93,9 +93,9 @@ inset:0;
 display:none;
 }
 
-/* ================= AEROPUERTO ================= */
+/* ================= ESCENARIO ================= */
 
-#airport{
+#world{
 position:absolute;
 inset:0 7% 0 7%;
 overflow:hidden;
@@ -104,120 +104,153 @@ border-right:5px solid #202832;
 transition:background .8s ease;
 }
 
-.airport1{
+.world1{
 background:linear-gradient(
 to bottom,
-#53b8ed 0%,
-#ccecf8 32%,
-#667078 32%,
-#303944 42%,
-#303944 100%
+#657d7c 0%,
+#b5c3bd 32%,
+#59615b 32%,
+#303631 42%,
+#151a16 100%
 );
 }
 
-.airport2{
+.world2{
 background:linear-gradient(
 to bottom,
-#1b8297 0%,
-#79d4d2 32%,
-#4e5e66 32%,
-#202b33 42%,
-#26343d 100%
+#35424a 0%,
+#8d9898 32%,
+#535853 32%,
+#292e2a 42%,
+#171a18 100%
 );
 }
 
-.airport3{
+.world3{
 background:linear-gradient(
 to bottom,
-#080d2b 0%,
-#202d5d 31%,
-#303b49 31%,
-#111821 42%,
-#171e27 100%
+#080d18 0%,
+#253a4c 31%,
+#394346 31%,
+#151b1d 42%,
+#0c1113 100%
 );
 }
 
-.airport4{
+.world4{
 background:linear-gradient(
 to bottom,
-#414d57 0%,
-#87949d 30%,
-#59636a 30%,
-#252c31 42%,
-#252b30 100%
+#667a73 0%,
+#b8c7c1 30%,
+#5b625e 30%,
+#272c29 42%,
+#141815 100%
 );
 }
 
-.airport5{
+.world5{
 background:linear-gradient(
 to bottom,
-#16b8d4 0%,
-#b5f1d5 30%,
-#4b925a 30%,
-#37483e 42%,
-#303b35 100%
+#422c2b 0%,
+#805752 30%,
+#4e4641 30%,
+#29221f 42%,
+#11100f 100%
 );
 }
 
-.airport6{
+.world6{
 background:linear-gradient(
 to bottom,
-#161b38 0%,
-#3e4d80 30%,
-#4e5664 30%,
-#171d27 42%,
-#11161e 100%
+#071a12 0%,
+#145039 30%,
+#3e4c43 30%,
+#171e19 42%,
+#090d0a 100%
 );
 }
 
-.window{
+/* ================= DECORACIÓN ================= */
+
+.decor{
 position:absolute;
-top:0;
-width:5px;
-height:34%;
-background:rgba(255,255,255,.65);
-z-index:2;
+z-index:3;
+font-size:50px;
+opacity:.9;
 }
 
-.w1{left:20%}
-.w2{left:40%}
-.w3{left:60%}
-.w4{left:80%}
-
-.airport3 .window,
-.airport6 .window{
-background:rgba(150,210,255,.35);
-box-shadow:0 0 15px rgba(100,190,255,.35);
+.d1{
+left:5%;
+top:13%;
 }
 
-#outsideGround{
+.d2{
+right:8%;
+top:17%;
+}
+
+.d3{
+left:43%;
+top:10%;
+font-size:38px;
+}
+
+.smoke{
 position:absolute;
-top:31%;
-left:0;
-right:0;
-height:5%;
-background:#707a80;
+width:100px;
+height:100px;
+border-radius:50%;
+background:rgba(220,220,220,.09);
+filter:blur(10px);
+animation:smoke 5s infinite alternate;
+z-index:3;
 }
 
-#runway{
+.s1{
+left:10%;
+top:20%;
+}
+
+.s2{
+right:12%;
+top:23%;
+animation-delay:2s;
+}
+
+@keyframes smoke{
+
+from{
+transform:translateY(10px) scale(.9);
+}
+
+to{
+transform:translateY(-15px) scale(1.1);
+}
+
+}
+
+/* ================= ROAD ================= */
+
+#road{
 position:absolute;
 top:36%;
 left:0;
 right:0;
 height:6%;
 background:#30363d;
+z-index:4;
 }
 
-.airport3 #runway,
-.airport6 #runway{
+.world3 #road,
+.world6 #road{
 background:#151a21;
 }
 
-.airport5 #runway{
-background:#35413a;
+.world5 #road{
+background:#302b28;
 }
 
-.runwayLine{
+.roadLine{
 position:absolute;
 top:50%;
 width:65px;
@@ -225,158 +258,30 @@ height:4px;
 background:#eee;
 }
 
-.r1{left:5%}
-.r2{left:28%}
-.r3{left:51%}
-.r4{left:74%}
-
-/* ================= TORRE ================= */
-
-#tower{
-position:absolute;
-top:10%;
-right:7%;
-width:38px;
-height:95px;
-background:#66727d;
-z-index:2;
+.r1{
+left:5%;
 }
 
-#tower:before{
-content:"";
-position:absolute;
-left:-8px;
-top:-20px;
-width:54px;
-height:27px;
-background:#46515b;
-border-radius:5px;
+.r2{
+left:28%;
 }
 
-#tower:after{
-content:"";
-position:absolute;
-left:16px;
-top:-37px;
-width:5px;
-height:18px;
-background:#303943;
+.r3{
+left:51%;
 }
 
-.airport3 #tower{
-background:#30395a;
+.r4{
+left:74%;
 }
 
-.airport5 #tower{
-background:#4f7957;
-}
+/* ================= ZONA ================= */
 
-.airport6 #tower{
-background:#59678a;
-}
-
-/* ================= PALMERAS ================= */
-
-.palm{
-position:absolute;
-display:none;
-z-index:3;
-font-size:45px;
-}
-
-.airport5 .palm{
-display:block;
-}
-
-.palm1{
-left:4%;
-top:22%;
-}
-
-.palm2{
-right:18%;
-top:21%;
-font-size:38px;
-}
-
-/* ================= AVIONES ================= */
-
-.plane{
-position:absolute;
-z-index:3;
-font-size:48px;
-opacity:.9;
-}
-
-.plane1{
-top:12%;
-left:-80px;
-animation:fly1 18s linear infinite;
-}
-
-.plane2{
-top:21%;
-right:-80px;
-font-size:38px;
-animation:fly2 25s linear infinite;
-}
-
-.airport3 .plane,
-.airport6 .plane{
-filter:drop-shadow(
-0 0 8px rgba(120,190,255,.8)
-);
-}
-
-@keyframes fly1{
-from{transform:translateX(0)}
-to{transform:translateX(650px)}
-}
-
-@keyframes fly2{
-from{transform:translateX(0)}
-to{transform:translateX(-650px)}
-}
-
-/* ================= LLUVIA ================= */
-
-.rain{
-position:absolute;
-inset:0;
-z-index:4;
-pointer-events:none;
-display:none;
-
-background:
-repeating-linear-gradient(
-105deg,
-transparent 0,
-transparent 16px,
-rgba(210,235,255,.18) 17px,
-rgba(210,235,255,.18) 18px,
-transparent 19px,
-transparent 34px
-);
-}
-
-.airport4 .rain{
-display:block;
-animation:rainMove .7s linear infinite;
-}
-
-@keyframes rainMove{
-from{transform:translateY(-20px)}
-to{transform:translateY(20px)}
-}
-
-/* ================= GATE ================= */
-
-#gate{
+#zone{
 position:absolute;
 top:27%;
 left:50%;
 transform:translateX(-50%);
-background:#075985;
+background:#317044;
 color:white;
 border:3px solid white;
 border-radius:6px;
@@ -384,13 +289,28 @@ padding:6px 15px;
 font-size:14px;
 font-weight:bold;
 z-index:5;
+white-space:nowrap;
 }
 
-.airport2 #gate{background:#087f73}
-.airport3 #gate{background:#6737c5}
-.airport4 #gate{background:#9a4d09}
-.airport5 #gate{background:#08734f}
-.airport6 #gate{background:#c32843}
+.world2 #zone{
+background:#9a6a2e;
+}
+
+.world3 #zone{
+background:#5449a7;
+}
+
+.world4 #zone{
+background:#327e73;
+}
+
+.world5 #zone{
+background:#923c3c;
+}
+
+.world6 #zone{
+background:#08734f;
+}
 
 /* ================= CARRILES ================= */
 
@@ -529,8 +449,13 @@ top:19px;
 z-index:3;
 }
 
-.eye.left{left:20px}
-.eye.right{right:20px}
+.eye.left{
+left:20px;
+}
+
+.eye.right{
+right:20px;
+}
 
 .body{
 position:absolute;
@@ -538,9 +463,9 @@ width:48px;
 height:43px;
 left:7px;
 top:37px;
-background:#3478d4;
+background:#4d914e;
 border-radius:12px 12px 8px 8px;
-border:3px solid #1c4175;
+border:3px solid #285b2e;
 }
 
 .backpack{
@@ -549,7 +474,7 @@ width:15px;
 height:30px;
 left:0;
 top:44px;
-background:#e85c4a;
+background:#79533a;
 border-radius:6px;
 }
 
@@ -562,8 +487,13 @@ top:75px;
 border-radius:5px;
 }
 
-.leg.left{left:15px}
-.leg.right{right:15px}
+.leg.left{
+left:15px;
+}
+
+.leg.right{
+right:15px;
+}
 
 .running .leg.left{
 animation:run1 .18s infinite alternate;
@@ -574,13 +504,27 @@ animation:run2 .18s infinite alternate;
 }
 
 @keyframes run1{
-from{transform:rotate(20deg)}
-to{transform:rotate(-20deg)}
+
+from{
+transform:rotate(20deg);
+}
+
+to{
+transform:rotate(-20deg);
+}
+
 }
 
 @keyframes run2{
-from{transform:rotate(-20deg)}
-to{transform:rotate(20deg)}
+
+from{
+transform:rotate(-20deg);
+}
+
+to{
+transform:rotate(20deg);
+}
+
 }
 
 /* ================= ESCUDO ================= */
@@ -603,58 +547,61 @@ shieldPulse 1s infinite alternate;
 }
 
 @keyframes shieldPulse{
-from{transform:scale(.97)}
-to{transform:scale(1.04)}
+
+from{
+transform:scale(.97);
 }
 
-/* ================= MALETAS ================= */
+to{
+transform:scale(1.04);
+}
 
-.suitcase{
+}
+
+/* ================= ZOMBIS ================= */
+
+.zombie{
 position:absolute;
 width:42px;
 height:52px;
-background:#ffbd32;
-border:4px solid #8c6414;
-border-radius:8px;
 z-index:8;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+filter:drop-shadow(
+0 4px 4px rgba(0,0,0,.7)
+);
 }
 
-.suitcase:before{
-content:"";
-position:absolute;
-width:15px;
-height:8px;
-left:10px;
-top:-11px;
-border:4px solid #8c6414;
-border-bottom:none;
-border-radius:8px 8px 0 0;
-}
+/* ================= ANTÍDOTOS ================= */
 
-/* ================= MONEDAS ================= */
-
-.coin{
+.antidote{
 position:absolute;
 width:31px;
 height:31px;
-border-radius:50%;
-background:#ffd83d;
-border:4px solid #b88708;
 z-index:9;
 display:flex;
 justify-content:center;
 align-items:center;
-color:#8c6414;
-font-weight:bold;
-box-shadow:
-0 0 10px rgba(255,215,50,.7);
+font-size:29px;
+filter:drop-shadow(
+0 0 10px rgba(80,255,150,.75)
+);
 animation:
 coinPulse .7s infinite alternate;
 }
 
 @keyframes coinPulse{
-from{transform:scale(1)}
-to{transform:scale(1.1)}
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.1);
+}
+
 }
 
 /* ================= MENSAJES ================= */
@@ -680,27 +627,32 @@ pointer-events:none;
 }
 
 @keyframes airportMessage{
+
 0%{
 opacity:0;
 transform:
 translate(-50%,-50%)
 scale(.7);
 }
+
 20%{
 opacity:1;
 transform:
 translate(-50%,-50%)
 scale(1.05);
 }
+
 75%{
 opacity:1;
 }
+
 100%{
 opacity:0;
 transform:
 translate(-50%,-65%)
 scale(1);
 }
+
 }
 
 .reward{
@@ -710,35 +662,39 @@ top:45%;
 transform:
 translate(-50%,-50%);
 z-index:40;
-color:#ffe25a;
+color:#75ffae;
 font-size:25px;
 font-weight:900;
 text-shadow:
-0 3px 0 #6d5310;
+0 3px 0 #165b38;
 animation:
 reward .8s forwards;
 pointer-events:none;
 }
 
 @keyframes reward{
+
 0%{
 opacity:0;
 transform:
 translate(-50%,-20%)
 scale(.5);
 }
+
 25%{
 opacity:1;
 transform:
 translate(-50%,-50%)
 scale(1.15);
 }
+
 100%{
 opacity:0;
 transform:
 translate(-50%,-90%)
 scale(1);
 }
+
 }
 
 /* ================= DESAFÍO ================= */
@@ -764,27 +720,32 @@ pointer-events:none;
 }
 
 @keyframes challengeAnimation{
+
 0%{
 opacity:0;
 transform:
 translate(-50%,-40%)
 scale(.75);
 }
+
 20%{
 opacity:1;
 transform:
 translate(-50%,-50%)
 scale(1.05);
 }
+
 70%{
 opacity:1;
 }
+
 100%{
 opacity:0;
 transform:
 translate(-50%,-60%)
 scale(1);
 }
+
 }
 
 /* ================= CONTROLES ================= */
@@ -849,7 +810,7 @@ margin-bottom:8px;
 
 #finalCoins{
 font-size:19px;
-color:#ffd83d;
+color:#75ffae;
 margin-bottom:25px;
 }
 
@@ -1014,26 +975,26 @@ border-radius:15px;
 <div id="menu">
 
 <div class="logo">
-AIRPORT RUSH
+ZOMBIE RUSH
 </div>
 
 <div class="subtitle">
-RUN • DODGE • ESCAPE
+RUN • DODGE • SURVIVE
 </div>
 
 <button
 class="play-button"
-onclick="startGame()">
+onclick="startGame">
 
-✈ JUGAR
+🧟 JUGAR
 
 </button>
 
 <div class="instructions">
 
-Esquiva las maletas y recoge monedas.<br>
+Esquiva los zombis y recoge antídotos.<br>
 
-Consigue 25 monedas para activar un escudo.
+Consigue 25 antídotos para activar un escudo.
 
 </div>
 
@@ -1050,7 +1011,7 @@ Consigue 25 monedas para activar un escudo.
 </div>
 
 <div class="hudBox">
-🪙
+🧪
 <span id="coins">0</span>/25
 </div>
 
@@ -1063,40 +1024,31 @@ NIVEL 1 • x1.0
 
 
 <div id="shield">
-🪙 0/25
+🧪 0/25
 </div>
 
 
-<div id="airport" class="airport1">
+<div id="world" class="world1">
 
-<div class="window w1"></div>
-<div class="window w2"></div>
-<div class="window w3"></div>
-<div class="window w4"></div>
+<div class="decor d1">🏚️</div>
+<div class="decor d2">🏢</div>
+<div class="decor d3">🌆</div>
 
-<div class="rain"></div>
+<div class="smoke s1"></div>
+<div class="smoke s2"></div>
 
-<div class="palm palm1">🌴</div>
-<div class="palm palm2">🌴</div>
-
-<div id="outsideGround"></div>
-
-<div id="runway">
-
-<div class="runwayLine r1"></div>
-<div class="runwayLine r2"></div>
-<div class="runwayLine r3"></div>
-<div class="runwayLine r4"></div>
-
+<div id="zone">
+🌆 CIUDAD INFECTADA
 </div>
 
-<div id="tower"></div>
 
-<div class="plane plane1">✈️</div>
-<div class="plane plane2">✈️</div>
+<div id="road">
 
-<div id="gate">
-GATE 12
+<div class="roadLine r1"></div>
+<div class="roadLine r2"></div>
+<div class="roadLine r3"></div>
+<div class="roadLine r4"></div>
+
 </div>
 
 
@@ -1147,7 +1099,7 @@ GATE 12
 <div id="gameOver">
 
 <h2>
-💥 ¡HAS CHOCADO!
+🧟 ¡TE HAN ATRAPADO!
 </h2>
 
 <div id="finalScore">
@@ -1155,7 +1107,7 @@ Puntuación: 0
 </div>
 
 <div id="finalCoins">
-🪙 Monedas: 0
+🧪 Antídotos: 0
 </div>
 
 <button
@@ -1187,15 +1139,15 @@ ANUNCIO SIMULADO
 <div class="adBox">
 
 <div class="adIcon">
-✈️
+🧟
 </div>
 
 <div class="adTitle">
-AIRPORT RUSH
+ZOMBIE RUSH
 </div>
 
 <div class="adText">
-¡Prepárate para continuar tu carrera!
+¡Prepárate para continuar sobreviviendo!
 </div>
 
 <div id="adCountdown">
@@ -1218,7 +1170,7 @@ El anuncio termina en...
 </div>
 
 <div class="continueSub">
-Mismo nivel · mismo aeropuerto
+Mismo nivel · mismo escenario
 </div>
 
 <button
@@ -1228,8 +1180,6 @@ onclick="continueGame()">
 ▶ CONTINUAR
 
 </button>
-
-</div>
 
 </div>
 
@@ -1258,7 +1208,7 @@ let gameTime=0;
 
 
 /*
-VELOCIDAD ACTUALIZADA
+MISMA VELOCIDAD QUE AIRPORT
 
 Nivel 1 = 4.6
 Nivel 2 = 5.0
@@ -1272,59 +1222,33 @@ Nivel 8 = 8.0
 Nivel 9 = 8.5
 Nivel 10 = 9.0
 Nivel 11 = 9.5
-Nivel 12+ = 10.0 máximo
+Nivel 12+ = 10.0
 */
 
 let obstacleSpeed=4.6;
 
 let spawnDelay=1100;
 
-
-/* MODO DESAFÍO */
-
 let hardMode=false;
-
-
-/* OBJETOS */
 
 let obstacles=[];
 
-
-/*
-Historial de patrones.
-*/
-
 let recentChallengePatterns=[];
-
-
-/* RECOMPENSAS */
 
 let rewardActive=false;
 
 let rewardObject=null;
 
-
-/* ESCUDO */
-
 let shieldActive=false;
 
-
-/* CONTINUACIÓN */
-
 let continueUsed=false;
-
-
-/* RÉCORD */
 
 let highScore=
 Number(
 localStorage.getItem(
-"airport_high_score"
+"zombie_rush_high_score"
 )||0
 );
-
-
-/* TIMERS */
 
 let spawnTimer=null;
 
@@ -1403,23 +1327,13 @@ gameTime=0;
 playerLane=1;
 
 
-/*
-VELOCIDAD INICIAL
-*/
-
 obstacleSpeed=4.6;
 
 spawnDelay=1100;
 
-
-/*
-DESAFÍO
-*/
-
 hardMode=false;
 
 recentChallengePatterns=[];
-
 
 obstacles=[];
 
@@ -1438,7 +1352,7 @@ updateLevel();
 
 updateShield();
 
-changeAirport();
+changeWorld();
 
 positionPlayer();
 
@@ -1456,10 +1370,6 @@ updateContinueButton();
 
 gameRunning=true;
 
-
-/*
-Primer obstáculo.
-*/
 
 spawnTimer=
 setTimeout(
@@ -1717,8 +1627,6 @@ return [];
 let possiblePatterns=[];
 
 
-/* UNA MALETA */
-
 available.forEach(
 function(lane){
 
@@ -1729,8 +1637,6 @@ lane
 }
 );
 
-
-/* DOS MALETAS */
 
 if(
 available.length>=2
@@ -1760,11 +1666,6 @@ available[j]
 }
 
 
-/*
-Eliminamos patrones usados
-recientemente.
-*/
-
 let freshPatterns=
 possiblePatterns.filter(
 function(pattern){
@@ -1779,6 +1680,7 @@ return a-b;
 )
 .join("-");
 
+
 return !recentChallengePatterns.includes(
 key
 );
@@ -1786,12 +1688,6 @@ key
 }
 );
 
-
-/*
-Si se han agotado las combinaciones,
-permitimos reutilizar alguna,
-pero nunca la última.
-*/
 
 if(
 freshPatterns.length===0
@@ -1810,6 +1706,7 @@ return a-b;
 }
 )
 .join("-");
+
 
 return (
 recentChallengePatterns.length===0 ||
@@ -1834,10 +1731,6 @@ possiblePatterns;
 }
 
 
-/*
-Elección aleatoria.
-*/
-
 const selected=
 freshPatterns[
 Math.floor(
@@ -1846,10 +1739,6 @@ freshPatterns.length
 )
 ];
 
-
-/*
-Guardamos patrón.
-*/
 
 const selectedKey=
 selected
@@ -1875,10 +1764,6 @@ recentChallengePatterns.shift();
 
 }
 
-
-/*
-Barajamos el orden.
-*/
 
 return selected.sort(
 function(){
@@ -1909,7 +1794,7 @@ return createNormalPattern();
 
 
 /* =====================================================
-CREAR MALETAS
+CREAR ZOMBIS
 ===================================================== */
 
 function spawnObstacle(){
@@ -1928,7 +1813,7 @@ lanes.length>0
 lanes.forEach(
 function(lane){
 
-createSuitcase(lane);
+createZombie(lane);
 
 }
 );
@@ -1942,10 +1827,10 @@ scheduleObstacle();
 
 
 /* =====================================================
-CREAR MALETA
+CREAR ZOMBIE
 ===================================================== */
 
-function createSuitcase(
+function createZombie(
 lane
 ){
 
@@ -1958,16 +1843,19 @@ const laneWidth=
 area.clientWidth/3;
 
 
-const suitcase=
+const zombie=
 document.createElement(
 "div"
 );
 
-suitcase.className=
-"suitcase";
+zombie.className=
+"zombie";
+
+zombie.textContent=
+"🧟";
 
 
-suitcase.style.left=
+zombie.style.left=
 (
 laneWidth*lane+
 laneWidth/2-
@@ -1977,18 +1865,18 @@ laneWidth/2-
 
 let y=-105;
 
-suitcase.style.top=
+zombie.style.top=
 y+"px";
 
 
 area.appendChild(
-suitcase
+zombie
 );
 
 
 const object={
 
-element:suitcase,
+element:zombie,
 
 lane:lane,
 
@@ -2040,7 +1928,7 @@ delay
 
 
 /* =====================================================
-ANIMAR MALETA
+ANIMAR ZOMBIE
 ===================================================== */
 
 function animateObstacle(
@@ -2190,10 +2078,6 @@ if(!gameRunning)return;
 level++;
 
 
-/*
-NIVELES 1-5
-*/
-
 if(level<=5){
 
 obstacleSpeed=
@@ -2210,10 +2094,6 @@ Math.max(
 
 }
 
-
-/*
-MODO DESAFÍO
-*/
 
 if(level>=6){
 
@@ -2247,7 +2127,7 @@ showChallengeMessage(
 }
 
 
-changeAirport();
+changeWorld();
 
 updateLevel();
 
@@ -2281,6 +2161,7 @@ message.className=
 message.textContent=
 text;
 
+
 document
 .getElementById(
 "gameScreen"
@@ -2288,6 +2169,7 @@ document
 .appendChild(
 message
 );
+
 
 setTimeout(
 function(){
@@ -2313,6 +2195,7 @@ function(){
 
 if(!gameRunning)return;
 
+
 score++;
 
 updateHUD();
@@ -2325,7 +2208,7 @@ updateHUD();
 
 
 /* =====================================================
-MONEDAS
+ANTÍDOTOS
 ===================================================== */
 
 function startCoins(){
@@ -2352,7 +2235,7 @@ spawnCoin();
 
 
 /* =====================================================
-CARRIL MONEDA
+CARRIL ANTÍDOTO
 ===================================================== */
 
 function chooseCoinLane(){
@@ -2381,7 +2264,7 @@ available.length
 
 
 /* =====================================================
-CREAR MONEDA
+CREAR ANTÍDOTO
 ===================================================== */
 
 function spawnCoin(){
@@ -2411,10 +2294,10 @@ document.createElement(
 );
 
 coin.className=
-"coin";
+"antidote";
 
 coin.textContent=
-"€";
+"🧪";
 
 
 coin.style.left=
@@ -2452,10 +2335,6 @@ return;
 }
 
 
-/*
-MISMA VELOCIDAD QUE LA MALETA.
-*/
-
 y+=
 obstacleSpeed;
 
@@ -2466,6 +2345,7 @@ y+"px";
 
 const playerRect=
 player.getBoundingClientRect();
+
 
 const coinRect=
 coin.getBoundingClientRect();
@@ -2519,7 +2399,7 @@ animateCoin
 
 
 /* =====================================================
-RECOGER MONEDA
+RECOGER ANTÍDOTO
 ===================================================== */
 
 function collectCoin(){
@@ -2534,21 +2414,16 @@ rewardObject=null;
 
 rewardActive=false;
 
+
 coin.remove();
 
-
-/*
-Si ya tenemos escudo,
-la moneda da puntos pero NO
-avanza el contador.
-*/
 
 if(shieldActive){
 
 score+=50;
 
 showReward(
-"🪙 +1"
+"🧪 +1"
 );
 
 updateHUD();
@@ -2566,13 +2441,9 @@ score+=75;
 
 
 showReward(
-"🪙 +1"
+"🧪 +1"
 );
 
-
-/*
-25 monedas = escudo.
-*/
 
 if(
 coins>=25 &&
@@ -2594,7 +2465,7 @@ updateShield();
 
 
 /* =====================================================
-FINAL MONEDA
+FINAL ANTÍDOTO
 ===================================================== */
 
 function finishCoin(){
@@ -2624,11 +2495,14 @@ function activateShield(){
 
 shieldActive=true;
 
+
 player.classList.add(
 "shielded"
 );
 
+
 updateShield();
+
 
 showReward(
 "🛡️ ¡ESCUDO!"
@@ -2647,13 +2521,16 @@ shieldActive=false;
 
 coins=0;
 
+
 player.classList.remove(
 "shielded"
 );
 
+
 updateShield();
 
 updateHUD();
+
 
 showReward(
 "💥 ¡ESCUDO ROTO!"
@@ -2678,7 +2555,7 @@ if(shieldActive){
 
 shield.innerHTML=
 "🛡️ ESCUDO ACTIVO<br>"+
-"<small>🪙 Siguiente: 0/25</small>";
+"<small>🧪 Siguiente: 0/25</small>";
 
 shield.classList.add(
 "active"
@@ -2687,7 +2564,7 @@ shield.classList.add(
 }else{
 
 shield.innerHTML=
-"🪙 "+
+"🧪 "+
 coins+
 "/25";
 
@@ -2701,73 +2578,70 @@ shield.classList.remove(
 
 
 /* =====================================================
-AEROPUERTOS
+ESCENARIOS
 ===================================================== */
 
-function changeAirport(){
+function changeWorld(){
 
-const airport=
+const world=
 document.getElementById(
-"airport"
+"world"
 );
 
 
-airport.classList.remove(
-"airport1",
-"airport2",
-"airport3",
-"airport4",
-"airport5",
-"airport6"
+world.classList.remove(
+"world1",
+"world2",
+"world3",
+"world4",
+"world5",
+"world6"
 );
 
 
-let airportNumber=
+let worldNumber=
 Math.floor(
 (level-1)/2
 )+1;
 
 
-airportNumber=
+worldNumber=
 Math.min(
 6,
-airportNumber
+worldNumber
 );
 
 
-airport.classList.add(
-"airport"+
-airportNumber
+world.classList.add(
+"world"+
+worldNumber
 );
-
-
-const gates=[
-"GATE 12",
-"GATE 24",
-"GATE 37",
-"GATE 48",
-"GATE 61",
-"GATE 99"
-];
 
 
 const names=[
-"☀️ DAY TERMINAL",
-"🏢 MODERN TERMINAL",
-"🌙 NIGHT AIRPORT",
-"🌧️ STORM AIRPORT",
-"🌴 TROPICAL AIRPORT",
-"🏙️ MEGA TERMINAL"
+
+"☀️ CIUDAD INFECTADA",
+
+"🏚️ BARRIO ABANDONADO",
+
+"🌙 CIUDAD DE NOCHE",
+
+"🌧️ ZONA DE TORMENTA",
+
+"🔥 CIUDAD EN RUINAS",
+
+"☣️ ZONA DE CUARENTENA"
+
 ];
 
 
 document
 .getElementById(
-"gate"
+"zone"
 )
 .textContent=
-gates[
-airportNumber-1
+names[
+worldNumber-1
 ];
 
 
@@ -2778,7 +2652,7 @@ level%2===1
 
 showAirportMessage(
 names[
-airportNumber-1
+worldNumber-1
 ]
 );
 
@@ -2788,7 +2662,7 @@ airportNumber-1
 
 
 /* =====================================================
-MENSAJE AEROPUERTO
+MENSAJE ESCENARIO
 ===================================================== */
 
 function showAirportMessage(
@@ -2806,6 +2680,7 @@ message.className=
 message.textContent=
 text;
 
+
 document
 .getElementById(
 "gameScreen"
@@ -2813,6 +2688,7 @@ document
 .appendChild(
 message
 );
+
 
 setTimeout(
 function(){
@@ -2845,6 +2721,7 @@ reward.className=
 reward.textContent=
 text;
 
+
 document
 .getElementById(
 "gameScreen"
@@ -2852,6 +2729,7 @@ document
 .appendChild(
 reward
 );
+
 
 setTimeout(
 function(){
@@ -2877,6 +2755,7 @@ document
 )
 .textContent=
 score;
+
 
 document
 .getElementById(
@@ -2956,7 +2835,7 @@ highScore=score;
 
 
 localStorage.setItem(
-"airport_high_score",
+"zombie_rush_high_score",
 highScore
 );
 
@@ -2979,7 +2858,7 @@ document
 "finalCoins"
 )
 .textContent=
-"🪙 Monedas: "+
+"🧪 Antídotos: "+
 coins;
 
 
@@ -3014,9 +2893,11 @@ if(continueUsed){
 button.textContent=
 "📺 CONTINUACIÓN USADA";
 
+
 button.classList.add(
 "disabled"
 );
+
 
 button.disabled=true;
 
@@ -3025,9 +2906,11 @@ button.disabled=true;
 button.textContent=
 "📺 VER ANUNCIO Y CONTINUAR";
 
+
 button.classList.remove(
 "disabled"
 );
+
 
 button.disabled=false;
 
@@ -3046,6 +2929,7 @@ if(continueUsed)return;
 
 
 continueUsed=true;
+
 
 updateContinueButton();
 
@@ -3087,6 +2971,7 @@ setInterval(
 function(){
 
 seconds--;
+
 
 document
 .getElementById(
@@ -3143,7 +3028,7 @@ document
 
 document
 .querySelectorAll(
-".suitcase"
+".zombie"
 )
 .forEach(
 element=>
@@ -3153,7 +3038,7 @@ element.remove()
 
 document
 .querySelectorAll(
-".coin"
+".antidote"
 )
 .forEach(
 element=>
@@ -3321,7 +3206,7 @@ function removeObjects(){
 
 document
 .querySelectorAll(
-".suitcase,.coin,.reward,.airportMessage,.challengeMessage"
+".zombie,.antidote,.reward,.airportMessage,.challengeMessage"
 )
 .forEach(
 element=>

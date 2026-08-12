@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
-<title>Zombie Rush</title>
+<title>Airport Rush</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -42,15 +43,15 @@ align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-background:linear-gradient(to bottom,#071b12,#17452c,#18241d);
+background:linear-gradient(to bottom,#0d2745,#175477,#263b4b);
 }
 
 .logo{
 font-size:46px;
 font-weight:900;
 letter-spacing:3px;
-color:#78ef75;
-text-shadow:0 5px 0 #275f2a;
+color:#ffd95a;
+text-shadow:0 5px 0 #936c0d;
 }
 
 .subtitle{
@@ -63,23 +64,23 @@ color:#dbeafe;
 
 .play-button{
 border:0;
-background:#e84d4d;
+background:#ff5c5c;
 color:white;
 font-size:27px;
 font-weight:bold;
 padding:18px 55px;
 border-radius:18px;
-box-shadow:0 7px 0 #9d2d2d;
+box-shadow:0 7px 0 #a72d2d;
 }
 
 .play-button:active{
 transform:translateY(5px);
-box-shadow:0 2px 0 #9d2d2d;
+box-shadow:0 2px 0 #a72d2d;
 }
 
 .instructions{
 margin-top:35px;
-color:#c5d4c8;
+color:#c5d4e2;
 font-size:14px;
 line-height:1.5;
 }
@@ -92,9 +93,9 @@ inset:0;
 display:none;
 }
 
-/* ================= ESCENARIO ================= */
+/* ================= AEROPUERTO ================= */
 
-#world{
+#airport{
 position:absolute;
 inset:0 7% 0 7%;
 overflow:hidden;
@@ -103,161 +104,120 @@ border-right:5px solid #202832;
 transition:background .8s ease;
 }
 
-.world1{
+.airport1{
 background:linear-gradient(
 to bottom,
-#526f7b 0%,
-#a5b9b4 32%,
-#5e625d 32%,
-#30332f 42%,
-#151816 100%
+#53b8ed 0%,
+#ccecf8 32%,
+#667078 32%,
+#303944 42%,
+#303944 100%
 );
 }
 
-.world2{
+.airport2{
 background:linear-gradient(
 to bottom,
-#27313b 0%,
-#76828a 32%,
-#555752 32%,
-#292b28 42%,
-#171917 100%
+#1b8297 0%,
+#79d4d2 32%,
+#4e5e66 32%,
+#202b33 42%,
+#26343d 100%
 );
 }
 
-.world3{
+.airport3{
 background:linear-gradient(
 to bottom,
-#07101d 0%,
-#243b55 31%,
-#40484b 31%,
-#181c20 42%,
-#0d1114 100%
+#080d2b 0%,
+#202d5d 31%,
+#303b49 31%,
+#111821 42%,
+#171e27 100%
 );
 }
 
-.world4{
+.airport4{
 background:linear-gradient(
 to bottom,
-#8cb9b1 0%,
-#d9e9e5 31%,
-#69746f 31%,
-#292e2b 42%,
-#111513 100%
+#414d57 0%,
+#87949d 30%,
+#59636a 30%,
+#252c31 42%,
+#252b30 100%
 );
 }
 
-.world5{
+.airport5{
 background:linear-gradient(
 to bottom,
-#3a2828 0%,
-#765653 30%,
-#4b4540 30%,
-#27221f 42%,
-#11110f 100%
+#16b8d4 0%,
+#b5f1d5 30%,
+#4b925a 30%,
+#37483e 42%,
+#303b35 100%
 );
 }
 
-.world6{
+.airport6{
 background:linear-gradient(
 to bottom,
-#061a12 0%,
-#14543a 30%,
-#3c4c43 30%,
-#171e19 42%,
-#090d0a 100%
+#161b38 0%,
+#3e4d80 30%,
+#4e5664 30%,
+#171d27 42%,
+#11161e 100%
 );
 }
 
-/* ================= DECORACIÓN ================= */
-
-.building{
+.window{
 position:absolute;
+top:0;
+width:5px;
+height:34%;
+background:rgba(255,255,255,.65);
 z-index:2;
-font-size:48px;
-opacity:.9;
 }
 
-.building1{
-left:5%;
-top:13%;
+.w1{left:20%}
+.w2{left:40%}
+.w3{left:60%}
+.w4{left:80%}
+
+.airport3 .window,
+.airport6 .window{
+background:rgba(150,210,255,.35);
+box-shadow:0 0 15px rgba(100,190,255,.35);
 }
 
-.building2{
-right:9%;
-top:17%;
-}
-
-.building3{
-left:44%;
-top:10%;
-font-size:38px;
-}
-
-.world3 .building{
-filter:drop-shadow(0 0 10px rgba(100,190,255,.6));
-}
-
-.world6 .building{
-filter:drop-shadow(0 0 10px rgba(80,255,130,.5));
-}
-
-.smoke{
+#outsideGround{
 position:absolute;
-width:100px;
-height:100px;
-border-radius:50%;
-background:rgba(220,220,220,.08);
-filter:blur(10px);
-animation:smokeMove 5s infinite alternate;
-z-index:3;
+top:31%;
+left:0;
+right:0;
+height:5%;
+background:#707a80;
 }
 
-.smoke1{
-left:10%;
-top:19%;
-}
-
-.smoke2{
-right:12%;
-top:23%;
-animation-delay:2s;
-}
-
-@keyframes smokeMove{
-from{
-transform:translateY(10px) scale(.9);
-}
-to{
-transform:translateY(-15px) scale(1.1);
-}
-}
-
-/* ================= ROAD ================= */
-
-#road{
+#runway{
 position:absolute;
 top:36%;
 left:0;
 right:0;
 height:6%;
 background:#30363d;
-z-index:4;
 }
 
-.world3 #road{
+.airport3 #runway,
+.airport6 #runway{
 background:#151a21;
 }
 
-.world5 #road{
-background:#302b28;
+.airport5 #runway{
+background:#35413a;
 }
 
-.world6 #road{
-background:#151c18;
-}
-
-.roadLine{
+.runwayLine{
 position:absolute;
 top:50%;
 width:65px;
@@ -270,29 +230,167 @@ background:#eee;
 .r3{left:51%}
 .r4{left:74%}
 
-/* ================= ZONA ================= */
+/* ================= TORRE ================= */
 
-#zone{
+#tower{
+position:absolute;
+top:10%;
+right:7%;
+width:38px;
+height:95px;
+background:#66727d;
+z-index:2;
+}
+
+#tower:before{
+content:"";
+position:absolute;
+left:-8px;
+top:-20px;
+width:54px;
+height:27px;
+background:#46515b;
+border-radius:5px;
+}
+
+#tower:after{
+content:"";
+position:absolute;
+left:16px;
+top:-37px;
+width:5px;
+height:18px;
+background:#303943;
+}
+
+.airport3 #tower{
+background:#30395a;
+}
+
+.airport5 #tower{
+background:#4f7957;
+}
+
+.airport6 #tower{
+background:#59678a;
+}
+
+/* ================= PALMERAS ================= */
+
+.palm{
+position:absolute;
+display:none;
+z-index:3;
+font-size:45px;
+}
+
+.airport5 .palm{
+display:block;
+}
+
+.palm1{
+left:4%;
+top:22%;
+}
+
+.palm2{
+right:18%;
+top:21%;
+font-size:38px;
+}
+
+/* ================= AVIONES ================= */
+
+.plane{
+position:absolute;
+z-index:3;
+font-size:48px;
+opacity:.9;
+}
+
+.plane1{
+top:12%;
+left:-80px;
+animation:fly1 18s linear infinite;
+}
+
+.plane2{
+top:21%;
+right:-80px;
+font-size:38px;
+animation:fly2 25s linear infinite;
+}
+
+.airport3 .plane,
+.airport6 .plane{
+filter:drop-shadow(
+0 0 8px rgba(120,190,255,.8)
+);
+}
+
+@keyframes fly1{
+from{transform:translateX(0)}
+to{transform:translateX(650px)}
+}
+
+@keyframes fly2{
+from{transform:translateX(0)}
+to{transform:translateX(-650px)}
+}
+
+/* ================= LLUVIA ================= */
+
+.rain{
+position:absolute;
+inset:0;
+z-index:4;
+pointer-events:none;
+display:none;
+
+background:
+repeating-linear-gradient(
+105deg,
+transparent 0,
+transparent 16px,
+rgba(210,235,255,.18) 17px,
+rgba(210,235,255,.18) 18px,
+transparent 19px,
+transparent 34px
+);
+}
+
+.airport4 .rain{
+display:block;
+animation:rainMove .7s linear infinite;
+}
+
+@keyframes rainMove{
+from{transform:translateY(-20px)}
+to{transform:translateY(20px)}
+}
+
+/* ================= GATE ================= */
+
+#gate{
 position:absolute;
 top:27%;
 left:50%;
 transform:translateX(-50%);
-background:#317044;
+background:#075985;
 color:white;
 border:3px solid white;
 border-radius:6px;
 padding:6px 15px;
-font-size:13px;
+font-size:14px;
 font-weight:bold;
 z-index:5;
-white-space:nowrap;
 }
 
-.world2 #zone{background:#9a6a2e}
-.world3 #zone{background:#5449a7}
-.world4 #zone{background:#327e73}
-.world5 #zone{background:#923c3c}
-.world6 #zone{background:#08734f}
+.airport2 #gate{background:#087f73}
+.airport3 #gate{background:#6737c5}
+.airport4 #gate{background:#9a4d09}
+.airport5 #gate{background:#08734f}
+.airport6 #gate{background:#c32843}
 
 /* ================= CARRILES ================= */
 
@@ -309,6 +407,7 @@ position:absolute;
 top:0;
 bottom:0;
 width:3px;
+
 background:
 repeating-linear-gradient(
 to bottom,
@@ -319,8 +418,13 @@ transparent 90px
 );
 }
 
-.lane1{left:33.333%}
-.lane2{left:66.666%}
+.lane1{
+left:33.333%;
+}
+
+.lane2{
+left:66.666%;
+}
 
 /* ================= HUD ================= */
 
@@ -349,7 +453,7 @@ top:68px;
 left:50%;
 transform:translateX(-50%);
 z-index:20;
-color:#7df27b;
+color:#ffe36b;
 background:rgba(0,0,0,.45);
 padding:5px 11px;
 border-radius:10px;
@@ -369,15 +473,17 @@ background:rgba(0,0,0,.45);
 color:#b8d8e8;
 font-size:13px;
 font-weight:bold;
-opacity:.75;
+opacity:.85;
 text-align:center;
+min-width:145px;
 }
 
 #shield.active{
 opacity:1;
 color:white;
-background:rgba(20,150,90,.85);
-box-shadow:0 0 18px rgba(80,255,140,.9);
+background:rgba(20,130,220,.85);
+box-shadow:
+0 0 18px rgba(80,190,255,.9);
 }
 
 /* ================= PERSONAJE ================= */
@@ -397,9 +503,9 @@ width:42px;
 height:42px;
 left:10px;
 top:0;
-background:#d99b76;
+background:#f2b58c;
 border-radius:45%;
-border:3px solid #422d26;
+border:3px solid #542f26;
 }
 
 .hair{
@@ -408,7 +514,7 @@ width:42px;
 height:18px;
 left:10px;
 top:0;
-background:#2c231e;
+background:#34251e;
 border-radius:50% 50% 25% 25%;
 z-index:2;
 }
@@ -432,9 +538,9 @@ width:48px;
 height:43px;
 left:7px;
 top:37px;
-background:#4d914e;
+background:#3478d4;
 border-radius:12px 12px 8px 8px;
-border:3px solid #285b2e;
+border:3px solid #1c4175;
 }
 
 .backpack{
@@ -443,7 +549,7 @@ width:15px;
 height:30px;
 left:0;
 top:44px;
-background:#79533a;
+background:#e85c4a;
 border-radius:6px;
 }
 
@@ -486,12 +592,14 @@ width:82px;
 height:102px;
 left:-10px;
 top:-10px;
-border:4px solid #6dffb0;
+border:4px solid #6ddcff;
 border-radius:45%;
-background:rgba(80,255,150,.12);
-box-shadow:0 0 20px rgba(80,255,150,.8);
+background:rgba(80,190,255,.12);
+box-shadow:
+0 0 20px rgba(80,190,255,.8);
 z-index:-1;
-animation:shieldPulse 1s infinite alternate;
+animation:
+shieldPulse 1s infinite alternate;
 }
 
 @keyframes shieldPulse{
@@ -499,71 +607,99 @@ from{transform:scale(.97)}
 to{transform:scale(1.04)}
 }
 
-/* ================= ZOMBIES ================= */
+/* ================= MALETAS ================= */
 
-.zombie{
+.suitcase{
 position:absolute;
-width:44px;
-height:58px;
+width:42px;
+height:52px;
+background:#ffbd32;
+border:4px solid #8c6414;
+border-radius:8px;
 z-index:8;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:48px;
-filter:drop-shadow(0 4px 4px rgba(0,0,0,.7));
 }
 
-/* ================= ANTÍDOTOS ================= */
+.suitcase:before{
+content:"";
+position:absolute;
+width:15px;
+height:8px;
+left:10px;
+top:-11px;
+border:4px solid #8c6414;
+border-bottom:none;
+border-radius:8px 8px 0 0;
+}
 
-.antidote{
+/* ================= MONEDAS ================= */
+
+.coin{
 position:absolute;
 width:31px;
-height:36px;
+height:31px;
+border-radius:50%;
+background:#ffd83d;
+border:4px solid #b88708;
 z-index:9;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:30px;
-filter:drop-shadow(0 0 10px rgba(80,255,150,.75));
-animation:antidotePulse .7s infinite alternate;
+color:#8c6414;
+font-weight:bold;
+box-shadow:
+0 0 10px rgba(255,215,50,.7);
+animation:
+coinPulse .7s infinite alternate;
 }
 
-@keyframes antidotePulse{
+@keyframes coinPulse{
 from{transform:scale(1)}
 to{transform:scale(1.1)}
 }
 
 /* ================= MENSAJES ================= */
 
-.worldMessage{
+.airportMessage{
 position:absolute;
 top:42%;
 left:50%;
-transform:translate(-50%,-50%) scale(.8);
+transform:
+translate(-50%,-50%)
+scale(.8);
 z-index:60;
 color:white;
 font-size:25px;
 font-weight:900;
 text-align:center;
 white-space:nowrap;
-text-shadow:0 3px 5px rgba(0,0,0,.8);
-animation:worldMessage 2.2s forwards;
+text-shadow:
+0 3px 5px rgba(0,0,0,.8);
+animation:
+airportMessage 2.2s forwards;
 pointer-events:none;
 }
 
-@keyframes worldMessage{
+@keyframes airportMessage{
 0%{
 opacity:0;
-transform:translate(-50%,-50%) scale(.7);
+transform:
+translate(-50%,-50%)
+scale(.7);
 }
 20%{
 opacity:1;
-transform:translate(-50%,-50%) scale(1.05);
+transform:
+translate(-50%,-50%)
+scale(1.05);
 }
-75%{opacity:1}
+75%{
+opacity:1;
+}
 100%{
 opacity:0;
-transform:translate(-50%,-65%) scale(1);
+transform:
+translate(-50%,-65%)
+scale(1);
 }
 }
 
@@ -571,28 +707,37 @@ transform:translate(-50%,-65%) scale(1);
 position:absolute;
 left:50%;
 top:45%;
-transform:translate(-50%,-50%);
+transform:
+translate(-50%,-50%);
 z-index:40;
-color:#75ffae;
+color:#ffe25a;
 font-size:25px;
 font-weight:900;
-text-shadow:0 3px 0 #165b38;
-animation:reward .8s forwards;
+text-shadow:
+0 3px 0 #6d5310;
+animation:
+reward .8s forwards;
 pointer-events:none;
 }
 
 @keyframes reward{
 0%{
 opacity:0;
-transform:translate(-50%,-20%) scale(.5);
+transform:
+translate(-50%,-20%)
+scale(.5);
 }
 25%{
 opacity:1;
-transform:translate(-50%,-50%) scale(1.15);
+transform:
+translate(-50%,-50%)
+scale(1.15);
 }
 100%{
 opacity:0;
-transform:translate(-50%,-90%) scale(1);
+transform:
+translate(-50%,-90%)
+scale(1);
 }
 }
 
@@ -602,7 +747,8 @@ transform:translate(-50%,-90%) scale(1);
 position:absolute;
 top:34%;
 left:50%;
-transform:translate(-50%,-50%);
+transform:
+translate(-50%,-50%);
 z-index:70;
 color:#ffcf45;
 background:rgba(100,20,20,.85);
@@ -612,23 +758,32 @@ padding:10px 17px;
 font-size:15px;
 font-weight:bold;
 white-space:nowrap;
-animation:challengeAnimation 2.5s forwards;
+animation:
+challengeAnimation 2.5s forwards;
 pointer-events:none;
 }
 
 @keyframes challengeAnimation{
 0%{
 opacity:0;
-transform:translate(-50%,-40%) scale(.75);
+transform:
+translate(-50%,-40%)
+scale(.75);
 }
 20%{
 opacity:1;
-transform:translate(-50%,-50%) scale(1.05);
+transform:
+translate(-50%,-50%)
+scale(1.05);
 }
-70%{opacity:1}
+70%{
+opacity:1;
+}
 100%{
 opacity:0;
-transform:translate(-50%,-60%) scale(1);
+transform:
+translate(-50%,-60%)
+scale(1);
 }
 }
 
@@ -650,15 +805,18 @@ width:72px;
 height:72px;
 border:none;
 border-radius:50%;
-background:rgba(255,255,255,.20);
+background:
+rgba(255,255,255,.20);
 color:white;
 font-size:30px;
 font-weight:bold;
-border:2px solid rgba(255,255,255,.45);
+border:
+2px solid rgba(255,255,255,.45);
 }
 
 .control:active{
-background:rgba(255,255,255,.42);
+background:
+rgba(255,255,255,.42);
 transform:scale(.95);
 }
 
@@ -671,7 +829,8 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:rgba(4,10,20,.92);
+background:
+rgba(4,10,20,.92);
 color:white;
 z-index:100;
 text-align:center;
@@ -688,9 +847,9 @@ font-size:21px;
 margin-bottom:8px;
 }
 
-#finalAntidotes{
+#finalCoins{
 font-size:19px;
-color:#75ffae;
+color:#ffd83d;
 margin-bottom:25px;
 }
 
@@ -702,13 +861,15 @@ font-size:18px;
 font-weight:bold;
 padding:15px 25px;
 border-radius:14px;
-box-shadow:0 5px 0 #168448;
+box-shadow:
+0 5px 0 #168448;
 margin-bottom:18px;
 }
 
 .continueButton.disabled{
 background:#53606b;
-box-shadow:0 4px 0 #39434b;
+box-shadow:
+0 4px 0 #39434b;
 }
 
 .restart{
@@ -731,7 +892,8 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:rgba(5,8,13,.96);
+background:
+rgba(5,8,13,.96);
 color:white;
 text-align:center;
 }
@@ -749,14 +911,21 @@ width:80%;
 max-width:330px;
 min-height:300px;
 border-radius:18px;
-background:linear-gradient(135deg,#182b42,#243b55);
-border:2px solid #42556b;
+background:
+linear-gradient(
+135deg,
+#182b42,
+#243b55
+);
+border:
+2px solid #42556b;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 padding:25px;
-box-shadow:0 15px 50px rgba(0,0,0,.5);
+box-shadow:
+0 15px 50px rgba(0,0,0,.5);
 }
 
 .adIcon{
@@ -806,7 +975,8 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:rgba(4,10,20,.88);
+background:
+rgba(4,10,20,.88);
 color:white;
 text-align:center;
 }
@@ -814,7 +984,7 @@ text-align:center;
 .continueTitle{
 font-size:34px;
 font-weight:900;
-color:#6dffb0;
+color:#6ddcff;
 margin-bottom:10px;
 }
 
@@ -833,6 +1003,7 @@ font-weight:bold;
 padding:15px 35px;
 border-radius:15px;
 }
+
 </style>
 </head>
 
@@ -840,33 +1011,34 @@ border-radius:15px;
 
 <div id="game">
 
-<!-- ================= MENU ================= -->
-
 <div id="menu">
 
 <div class="logo">
-ZOMBIE RUSH
+AIRPORT RUSH
 </div>
 
 <div class="subtitle">
-RUN • DODGE • SURVIVE
+RUN • DODGE • ESCAPE
 </div>
 
 <button
 class="play-button"
 onclick="startGame()">
-🧟 JUGAR
+
+✈ JUGAR
+
 </button>
 
 <div class="instructions">
-Esquiva los zombies y recoge antídotos.<br>
-Consigue 25 antídotos para activar un escudo.
-</div>
+
+Esquiva las maletas y recoge monedas.<br>
+
+Consigue 25 monedas para activar un escudo.
 
 </div>
 
+</div>
 
-<!-- ================= GAME ================= -->
 
 <div id="gameScreen">
 
@@ -878,8 +1050,8 @@ Consigue 25 antídotos para activar un escudo.
 </div>
 
 <div class="hudBox">
-🧪
-<span id="antidotes">0</span>/25
+🪙
+<span id="coins">0</span>/25
 </div>
 
 </div>
@@ -891,30 +1063,40 @@ NIVEL 1 • x1.0
 
 
 <div id="shield">
-🧪 0/25
+🪙 0/25
 </div>
 
 
-<div id="world" class="world1">
+<div id="airport" class="airport1">
 
-<div class="building building1">🏢</div>
-<div class="building building2">🏚️</div>
-<div class="building building3">🏙️</div>
+<div class="window w1"></div>
+<div class="window w2"></div>
+<div class="window w3"></div>
+<div class="window w4"></div>
 
-<div class="smoke smoke1"></div>
-<div class="smoke smoke2"></div>
+<div class="rain"></div>
 
-<div id="zone">
-🌆 CIUDAD INFECTADA
+<div class="palm palm1">🌴</div>
+<div class="palm palm2">🌴</div>
+
+<div id="outsideGround"></div>
+
+<div id="runway">
+
+<div class="runwayLine r1"></div>
+<div class="runwayLine r2"></div>
+<div class="runwayLine r3"></div>
+<div class="runwayLine r4"></div>
+
 </div>
 
-<div id="road">
+<div id="tower"></div>
 
-<div class="roadLine r1"></div>
-<div class="roadLine r2"></div>
-<div class="roadLine r3"></div>
-<div class="roadLine r4"></div>
+<div class="plane plane1">✈️</div>
+<div class="plane plane2">✈️</div>
 
+<div id="gate">
+GATE 12
 </div>
 
 
@@ -962,20 +1144,18 @@ NIVEL 1 • x1.0
 </div>
 
 
-<!-- ================= GAME OVER ================= -->
-
 <div id="gameOver">
 
 <h2>
-🧟 ¡TE HAN ATRAPADO!
+💥 ¡HAS CHOCADO!
 </h2>
 
 <div id="finalScore">
 Puntuación: 0
 </div>
 
-<div id="finalAntidotes">
-🧪 Antídotos: 0
+<div id="finalCoins">
+🪙 Monedas: 0
 </div>
 
 <button
@@ -998,8 +1178,6 @@ onclick="restartGame()">
 </div>
 
 
-<!-- ================= ANUNCIO ================= -->
-
 <div id="adOverlay">
 
 <div class="adLabel">
@@ -1009,15 +1187,15 @@ ANUNCIO SIMULADO
 <div class="adBox">
 
 <div class="adIcon">
-🧟
+✈️
 </div>
 
 <div class="adTitle">
-ZOMBIE RUSH
+AIRPORT RUSH
 </div>
 
 <div class="adText">
-¡Prepárate para continuar sobreviviendo!
+¡Prepárate para continuar tu carrera!
 </div>
 
 <div id="adCountdown">
@@ -1033,8 +1211,6 @@ El anuncio termina en...
 </div>
 
 
-<!-- ================= CONTINUAR ================= -->
-
 <div id="continueScreen">
 
 <div class="continueTitle">
@@ -1042,7 +1218,7 @@ El anuncio termina en...
 </div>
 
 <div class="continueSub">
-Mismo nivel · mismo escenario
+Mismo nivel · mismo aeropuerto
 </div>
 
 <button
@@ -1052,6 +1228,8 @@ onclick="continueGame()">
 ▶ CONTINUAR
 
 </button>
+
+</div>
 
 </div>
 
@@ -1072,7 +1250,7 @@ let playerLane=1;
 
 let score=0;
 
-let antidotes=0;
+let coins=0;
 
 let level=1;
 
@@ -1080,62 +1258,85 @@ let gameTime=0;
 
 
 /*
-===============================
-MOTOR EXACTAMENTE COMO AIRPORT
-===============================
+VELOCIDAD ACTUALIZADA
 
-Nivel 1 = 3.6
-Nivel 2 = 4.0
-Nivel 3 = 4.4
-Nivel 4 = 4.8
-Nivel 5 = 5.2
+Nivel 1 = 4.6
+Nivel 2 = 5.0
+Nivel 3 = 5.4
+Nivel 4 = 5.8
+Nivel 5 = 6.2
 
-Nivel 6 = 5.8
-Nivel 7 = 6.3
-Nivel 8 = 6.8
-Nivel 9 = 7.3
-Nivel 10 = 7.8
-
-Máximo = 8.5
+Nivel 6 = 7.0
+Nivel 7 = 7.5
+Nivel 8 = 8.0
+Nivel 9 = 8.5
+Nivel 10 = 9.0
+Nivel 11 = 9.5
+Nivel 12+ = 10.0 máximo
 */
 
-let obstacleSpeed=3.6;
+let obstacleSpeed=4.6;
 
-let spawnDelay=1250;
+let spawnDelay=1100;
+
+
+/* MODO DESAFÍO */
 
 let hardMode=false;
 
+
+/* OBJETOS */
+
 let obstacles=[];
+
+
+/*
+Historial de patrones.
+*/
+
+let recentChallengePatterns=[];
+
+
+/* RECOMPENSAS */
 
 let rewardActive=false;
 
 let rewardObject=null;
 
+
+/* ESCUDO */
+
 let shieldActive=false;
 
+
+/* CONTINUACIÓN */
+
 let continueUsed=false;
+
+
+/* RÉCORD */
 
 let highScore=
 Number(
 localStorage.getItem(
-"zombie_rush_high_score"
+"airport_high_score"
 )||0
 );
 
+
+/* TIMERS */
+
 let spawnTimer=null;
+
 let difficultyTimer=null;
+
 let scoreTimer=null;
+
 let gameTimeTimer=null;
-let antidoteTimer=null;
+
+let coinTimer=null;
+
 let adTimer=null;
-
-
-/*
-Evita repetir constantemente
-la misma combinación en desafío.
-*/
-
-let lastPatterns=[];
 
 
 /* =====================================================
@@ -1165,21 +1366,26 @@ clearAllTimers();
 
 removeObjects();
 
+
 document
 .getElementById("menu")
 .style.display="none";
+
 
 document
 .getElementById("gameScreen")
 .style.display="block";
 
+
 document
 .getElementById("gameOver")
 .style.display="none";
 
+
 document
 .getElementById("adOverlay")
 .style.display="none";
+
 
 document
 .getElementById("continueScreen")
@@ -1188,7 +1394,7 @@ document
 
 score=0;
 
-antidotes=0;
+coins=0;
 
 level=1;
 
@@ -1198,18 +1404,24 @@ playerLane=1;
 
 
 /*
-MISMA VELOCIDAD QUE AIRPORT
+VELOCIDAD INICIAL
 */
 
-obstacleSpeed=3.6;
+obstacleSpeed=4.6;
 
-spawnDelay=1250;
+spawnDelay=1100;
+
+
+/*
+DESAFÍO
+*/
 
 hardMode=false;
 
-obstacles=[];
+recentChallengePatterns=[];
 
-lastPatterns=[];
+
+obstacles=[];
 
 rewardActive=false;
 
@@ -1226,14 +1438,19 @@ updateLevel();
 
 updateShield();
 
-changeWorld();
+changeAirport();
 
 positionPlayer();
 
 
-player.classList.add("running");
+player.classList.add(
+"running"
+);
 
-player.classList.remove("shielded");
+player.classList.remove(
+"shielded"
+);
+
 
 updateContinueButton();
 
@@ -1241,20 +1458,21 @@ gameRunning=true;
 
 
 /*
-MISMO PRIMER SPAWN QUE AIRPORT
+Primer obstáculo.
 */
 
 spawnTimer=
 setTimeout(
-spawnZombie,
-950
+spawnObstacle,
+750
 );
+
 
 startScore();
 
 startDifficulty();
 
-startAntidotes();
+startCoins();
 
 
 gameTimeTimer=
@@ -1262,7 +1480,9 @@ setInterval(
 function(){
 
 if(gameRunning){
+
 gameTime++;
+
 }
 
 },
@@ -1340,11 +1560,15 @@ document.addEventListener(
 function(e){
 
 if(e.key==="ArrowLeft"){
+
 moveLeft();
+
 }
 
 if(e.key==="ArrowRight"){
+
 moveRight();
+
 }
 
 }
@@ -1387,6 +1611,7 @@ function getAvailableLanes(){
 
 let available=[];
 
+
 for(
 let lane=0;
 lane<3;
@@ -1395,6 +1620,7 @@ lane++
 
 let blocked=false;
 
+
 for(
 const obstacle of obstacles
 ){
@@ -1402,8 +1628,11 @@ const obstacle of obstacles
 if(
 obstacle.lane!==lane
 ){
+
 continue;
+
 }
+
 
 if(
 obstacle.y>-190 &&
@@ -1418,11 +1647,15 @@ break;
 
 }
 
+
 if(!blocked){
+
 available.push(lane);
+
 }
 
 }
+
 
 return available;
 
@@ -1438,17 +1671,15 @@ function createNormalPattern(){
 const available=
 getAvailableLanes();
 
+
 if(
 available.length===0
 ){
+
 return [];
+
 }
 
-
-/*
-EXACTAMENTE LA LÓGICA DE AIRPORT:
-UNA MALETA = UN ZOMBIE
-*/
 
 const lane=
 available[
@@ -1457,6 +1688,7 @@ Math.random()*
 available.length
 )
 ];
+
 
 return [lane];
 
@@ -1472,33 +1704,33 @@ function createChallengePattern(){
 const available=
 getAvailableLanes();
 
+
 if(
 available.length===0
 ){
+
 return [];
+
 }
 
 
-let patterns=[];
+let possiblePatterns=[];
 
 
-/*
-UN ZOMBIE
-*/
+/* UNA MALETA */
 
 available.forEach(
 function(lane){
 
-patterns.push([lane]);
+possiblePatterns.push([
+lane
+]);
 
 }
 );
 
 
-/*
-DOS ZOMBIES.
-SIEMPRE QUEDA UN CARRIL LIBRE.
-*/
+/* DOS MALETAS */
 
 if(
 available.length>=2
@@ -1516,12 +1748,10 @@ j<available.length;
 j++
 ){
 
-patterns.push(
-[
+possiblePatterns.push([
 available[i],
 available[j]
-]
-);
+]);
 
 }
 
@@ -1531,63 +1761,132 @@ available[j]
 
 
 /*
-Eliminamos las combinaciones
-usadas recientemente.
+Eliminamos patrones usados
+recientemente.
 */
 
-let filtered=
-patterns.filter(
+let freshPatterns=
+possiblePatterns.filter(
 function(pattern){
 
 const key=
 pattern
 .slice()
-.sort()
-.join(",");
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
 
-return !lastPatterns.includes(key);
+return !recentChallengePatterns.includes(
+key
+);
 
-});
+}
+);
 
+
+/*
+Si se han agotado las combinaciones,
+permitimos reutilizar alguna,
+pero nunca la última.
+*/
 
 if(
-filtered.length===0
+freshPatterns.length===0
 ){
 
-filtered=patterns;
+freshPatterns=
+possiblePatterns.filter(
+function(pattern){
+
+const key=
+pattern
+.slice()
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
+
+return (
+recentChallengePatterns.length===0 ||
+key!==recentChallengePatterns[
+recentChallengePatterns.length-1
+]
+);
+
+}
+);
 
 }
 
 
+if(
+freshPatterns.length===0
+){
+
+freshPatterns=
+possiblePatterns;
+
+}
+
+
+/*
+Elección aleatoria.
+*/
+
 const selected=
-filtered[
+freshPatterns[
 Math.floor(
 Math.random()*
-filtered.length
+freshPatterns.length
 )
 ];
 
 
-const key=
+/*
+Guardamos patrón.
+*/
+
+const selectedKey=
 selected
 .slice()
-.sort()
-.join(",");
+.sort(
+function(a,b){
+return a-b;
+}
+)
+.join("-");
 
 
-lastPatterns.push(key);
+recentChallengePatterns.push(
+selectedKey
+);
 
 
 if(
-lastPatterns.length>5
+recentChallengePatterns.length>3
 ){
 
-lastPatterns.shift();
+recentChallengePatterns.shift();
 
 }
 
 
-return selected;
+/*
+Barajamos el orden.
+*/
+
+return selected.sort(
+function(){
+
+return Math.random()-.5;
+
+}
+);
 
 }
 
@@ -1596,7 +1895,7 @@ return selected;
 PATRÓN GENERAL
 ===================================================== */
 
-function createZombiePattern(){
+function createObstaclePattern(){
 
 if(hardMode){
 
@@ -1610,45 +1909,45 @@ return createNormalPattern();
 
 
 /* =====================================================
-CREAR ZOMBIES
+CREAR MALETAS
 ===================================================== */
 
-function spawnZombie(){
+function spawnObstacle(){
 
 if(!gameRunning)return;
 
 
 const lanes=
-createZombiePattern();
+createObstaclePattern();
 
 
 if(
-lanes.length===0
+lanes.length>0
 ){
 
-scheduleZombie();
+lanes.forEach(
+function(lane){
 
-return;
+createSuitcase(lane);
+
+}
+);
 
 }
 
 
-lanes.forEach(
-lane=>
-createZombie(lane)
-);
-
-
-scheduleZombie();
+scheduleObstacle();
 
 }
 
 
 /* =====================================================
-CREAR ZOMBIE
+CREAR MALETA
 ===================================================== */
 
-function createZombie(lane){
+function createSuitcase(
+lane
+){
 
 const area=
 document.getElementById(
@@ -1659,34 +1958,37 @@ const laneWidth=
 area.clientWidth/3;
 
 
-const zombie=
+const suitcase=
 document.createElement(
 "div"
 );
 
-zombie.className="zombie";
+suitcase.className=
+"suitcase";
 
-zombie.textContent="🧟";
 
-
-zombie.style.left=
+suitcase.style.left=
 (
 laneWidth*lane+
 laneWidth/2-
-22
+21
 )+"px";
 
 
 let y=-105;
 
-zombie.style.top=y+"px";
+suitcase.style.top=
+y+"px";
 
-area.appendChild(zombie);
+
+area.appendChild(
+suitcase
+);
 
 
 const object={
 
-element:zombie,
+element:suitcase,
 
 lane:lane,
 
@@ -1695,9 +1997,14 @@ y:y
 };
 
 
-obstacles.push(object);
+obstacles.push(
+object
+);
 
-animateZombie(object);
+
+animateObstacle(
+object
+);
 
 }
 
@@ -1706,22 +2013,18 @@ animateZombie(object);
 SIGUIENTE OLEADA
 ===================================================== */
 
-function scheduleZombie(){
+function scheduleObstacle(){
 
 if(!gameRunning)return;
 
 
-/*
-EXACTAMENTE IGUAL QUE AIRPORT
-*/
-
 const variation=
-Math.random()*180-90;
+Math.random()*120-60;
 
 
 const delay=
 Math.max(
-350,
+280,
 spawnDelay+
 variation
 );
@@ -1729,7 +2032,7 @@ variation
 
 spawnTimer=
 setTimeout(
-spawnZombie,
+spawnObstacle,
 delay
 );
 
@@ -1737,25 +2040,27 @@ delay
 
 
 /* =====================================================
-ANIMAR ZOMBIE
+ANIMAR MALETA
 ===================================================== */
 
-function animateZombie(obstacle){
+function animateObstacle(
+obstacle
+){
 
 if(!gameRunning){
 
-removeZombie(obstacle);
+removeObstacle(
+obstacle
+);
 
 return;
 
 }
 
 
-/*
-EXACTAMENTE IGUAL QUE AIRPORT
-*/
+obstacle.y+=
+obstacleSpeed;
 
-obstacle.y+=obstacleSpeed;
 
 obstacle.element.style.top=
 obstacle.y+"px";
@@ -1764,34 +2069,38 @@ obstacle.y+"px";
 const playerRect=
 player.getBoundingClientRect();
 
-const zombieRect=
+
+const obstacleRect=
 obstacle.element
 .getBoundingClientRect();
 
 
 if(
 playerRect.left<
-zombieRect.right &&
+obstacleRect.right &&
 
 playerRect.right>
-zombieRect.left &&
+obstacleRect.left &&
 
 playerRect.top<
-zombieRect.bottom &&
+obstacleRect.bottom &&
 
 playerRect.bottom>
-zombieRect.top
+obstacleRect.top
 ){
 
 if(shieldActive){
 
 useShield();
 
-removeZombie(obstacle);
+removeObstacle(
+obstacle
+);
 
 return;
 
 }
+
 
 endGame();
 
@@ -1811,14 +2120,18 @@ document
 requestAnimationFrame(
 function(){
 
-animateZombie(obstacle);
+animateObstacle(
+obstacle
+);
 
 }
 );
 
 }else{
 
-removeZombie(obstacle);
+removeObstacle(
+obstacle
+);
 
 }
 
@@ -1829,10 +2142,15 @@ removeZombie(obstacle);
 ELIMINAR
 ===================================================== */
 
-function removeZombie(obstacle){
+function removeObstacle(
+obstacle
+){
 
 const index=
-obstacles.indexOf(obstacle);
+obstacles.indexOf(
+obstacle
+);
+
 
 if(index!==-1){
 
@@ -1842,6 +2160,7 @@ index,
 );
 
 }
+
 
 if(
 obstacle.element &&
@@ -1867,29 +2186,32 @@ function(){
 
 if(!gameRunning)return;
 
+
 level++;
 
 
 /*
 NIVELES 1-5
-MISMA CURVA AIRPORT
 */
 
 if(level<=5){
 
 obstacleSpeed=
-3.6+
+4.6+
 (level-1)*0.4;
 
+
 spawnDelay=
-1250-
-(level-1)*80;
+Math.max(
+600,
+1100-
+(level-1)*80
+);
 
 }
 
 
 /*
-NIVEL 6+
 MODO DESAFÍO
 */
 
@@ -1897,18 +2219,20 @@ if(level>=6){
 
 hardMode=true;
 
+
 obstacleSpeed=
 Math.min(
-8.5,
-5.8+
+10,
+7.0+
 (level-6)*0.5
 );
 
+
 spawnDelay=
 Math.max(
-350,
-950-
-(level-6)*65
+280,
+850-
+(level-6)*60
 );
 
 
@@ -1923,7 +2247,7 @@ showChallengeMessage(
 }
 
 
-changeWorld();
+changeAirport();
 
 updateLevel();
 
@@ -1933,6 +2257,45 @@ updateHUD();
 
 },
 25000
+);
+
+}
+
+
+/* =====================================================
+MENSAJE DESAFÍO
+===================================================== */
+
+function showChallengeMessage(
+text
+){
+
+const message=
+document.createElement(
+"div"
+);
+
+message.className=
+"challengeMessage";
+
+message.textContent=
+text;
+
+document
+.getElementById(
+"gameScreen"
+)
+.appendChild(
+message
+);
+
+setTimeout(
+function(){
+
+message.remove();
+
+},
+2500
 );
 
 }
@@ -1962,12 +2325,12 @@ updateHUD();
 
 
 /* =====================================================
-ANTÍDOTOS
+MONEDAS
 ===================================================== */
 
-function startAntidotes(){
+function startCoins(){
 
-antidoteTimer=
+coinTimer=
 setInterval(
 function(){
 
@@ -1977,25 +2340,26 @@ gameRunning &&
 gameTime>=4
 ){
 
-spawnAntidote();
+spawnCoin();
 
 }
 
 },
-2100
+1900
 );
 
 }
 
 
 /* =====================================================
-CARRIL ANTÍDOTO
+CARRIL MONEDA
 ===================================================== */
 
-function chooseAntidoteLane(){
+function chooseCoinLane(){
 
 const available=
 getAvailableLanes();
+
 
 if(
 available.length===0
@@ -2004,6 +2368,7 @@ available.length===0
 return -1;
 
 }
+
 
 return available[
 Math.floor(
@@ -2016,16 +2381,17 @@ available.length
 
 
 /* =====================================================
-CREAR ANTÍDOTO
+CREAR MONEDA
 ===================================================== */
 
-function spawnAntidote(){
+function spawnCoin(){
 
 if(rewardActive)return;
 
 
 const lane=
-chooseAntidoteLane();
+chooseCoinLane();
+
 
 if(lane===-1)return;
 
@@ -2039,18 +2405,19 @@ const laneWidth=
 area.clientWidth/3;
 
 
-const antidote=
+const coin=
 document.createElement(
 "div"
 );
 
-antidote.className=
-"antidote";
+coin.className=
+"coin";
 
-antidote.textContent=
-"🧪";
+coin.textContent=
+"€";
 
-antidote.style.left=
+
+coin.style.left=
 (
 laneWidth*lane+
 laneWidth/2-
@@ -2060,22 +2427,25 @@ laneWidth/2-
 
 let y=-60;
 
-antidote.style.top=
+coin.style.top=
 y+"px";
 
-area.appendChild(antidote);
+
+area.appendChild(
+coin
+);
 
 
 rewardActive=true;
 
-rewardObject=antidote;
+rewardObject=coin;
 
 
-function animateAntidote(){
+function animateCoin(){
 
 if(!gameRunning){
 
-finishAntidote();
+finishCoin();
 
 return;
 
@@ -2083,38 +2453,39 @@ return;
 
 
 /*
-EXACTAMENTE LA MISMA VELOCIDAD
-QUE LOS ZOMBIES/MALETAS
+MISMA VELOCIDAD QUE LA MALETA.
 */
 
-y+=obstacleSpeed;
+y+=
+obstacleSpeed;
 
-antidote.style.top=
+
+coin.style.top=
 y+"px";
 
 
 const playerRect=
 player.getBoundingClientRect();
 
-const antidoteRect=
-antidote.getBoundingClientRect();
+const coinRect=
+coin.getBoundingClientRect();
 
 
 if(
 playerRect.left<
-antidoteRect.right &&
+coinRect.right &&
 
 playerRect.right>
-antidoteRect.left &&
+coinRect.left &&
 
 playerRect.top<
-antidoteRect.bottom &&
+coinRect.bottom &&
 
 playerRect.bottom>
-antidoteRect.top
+coinRect.top
 ){
 
-collectAntidote();
+collectCoin();
 
 return;
 
@@ -2128,12 +2499,12 @@ area.clientHeight+
 ){
 
 requestAnimationFrame(
-animateAntidote
+animateCoin
 );
 
 }else{
 
-finishAntidote();
+finishCoin();
 
 }
 
@@ -2141,42 +2512,44 @@ finishAntidote();
 
 
 requestAnimationFrame(
-animateAntidote
+animateCoin
 );
 
 }
 
 
 /* =====================================================
-RECOGER ANTÍDOTO
+RECOGER MONEDA
 ===================================================== */
 
-function collectAntidote(){
+function collectCoin(){
 
 if(!rewardObject)return;
 
 
-const antidote=
+const coin=
 rewardObject;
 
 rewardObject=null;
 
 rewardActive=false;
 
-antidote.remove();
+coin.remove();
 
 
 /*
-Mientras tenemos escudo,
-los antídotos NO cuentan
-para el siguiente escudo.
+Si ya tenemos escudo,
+la moneda da puntos pero NO
+avanza el contador.
 */
 
 if(shieldActive){
 
 score+=50;
 
-showReward("🧪 +1");
+showReward(
+"🪙 +1"
+);
 
 updateHUD();
 
@@ -2187,19 +2560,26 @@ return;
 }
 
 
-antidotes++;
+coins++;
 
 score+=75;
 
-showReward("🧪 +1");
 
+showReward(
+"🪙 +1"
+);
+
+
+/*
+25 monedas = escudo.
+*/
 
 if(
-antidotes>=25 &&
+coins>=25 &&
 !shieldActive
 ){
 
-antidotes=0;
+coins=0;
 
 activateShield();
 
@@ -2214,10 +2594,10 @@ updateShield();
 
 
 /* =====================================================
-FINAL ANTÍDOTO
+FINAL MONEDA
 ===================================================== */
 
-function finishAntidote(){
+function finishCoin(){
 
 if(
 rewardObject &&
@@ -2227,6 +2607,7 @@ rewardObject.parentNode
 rewardObject.remove();
 
 }
+
 
 rewardObject=null;
 
@@ -2264,14 +2645,7 @@ function useShield(){
 
 shieldActive=false;
 
-
-/*
-AL ROMPERSE:
-
-VOLVEMOS A 0/25
-*/
-
-antidotes=0;
+coins=0;
 
 player.classList.remove(
 "shielded"
@@ -2303,7 +2677,8 @@ document.getElementById(
 if(shieldActive){
 
 shield.innerHTML=
-"🛡️ ESCUDO ACTIVO";
+"🛡️ ESCUDO ACTIVO<br>"+
+"<small>🪙 Siguiente: 0/25</small>";
 
 shield.classList.add(
 "active"
@@ -2311,9 +2686,9 @@ shield.classList.add(
 
 }else{
 
-shield.textContent=
-"🧪 "+
-antidotes+
+shield.innerHTML=
+"🪙 "+
+coins+
 "/25";
 
 shield.classList.remove(
@@ -2326,70 +2701,73 @@ shield.classList.remove(
 
 
 /* =====================================================
-ESCENARIOS
+AEROPUERTOS
 ===================================================== */
 
-function changeWorld(){
+function changeAirport(){
 
-const world=
+const airport=
 document.getElementById(
-"world"
+"airport"
 );
 
 
-world.classList.remove(
-"world1",
-"world2",
-"world3",
-"world4",
-"world5",
-"world6"
+airport.classList.remove(
+"airport1",
+"airport2",
+"airport3",
+"airport4",
+"airport5",
+"airport6"
 );
 
 
-let worldNumber=
+let airportNumber=
 Math.floor(
 (level-1)/2
 )+1;
 
 
-worldNumber=
+airportNumber=
 Math.min(
 6,
-worldNumber
+airportNumber
 );
 
 
-world.classList.add(
-"world"+
-worldNumber
+airport.classList.add(
+"airport"+
+airportNumber
 );
+
+
+const gates=[
+"GATE 12",
+"GATE 24",
+"GATE 37",
+"GATE 48",
+"GATE 61",
+"GATE 99"
+];
 
 
 const names=[
-
-"🌆 CIUDAD INFECTADA",
-
-"🛒 SUPERMERCADO ABANDONADO",
-
-"🚇 METRO INFECTADO",
-
-"🏥 HOSPITAL INFECTADO",
-
-"🔥 CIUDAD DESTRUIDA",
-
-"☣️ ZONA DE CUARENTENA"
-
+"☀️ DAY TERMINAL",
+"🏢 MODERN TERMINAL",
+"🌙 NIGHT AIRPORT",
+"🌧️ STORM AIRPORT",
+"🌴 TROPICAL AIRPORT",
+"🏙️ MEGA TERMINAL"
 ];
 
 
 document
 .getElementById(
-"zone"
+"gate"
 )
 .textContent=
-names[
-worldNumber-1
+gates[
+airportNumber-1
 ];
 
 
@@ -2398,9 +2776,9 @@ level>1 &&
 level%2===1
 ){
 
-showWorldMessage(
+showAirportMessage(
 names[
-worldNumber-1
+airportNumber-1
 ]
 );
 
@@ -2410,10 +2788,12 @@ worldNumber-1
 
 
 /* =====================================================
-MENSAJES
+MENSAJE AEROPUERTO
 ===================================================== */
 
-function showWorldMessage(text){
+function showAirportMessage(
+text
+){
 
 const message=
 document.createElement(
@@ -2421,18 +2801,18 @@ document.createElement(
 );
 
 message.className=
-"worldMessage";
+"airportMessage";
 
 message.textContent=
 text;
-
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(message);
-
+.appendChild(
+message
+);
 
 setTimeout(
 function(){
@@ -2446,61 +2826,32 @@ message.remove();
 }
 
 
-function showChallengeMessage(text){
-
-const message=
-document.createElement(
-"div"
-);
-
-message.className=
-"challengeMessage";
-
-message.textContent=
-text;
-
-
-document
-.getElementById(
-"gameScreen"
-)
-.appendChild(message);
-
-
-setTimeout(
-function(){
-
-message.remove();
-
-},
-2500
-);
-
-}
-
-
 /* =====================================================
 RECOMPENSA
 ===================================================== */
 
-function showReward(text){
+function showReward(
+text
+){
 
 const reward=
 document.createElement(
 "div"
 );
 
-reward.className="reward";
+reward.className=
+"reward";
 
-reward.textContent=text;
-
+reward.textContent=
+text;
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(reward);
-
+.appendChild(
+reward
+);
 
 setTimeout(
 function(){
@@ -2529,10 +2880,10 @@ score;
 
 document
 .getElementById(
-"antidotes"
+"coins"
 )
 .textContent=
-antidotes;
+coins;
 
 }
 
@@ -2549,7 +2900,7 @@ level+
 " • x"+
 (
 obstacleSpeed/
-3.6
+4.6
 ).toFixed(1);
 
 }
@@ -2567,15 +2918,25 @@ if(!gameRunning)return;
 gameRunning=false;
 
 
-clearTimeout(spawnTimer);
+clearTimeout(
+spawnTimer
+);
 
-clearInterval(difficultyTimer);
+clearInterval(
+difficultyTimer
+);
 
-clearInterval(scoreTimer);
+clearInterval(
+scoreTimer
+);
 
-clearInterval(gameTimeTimer);
+clearInterval(
+gameTimeTimer
+);
 
-clearInterval(antidoteTimer);
+clearInterval(
+coinTimer
+);
 
 
 player.classList.remove(
@@ -2587,12 +2948,15 @@ player.classList.remove(
 );
 
 
-if(score>highScore){
+if(
+score>highScore
+){
 
 highScore=score;
 
+
 localStorage.setItem(
-"zombie_rush_high_score",
+"airport_high_score",
 highScore
 );
 
@@ -2612,11 +2976,11 @@ highScore;
 
 document
 .getElementById(
-"finalAntidotes"
+"finalCoins"
 )
 .textContent=
-"🧪 Antídotos: "+
-antidotes;
+"🪙 Monedas: "+
+coins;
 
 
 updateContinueButton();
@@ -2633,7 +2997,7 @@ document
 
 
 /* =====================================================
-BOTÓN CONTINUAR
+CONTINUAR
 ===================================================== */
 
 function updateContinueButton(){
@@ -2713,7 +3077,9 @@ document
 seconds;
 
 
-clearInterval(adTimer);
+clearInterval(
+adTimer
+);
 
 
 adTimer=
@@ -2732,7 +3098,9 @@ seconds;
 
 if(seconds<=0){
 
-clearInterval(adTimer);
+clearInterval(
+adTimer
+);
 
 
 document
@@ -2760,7 +3128,7 @@ document
 
 
 /* =====================================================
-CONTINUAR
+CONTINUAR PARTIDA
 ===================================================== */
 
 function continueGame(){
@@ -2775,7 +3143,7 @@ document
 
 document
 .querySelectorAll(
-".zombie"
+".suitcase"
 )
 .forEach(
 element=>
@@ -2785,7 +3153,7 @@ element.remove()
 
 document
 .querySelectorAll(
-".antidote"
+".coin"
 )
 .forEach(
 element=>
@@ -2805,15 +3173,25 @@ playerLane=1;
 positionPlayer();
 
 
-clearTimeout(spawnTimer);
+clearTimeout(
+spawnTimer
+);
 
-clearInterval(difficultyTimer);
+clearInterval(
+difficultyTimer
+);
 
-clearInterval(scoreTimer);
+clearInterval(
+scoreTimer
+);
 
-clearInterval(gameTimeTimer);
+clearInterval(
+gameTimeTimer
+);
 
-clearInterval(antidoteTimer);
+clearInterval(
+coinTimer
+);
 
 
 gameRunning=true;
@@ -2824,15 +3202,10 @@ player.classList.add(
 );
 
 
-/*
-MISMO TIEMPO DE REANUDACIÓN
-QUE AIRPORT
-*/
-
 spawnTimer=
 setTimeout(
-spawnZombie,
-2000
+spawnObstacle,
+1400
 );
 
 
@@ -2840,7 +3213,7 @@ startScore();
 
 startDifficulty();
 
-startAntidotes();
+startCoins();
 
 
 gameTimeTimer=
@@ -2857,6 +3230,8 @@ gameTime++;
 1000
 );
 
+
+updateShield();
 
 showReward(
 "🚀 ¡CONTINUAMOS!"
@@ -2911,17 +3286,29 @@ LIMPIAR TIMERS
 
 function clearAllTimers(){
 
-clearTimeout(spawnTimer);
+clearTimeout(
+spawnTimer
+);
 
-clearInterval(difficultyTimer);
+clearInterval(
+difficultyTimer
+);
 
-clearInterval(scoreTimer);
+clearInterval(
+scoreTimer
+);
 
-clearInterval(gameTimeTimer);
+clearInterval(
+gameTimeTimer
+);
 
-clearInterval(antidoteTimer);
+clearInterval(
+coinTimer
+);
 
-clearInterval(adTimer);
+clearInterval(
+adTimer
+);
 
 }
 
@@ -2934,7 +3321,7 @@ function removeObjects(){
 
 document
 .querySelectorAll(
-".zombie,.antidote,.reward,.worldMessage,.challengeMessage"
+".suitcase,.coin,.reward,.airportMessage,.challengeMessage"
 )
 .forEach(
 element=>

@@ -31,7 +31,9 @@ position:relative;
 overflow:hidden;
 }
 
-/* ================= MENU ================= */
+/* =====================================================
+MENU
+===================================================== */
 
 #menu{
 position:absolute;
@@ -43,7 +45,13 @@ align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-background:linear-gradient(to bottom,#071b12,#17452c,#263b2d);
+background:
+linear-gradient(
+to bottom,
+#071b12,
+#17452c,
+#263b2d
+);
 }
 
 .logo{
@@ -86,7 +94,9 @@ font-size:14px;
 line-height:1.5;
 }
 
-/* ================= GAME ================= */
+/* =====================================================
+GAME
+===================================================== */
 
 #gameScreen{
 position:absolute;
@@ -94,7 +104,9 @@ inset:0;
 display:none;
 }
 
-/* ================= ESCENARIO ================= */
+/* =====================================================
+ESCENARIO
+===================================================== */
 
 #world{
 position:absolute;
@@ -105,132 +117,655 @@ border-right:5px solid #202832;
 transition:background .8s ease;
 }
 
+/* =====================================================
+ESCENARIO 1
+CIUDAD INFECTADA
+===================================================== */
+
 .world1{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#657d7c 0%,
-#b5c3bd 32%,
-#59615b 32%,
-#303631 42%,
-#151a16 100%
+#526d72 0%,
+#9aa9a4 28%,
+#646963 28%,
+#363a35 42%,
+#151915 42%,
+#0d110e 100%
 );
 }
+
+.world1 .cityBuilding{
+display:block;
+}
+
+.world1 .fire{
+display:none;
+}
+
+.world1 .rainFX{
+display:none;
+}
+
+.world1 .quarantine{
+display:none;
+}
+
+/* =====================================================
+ESCENARIO 2
+BARRIO ABANDONADO
+===================================================== */
 
 .world2{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#35424a 0%,
-#8d9898 32%,
-#535853 32%,
-#292e2a 42%,
-#171a18 100%
+#59636a 0%,
+#9b9b91 30%,
+#5a5b55 30%,
+#363733 42%,
+#171816 42%,
+#0c0d0c 100%
 );
 }
+
+.world2 .cityBuilding{
+display:block;
+}
+
+.world2 .brokenCar{
+display:block;
+}
+
+.world2 .fire{
+display:none;
+}
+
+.world2 .rainFX{
+display:none;
+}
+
+.world2 .quarantine{
+display:none;
+}
+
+/* =====================================================
+ESCENARIO 3
+CIUDAD DE NOCHE
+===================================================== */
 
 .world3{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#080d18 0%,
-#253a4c 31%,
-#394346 31%,
-#151b1d 42%,
-#0c1113 100%
+#050817 0%,
+#111b3a 25%,
+#28355a 31%,
+#30363b 31%,
+#161a1d 42%,
+#080b0d 100%
 );
 }
+
+.world3 .nightBuilding{
+display:block;
+}
+
+.world3 .moon{
+display:block;
+}
+
+.world3 .neon{
+display:block;
+}
+
+.world3 .cityBuilding{
+display:none;
+}
+
+.world3 .brokenCar{
+display:none;
+}
+
+.world3 .fire{
+display:none;
+}
+
+.world3 .rainFX{
+display:none;
+}
+
+.world3 .quarantine{
+display:none;
+}
+
+/* =====================================================
+ESCENARIO 4
+TORMENTA
+===================================================== */
 
 .world4{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#667a73 0%,
-#b8c7c1 30%,
-#5b625e 30%,
-#272c29 42%,
-#141815 100%
+#3b474d 0%,
+#737f83 30%,
+#545b5d 30%,
+#292e2f 42%,
+#141717 42%,
+#0b0d0d 100%
 );
 }
+
+.world4 .rainFX{
+display:block;
+}
+
+.world4 .stormCloud{
+display:block;
+}
+
+.world4 .cityBuilding{
+display:block;
+}
+
+.world4 .nightBuilding{
+display:none;
+}
+
+.world4 .moon{
+display:none;
+}
+
+.world4 .neon{
+display:none;
+}
+
+.world4 .fire{
+display:none;
+}
+
+.world4 .quarantine{
+display:none;
+}
+
+/* =====================================================
+ESCENARIO 5
+CIUDAD EN RUINAS
+===================================================== */
 
 .world5{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#422c2b 0%,
-#805752 30%,
-#4e4641 30%,
-#29221f 42%,
-#11100f 100%
+#452c28 0%,
+#86554b 28%,
+#5a4842 30%,
+#302623 42%,
+#17110f 42%,
+#090807 100%
 );
 }
+
+.world5 .ruins{
+display:block;
+}
+
+.world5 .fire{
+display:block;
+}
+
+.world5 .smoke{
+display:block;
+}
+
+.world5 .cityBuilding{
+display:none;
+}
+
+.world5 .nightBuilding{
+display:none;
+}
+
+.world5 .moon{
+display:none;
+}
+
+.world5 .neon{
+display:none;
+}
+
+.world5 .rainFX{
+display:none;
+}
+
+.world5 .quarantine{
+display:none;
+}
+
+/* =====================================================
+ESCENARIO 6
+ZONA DE CUARENTENA
+===================================================== */
 
 .world6{
-background:linear-gradient(
+background:
+linear-gradient(
 to bottom,
-#071a12 0%,
-#145039 30%,
-#3e4c43 30%,
-#171e19 42%,
-#090d0a 100%
+#061b14 0%,
+#15513d 28%,
+#4b5d52 30%,
+#252d28 42%,
+#0f1511 42%,
+#070b08 100%
 );
 }
 
-/* ================= DECORACIÓN ================= */
+.world6 .quarantine{
+display:block;
+}
 
-.decor{
+.world6 .warning{
+display:block;
+}
+
+.world6 .cityBuilding{
+display:none;
+}
+
+.world6 .nightBuilding{
+display:none;
+}
+
+.world6 .moon{
+display:none;
+}
+
+.world6 .neon{
+display:none;
+}
+
+.world6 .rainFX{
+display:none;
+}
+
+.world6 .ruins{
+display:none;
+}
+
+.world6 .fire{
+display:none;
+}
+
+.world6 .smoke{
+display:none;
+}
+
+/* =====================================================
+EDIFICIOS
+===================================================== */
+
+.cityBuilding,
+.nightBuilding,
+.ruins,
+.quarantine,
+.moon,
+.neon,
+.brokenCar,
+.fire,
+.smoke,
+.stormCloud,
+.rainFX,
+.warning{
+display:none;
+}
+
+.building{
+position:absolute;
+bottom:58%;
+z-index:2;
+background:#414845;
+border:3px solid rgba(0,0,0,.3);
+}
+
+.building:before{
+content:"";
+position:absolute;
+inset:10px;
+background:
+repeating-linear-gradient(
+to right,
+transparent 0,
+transparent 14px,
+rgba(255,230,130,.25) 14px,
+rgba(255,230,130,.25) 21px,
+transparent 21px,
+transparent 30px
+);
+}
+
+/* edificios normales */
+
+.b1{
+left:3%;
+width:80px;
+height:135px;
+}
+
+.b2{
+right:5%;
+width:105px;
+height:165px;
+}
+
+.b3{
+left:31%;
+width:65px;
+height:105px;
+}
+
+/* noche */
+
+.nightBuilding{
+position:absolute;
+bottom:58%;
+background:#11172a;
+border:2px solid #28365b;
+z-index:2;
+}
+
+.nb1{
+left:3%;
+width:95px;
+height:175px;
+}
+
+.nb2{
+right:4%;
+width:75px;
+height:135px;
+}
+
+.nb3{
+left:40%;
+width:80px;
+height:150px;
+}
+
+.nightWindow{
+position:absolute;
+width:7px;
+height:10px;
+background:#ffd84d;
+box-shadow:0 0 8px rgba(255,210,70,.8);
+}
+
+.nw1{
+left:15%;
+top:20%;
+}
+
+.nw2{
+left:48%;
+top:35%;
+}
+
+.nw3{
+right:15%;
+top:55%;
+}
+
+.nw4{
+left:28%;
+top:65%;
+}
+
+/* =====================================================
+LUNA
+===================================================== */
+
+.moon{
+position:absolute;
+right:12%;
+top:8%;
+font-size:55px;
+z-index:3;
+filter:drop-shadow(0 0 12px rgba(210,230,255,.45));
+}
+
+/* =====================================================
+NEONES
+===================================================== */
+
+.neon{
+position:absolute;
+z-index:5;
+padding:6px 10px;
+border:2px solid #48e0ff;
+color:#48e0ff;
+font-size:12px;
+font-weight:bold;
+border-radius:5px;
+box-shadow:0 0 12px rgba(50,210,255,.8);
+}
+
+.neon1{
+left:10%;
+top:25%;
+}
+
+.neon2{
+right:10%;
+top:20%;
+}
+
+/* =====================================================
+COCHE ABANDONADO
+===================================================== */
+
+.brokenCar{
+position:absolute;
+bottom:45%;
+z-index:5;
+font-size:48px;
+filter:grayscale(.7);
+}
+
+.car1{
+left:6%;
+}
+
+.car2{
+right:8%;
+}
+
+/* =====================================================
+RUINAS
+===================================================== */
+
+.ruins{
 position:absolute;
 z-index:3;
-font-size:50px;
-opacity:.9;
+bottom:58%;
+font-size:80px;
 }
 
-.d1{
-left:5%;
-top:13%;
+.ruin1{
+left:4%;
 }
 
-.d2{
-right:8%;
-top:17%;
+.ruin2{
+right:2%;
+font-size:95px;
 }
 
-.d3{
-left:43%;
-top:10%;
+/* =====================================================
+FUEGO
+===================================================== */
+
+.fire{
+position:absolute;
+z-index:6;
 font-size:38px;
+animation:firePulse .35s infinite alternate;
 }
+
+.fire1{
+left:18%;
+bottom:45%;
+}
+
+.fire2{
+right:20%;
+bottom:47%;
+}
+
+@keyframes firePulse{
+
+from{
+transform:scale(.9);
+}
+
+to{
+transform:scale(1.1);
+}
+
+}
+
+/* =====================================================
+HUMO
+===================================================== */
 
 .smoke{
 position:absolute;
 width:100px;
 height:100px;
 border-radius:50%;
-background:rgba(220,220,220,.09);
+background:rgba(220,220,220,.12);
 filter:blur(10px);
-animation:smoke 5s infinite alternate;
-z-index:3;
+z-index:4;
+animation:smokeMove 5s infinite alternate;
 }
 
-.s1{
+.smoke1{
 left:10%;
-top:20%;
+top:18%;
 }
 
-.s2{
+.smoke2{
 right:12%;
-top:23%;
+top:20%;
 animation-delay:2s;
 }
 
-@keyframes smoke{
+@keyframes smokeMove{
 
 from{
 transform:translateY(10px) scale(.9);
 }
 
 to{
-transform:translateY(-15px) scale(1.1);
+transform:translateY(-20px) scale(1.15);
 }
 
 }
 
-/* ================= ROAD ================= */
+/* =====================================================
+TORMENTA
+===================================================== */
+
+.stormCloud{
+position:absolute;
+top:5%;
+left:0;
+right:0;
+height:100px;
+background:
+radial-gradient(
+ellipse at center,
+rgba(30,40,45,.65),
+rgba(40,50,55,.15),
+transparent 70%
+);
+z-index:3;
+}
+
+.rainFX{
+position:absolute;
+inset:0;
+z-index:7;
+pointer-events:none;
+background:
+repeating-linear-gradient(
+105deg,
+transparent 0,
+transparent 14px,
+rgba(210,235,255,.18) 15px,
+rgba(210,235,255,.18) 17px,
+transparent 18px,
+transparent 31px
+);
+animation:rainMove .5s linear infinite;
+}
+
+@keyframes rainMove{
+
+from{
+transform:translateY(-30px);
+}
+
+to{
+transform:translateY(30px);
+}
+
+}
+
+/* =====================================================
+CUARENTENA
+===================================================== */
+
+.quarantine{
+position:absolute;
+z-index:5;
+}
+
+.fence{
+position:absolute;
+bottom:45%;
+left:0;
+right:0;
+height:45px;
+border-top:4px solid #aeb6ad;
+border-bottom:4px solid #aeb6ad;
+background:
+repeating-linear-gradient(
+90deg,
+transparent 0,
+transparent 32px,
+#aeb6ad 32px,
+#aeb6ad 38px
+);
+}
+
+.warning{
+position:absolute;
+z-index:8;
+font-size:42px;
+}
+
+.warning1{
+left:8%;
+top:21%;
+}
+
+.warning2{
+right:8%;
+top:25%;
+}
+
+/* =====================================================
+ROAD
+===================================================== */
 
 #road{
 position:absolute;
@@ -264,7 +799,9 @@ background:#eee;
 .r3{left:51%}
 .r4{left:74%}
 
-/* ================= ZONA ================= */
+/* =====================================================
+ZONA
+===================================================== */
 
 #zone{
 position:absolute;
@@ -278,7 +815,7 @@ border-radius:6px;
 padding:6px 15px;
 font-size:14px;
 font-weight:bold;
-z-index:5;
+z-index:10;
 white-space:nowrap;
 }
 
@@ -302,7 +839,9 @@ background:#923c3c;
 background:#08734f;
 }
 
-/* ================= CARRILES ================= */
+/* =====================================================
+CARRILES
+===================================================== */
 
 #runArea{
 position:absolute;
@@ -310,6 +849,7 @@ top:40%;
 left:0;
 right:0;
 bottom:0;
+z-index:8;
 }
 
 .lane{
@@ -336,7 +876,9 @@ left:33.333%;
 left:66.666%;
 }
 
-/* ================= HUD ================= */
+/* =====================================================
+HUD
+===================================================== */
 
 #hud{
 position:absolute;
@@ -395,14 +937,16 @@ background:rgba(20,130,220,.85);
 box-shadow:0 0 18px rgba(80,190,255,.9);
 }
 
-/* ================= PERSONAJE ================= */
+/* =====================================================
+PERSONAJE
+===================================================== */
 
 #player{
 position:absolute;
 width:62px;
 height:82px;
 bottom:92px;
-z-index:10;
+z-index:15;
 transition:left .07s ease;
 }
 
@@ -502,7 +1046,9 @@ from{transform:rotate(-20deg)}
 to{transform:rotate(20deg)}
 }
 
-/* ================= ESCUDO ================= */
+/* =====================================================
+ESCUDO
+===================================================== */
 
 #player.shielded:after{
 content:"";
@@ -524,13 +1070,15 @@ from{transform:scale(.97)}
 to{transform:scale(1.04)}
 }
 
-/* ================= ZOMBIS ================= */
+/* =====================================================
+ZOMBIS
+===================================================== */
 
 .zombie{
 position:absolute;
 width:42px;
 height:52px;
-z-index:8;
+z-index:12;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -538,13 +1086,15 @@ font-size:45px;
 filter:drop-shadow(0 4px 4px rgba(0,0,0,.7));
 }
 
-/* ================= ANTÍDOTOS ================= */
+/* =====================================================
+ANTÍDOTOS
+===================================================== */
 
 .antidote{
 position:absolute;
 width:31px;
 height:31px;
-z-index:9;
+z-index:13;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -558,7 +1108,9 @@ from{transform:scale(1)}
 to{transform:scale(1.1)}
 }
 
-/* ================= MENSAJES ================= */
+/* =====================================================
+MENSAJES
+===================================================== */
 
 .airportMessage{
 position:absolute;
@@ -632,7 +1184,9 @@ transform:translate(-50%,-90%) scale(1);
 
 }
 
-/* ================= DESAFÍO ================= */
+/* =====================================================
+DESAFÍO
+===================================================== */
 
 .challengeMessage{
 position:absolute;
@@ -675,7 +1229,9 @@ transform:translate(-50%,-60%) scale(1);
 
 }
 
-/* ================= CONTROLES ================= */
+/* =====================================================
+CONTROLES
+===================================================== */
 
 #controls{
 position:absolute;
@@ -705,7 +1261,9 @@ background:rgba(255,255,255,.42);
 transform:scale(.95);
 }
 
-/* ================= GAME OVER ================= */
+/* =====================================================
+GAME OVER
+===================================================== */
 
 #gameOver{
 position:absolute;
@@ -764,7 +1322,9 @@ padding:14px 30px;
 border-radius:15px;
 }
 
-/* ================= ANUNCIO ================= */
+/* =====================================================
+ANUNCIO
+===================================================== */
 
 #adOverlay{
 position:absolute;
@@ -839,7 +1399,9 @@ color:#9ca3af;
 font-size:13px;
 }
 
-/* ================= CONTINUAR ================= */
+/* =====================================================
+CONTINUAR
+===================================================== */
 
 #continueScreen{
 position:absolute;
@@ -939,15 +1501,88 @@ NIVEL 1 • x1.0
 
 <div id="world" class="world1">
 
-<div class="decor d1">🏚️</div>
-<div class="decor d2">🏢</div>
-<div class="decor d3">🌆</div>
+<!-- CIUDAD -->
+<div class="cityBuilding building b1"></div>
+<div class="cityBuilding building b2"></div>
+<div class="cityBuilding building b3"></div>
 
-<div class="smoke s1"></div>
-<div class="smoke s2"></div>
+<!-- NOCHE -->
+<div class="nightBuilding nb1">
+<div class="nightWindow nw1"></div>
+<div class="nightWindow nw2"></div>
+<div class="nightWindow nw3"></div>
+</div>
+
+<div class="nightBuilding nb2">
+<div class="nightWindow nw2"></div>
+<div class="nightWindow nw4"></div>
+</div>
+
+<div class="nightBuilding nb3">
+<div class="nightWindow nw1"></div>
+<div class="nightWindow nw3"></div>
+</div>
+
+<div class="moon">
+🌕
+</div>
+
+<div class="neon neon1">
+OPEN
+</div>
+
+<div class="neon neon2">
+SAFE
+</div>
+
+<!-- COCHES -->
+<div class="brokenCar car1">
+🚗
+</div>
+
+<div class="brokenCar car2">
+🚙
+</div>
+
+<!-- RUINAS -->
+<div class="ruins ruin1">
+🏚️
+</div>
+
+<div class="ruins ruin2">
+🏚️
+</div>
+
+<!-- FUEGO -->
+<div class="fire fire1">
+🔥
+</div>
+
+<div class="fire fire2">
+🔥
+</div>
+
+<div class="smoke smoke1"></div>
+<div class="smoke smoke2"></div>
+
+<!-- TORMENTA -->
+<div class="stormCloud"></div>
+<div class="rainFX"></div>
+
+<!-- CUARENTENA -->
+<div class="quarantine fence"></div>
+
+<div class="warning warning1">
+☣️
+</div>
+
+<div class="warning warning2">
+⚠️
+</div>
+
 
 <div id="zone">
-🌆 CIUDAD INFECTADA
+☀️ CIUDAD INFECTADA
 </div>
 
 
@@ -992,11 +1627,15 @@ NIVEL 1 • x1.0
 
 <div id="controls">
 
-<button class="control" id="leftButton">
+<button
+class="control"
+id="leftButton">
 ◀
 </button>
 
-<button class="control" id="rightButton">
+<button
+class="control"
+id="rightButton">
 ▶
 </button>
 
@@ -1436,9 +2075,6 @@ return [];
 
 let possiblePatterns=[];
 
-
-/* UNA AMENAZA */
-
 available.forEach(
 function(lane){
 
@@ -1448,9 +2084,6 @@ lane
 
 }
 );
-
-
-/* DOS AMENAZAS */
 
 if(
 available.length>=2
@@ -1479,9 +2112,6 @@ available[j]
 
 }
 
-
-/* ELIMINAR PATRONES RECIENTES */
-
 let freshPatterns=
 possiblePatterns.filter(
 function(pattern){
@@ -1502,9 +2132,6 @@ key
 
 }
 );
-
-
-/* SI SE AGOTAN */
 
 if(
 freshPatterns.length===0
@@ -1536,9 +2163,6 @@ recentChallengePatterns.length-1
 
 }
 
-
-/* SEGURIDAD */
-
 if(
 freshPatterns.length===0
 ){
@@ -1548,9 +2172,6 @@ possiblePatterns;
 
 }
 
-
-/* ELECCIÓN */
-
 const selected=
 freshPatterns[
 Math.floor(
@@ -1558,9 +2179,6 @@ Math.random()*
 freshPatterns.length
 )
 ];
-
-
-/* GUARDAR HISTORIAL */
 
 const selectedKey=
 selected
@@ -1583,9 +2201,6 @@ recentChallengePatterns.length>3
 recentChallengePatterns.shift();
 
 }
-
-
-/* ORDEN ALEATORIO */
 
 return selected.sort(
 function(){
@@ -1848,9 +2463,6 @@ if(!gameRunning)return;
 
 level++;
 
-
-/* NIVELES 1-5 */
-
 if(level<=5){
 
 obstacleSpeed=
@@ -1865,9 +2477,6 @@ Math.max(
 );
 
 }
-
-
-/* MODO DESAFÍO */
 
 if(level>=6){
 
@@ -2070,7 +2679,6 @@ rewardActive=true;
 
 rewardObject=coin;
 
-
 function animateCoin(){
 
 if(!gameRunning){
@@ -2153,13 +2761,6 @@ rewardActive=false;
 
 coin.remove();
 
-
-/*
-CON ESCUDO:
-las recogidas no cuentan para
-el siguiente escudo.
-*/
-
 if(shieldActive){
 
 score+=50;
@@ -2167,24 +2768,17 @@ score+=50;
 showReward("🧪 +1");
 
 updateHUD();
-
 updateShield();
 
 return;
 
 }
 
-
 coins++;
 
 score+=75;
 
 showReward("🧪 +1");
-
-
-/*
-25 ANTÍDOTOS = ESCUDO
-*/
 
 if(
 coins>=25 &&
@@ -2198,7 +2792,6 @@ activateShield();
 }
 
 updateHUD();
-
 updateShield();
 
 }
@@ -2220,7 +2813,6 @@ rewardObject.remove();
 }
 
 rewardObject=null;
-
 rewardActive=false;
 
 }
@@ -2262,7 +2854,6 @@ player.classList.remove(
 );
 
 updateShield();
-
 updateHUD();
 
 showReward(
@@ -2310,7 +2901,7 @@ shield.classList.remove(
 
 
 /* =====================================================
-ESCENARIOS
+CAMBIAR ESCENARIO
 ===================================================== */
 
 function changeWorld(){
@@ -2347,10 +2938,10 @@ worldNumber
 
 const names=[
 
-"☀️ CIUDAD INFECTADA",
+"🏙️ CIUDAD INFECTADA",
 "🏚️ BARRIO ABANDONADO",
-"🌙 CIUDAD DE NOCHE",
-"🌧️ ZONA DE TORMENTA",
+"🌃 CIUDAD DE NOCHE",
+"🌧️ CARRETERA DE TORMENTA",
 "🔥 CIUDAD EN RUINAS",
 "☣️ ZONA DE CUARENTENA"
 
@@ -2508,7 +3099,6 @@ clearInterval(coinTimer);
 player.classList.remove("running");
 player.classList.remove("shielded");
 
-
 if(score>highScore){
 
 highScore=score;
@@ -2519,7 +3109,6 @@ highScore
 );
 
 }
-
 
 document
 .getElementById(
@@ -2793,15 +3382,10 @@ LIMPIAR TIMERS
 function clearAllTimers(){
 
 clearTimeout(spawnTimer);
-
 clearInterval(difficultyTimer);
-
 clearInterval(scoreTimer);
-
 clearInterval(gameTimeTimer);
-
 clearInterval(coinTimer);
-
 clearInterval(adTimer);
 
 }
@@ -2825,7 +3409,6 @@ element.remove()
 obstacles=[];
 
 rewardActive=false;
-
 rewardObject=null;
 
 }

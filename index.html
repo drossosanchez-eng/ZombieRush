@@ -71,6 +71,7 @@ font-weight:bold;
 padding:18px 55px;
 border-radius:18px;
 box-shadow:0 7px 0 #a72d2d;
+cursor:pointer;
 }
 
 .play-button:active{
@@ -258,21 +259,10 @@ height:4px;
 background:#eee;
 }
 
-.r1{
-left:5%;
-}
-
-.r2{
-left:28%;
-}
-
-.r3{
-left:51%;
-}
-
-.r4{
-left:74%;
-}
+.r1{left:5%}
+.r2{left:28%}
+.r3{left:51%}
+.r4{left:74%}
 
 /* ================= ZONA ================= */
 
@@ -402,8 +392,7 @@ min-width:145px;
 opacity:1;
 color:white;
 background:rgba(20,130,220,.85);
-box-shadow:
-0 0 18px rgba(80,190,255,.9);
+box-shadow:0 0 18px rgba(80,190,255,.9);
 }
 
 /* ================= PERSONAJE ================= */
@@ -504,27 +493,13 @@ animation:run2 .18s infinite alternate;
 }
 
 @keyframes run1{
-
-from{
-transform:rotate(20deg);
-}
-
-to{
-transform:rotate(-20deg);
-}
-
+from{transform:rotate(20deg)}
+to{transform:rotate(-20deg)}
 }
 
 @keyframes run2{
-
-from{
-transform:rotate(-20deg);
-}
-
-to{
-transform:rotate(20deg);
-}
-
+from{transform:rotate(-20deg)}
+to{transform:rotate(20deg)}
 }
 
 /* ================= ESCUDO ================= */
@@ -539,23 +514,14 @@ top:-10px;
 border:4px solid #6ddcff;
 border-radius:45%;
 background:rgba(80,190,255,.12);
-box-shadow:
-0 0 20px rgba(80,190,255,.8);
+box-shadow:0 0 20px rgba(80,190,255,.8);
 z-index:-1;
-animation:
-shieldPulse 1s infinite alternate;
+animation:shieldPulse 1s infinite alternate;
 }
 
 @keyframes shieldPulse{
-
-from{
-transform:scale(.97);
-}
-
-to{
-transform:scale(1.04);
-}
-
+from{transform:scale(.97)}
+to{transform:scale(1.04)}
 }
 
 /* ================= ZOMBIS ================= */
@@ -569,9 +535,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 font-size:45px;
-filter:drop-shadow(
-0 4px 4px rgba(0,0,0,.7)
-);
+filter:drop-shadow(0 4px 4px rgba(0,0,0,.7));
 }
 
 /* ================= ANTÍDOTOS ================= */
@@ -585,23 +549,13 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:29px;
-filter:drop-shadow(
-0 0 10px rgba(80,255,150,.75)
-);
-animation:
-coinPulse .7s infinite alternate;
+filter:drop-shadow(0 0 10px rgba(80,255,150,.75));
+animation:coinPulse .7s infinite alternate;
 }
 
 @keyframes coinPulse{
-
-from{
-transform:scale(1);
-}
-
-to{
-transform:scale(1.1);
-}
-
+from{transform:scale(1)}
+to{transform:scale(1.1)}
 }
 
 /* ================= MENSAJES ================= */
@@ -610,19 +564,15 @@ transform:scale(1.1);
 position:absolute;
 top:42%;
 left:50%;
-transform:
-translate(-50%,-50%)
-scale(.8);
+transform:translate(-50%,-50%) scale(.8);
 z-index:60;
 color:white;
 font-size:25px;
 font-weight:900;
 text-align:center;
 white-space:nowrap;
-text-shadow:
-0 3px 5px rgba(0,0,0,.8);
-animation:
-airportMessage 2.2s forwards;
+text-shadow:0 3px 5px rgba(0,0,0,.8);
+animation:airportMessage 2.2s forwards;
 pointer-events:none;
 }
 
@@ -630,16 +580,12 @@ pointer-events:none;
 
 0%{
 opacity:0;
-transform:
-translate(-50%,-50%)
-scale(.7);
+transform:translate(-50%,-50%) scale(.7);
 }
 
 20%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.05);
+transform:translate(-50%,-50%) scale(1.05);
 }
 
 75%{
@@ -648,9 +594,7 @@ opacity:1;
 
 100%{
 opacity:0;
-transform:
-translate(-50%,-65%)
-scale(1);
+transform:translate(-50%,-65%) scale(1);
 }
 
 }
@@ -659,16 +603,13 @@ scale(1);
 position:absolute;
 left:50%;
 top:45%;
-transform:
-translate(-50%,-50%);
+transform:translate(-50%,-50%);
 z-index:40;
 color:#75ffae;
 font-size:25px;
 font-weight:900;
-text-shadow:
-0 3px 0 #165b38;
-animation:
-reward .8s forwards;
+text-shadow:0 3px 0 #165b38;
+animation:reward .8s forwards;
 pointer-events:none;
 }
 
@@ -676,23 +617,17 @@ pointer-events:none;
 
 0%{
 opacity:0;
-transform:
-translate(-50%,-20%)
-scale(.5);
+transform:translate(-50%,-20%) scale(.5);
 }
 
 25%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.15);
+transform:translate(-50%,-50%) scale(1.15);
 }
 
 100%{
 opacity:0;
-transform:
-translate(-50%,-90%)
-scale(1);
+transform:translate(-50%,-90%) scale(1);
 }
 
 }
@@ -703,8 +638,7 @@ scale(1);
 position:absolute;
 top:34%;
 left:50%;
-transform:
-translate(-50%,-50%);
+transform:translate(-50%,-50%);
 z-index:70;
 color:#ffcf45;
 background:rgba(100,20,20,.85);
@@ -714,8 +648,7 @@ padding:10px 17px;
 font-size:15px;
 font-weight:bold;
 white-space:nowrap;
-animation:
-challengeAnimation 2.5s forwards;
+animation:challengeAnimation 2.5s forwards;
 pointer-events:none;
 }
 
@@ -723,16 +656,12 @@ pointer-events:none;
 
 0%{
 opacity:0;
-transform:
-translate(-50%,-40%)
-scale(.75);
+transform:translate(-50%,-40%) scale(.75);
 }
 
 20%{
 opacity:1;
-transform:
-translate(-50%,-50%)
-scale(1.05);
+transform:translate(-50%,-50%) scale(1.05);
 }
 
 70%{
@@ -741,9 +670,7 @@ opacity:1;
 
 100%{
 opacity:0;
-transform:
-translate(-50%,-60%)
-scale(1);
+transform:translate(-50%,-60%) scale(1);
 }
 
 }
@@ -766,18 +693,15 @@ width:72px;
 height:72px;
 border:none;
 border-radius:50%;
-background:
-rgba(255,255,255,.20);
+background:rgba(255,255,255,.20);
 color:white;
 font-size:30px;
 font-weight:bold;
-border:
-2px solid rgba(255,255,255,.45);
+border:2px solid rgba(255,255,255,.45);
 }
 
 .control:active{
-background:
-rgba(255,255,255,.42);
+background:rgba(255,255,255,.42);
 transform:scale(.95);
 }
 
@@ -790,8 +714,7 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:
-rgba(4,10,20,.92);
+background:rgba(4,10,20,.92);
 color:white;
 z-index:100;
 text-align:center;
@@ -822,15 +745,13 @@ font-size:18px;
 font-weight:bold;
 padding:15px 25px;
 border-radius:14px;
-box-shadow:
-0 5px 0 #168448;
+box-shadow:0 5px 0 #168448;
 margin-bottom:18px;
 }
 
 .continueButton.disabled{
 background:#53606b;
-box-shadow:
-0 4px 0 #39434b;
+box-shadow:0 4px 0 #39434b;
 }
 
 .restart{
@@ -853,8 +774,7 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:
-rgba(5,8,13,.96);
+background:rgba(5,8,13,.96);
 color:white;
 text-align:center;
 }
@@ -872,21 +792,14 @@ width:80%;
 max-width:330px;
 min-height:300px;
 border-radius:18px;
-background:
-linear-gradient(
-135deg,
-#182b42,
-#243b55
-);
-border:
-2px solid #42556b;
+background:linear-gradient(135deg,#182b42,#243b55);
+border:2px solid #42556b;
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
 padding:25px;
-box-shadow:
-0 15px 50px rgba(0,0,0,.5);
+box-shadow:0 15px 50px rgba(0,0,0,.5);
 }
 
 .adIcon{
@@ -936,8 +849,7 @@ display:none;
 align-items:center;
 justify-content:center;
 flex-direction:column;
-background:
-rgba(4,10,20,.88);
+background:rgba(4,10,20,.88);
 color:white;
 text-align:center;
 }
@@ -984,18 +896,15 @@ RUN • DODGE • SURVIVE
 
 <button
 class="play-button"
-onclick="startGame">
+onclick="startGame()">
 
 🧟 JUGAR
 
 </button>
 
 <div class="instructions">
-
 Esquiva los zombis y recoge antídotos.<br>
-
 Consigue 25 antídotos para activar un escudo.
-
 </div>
 
 </div>
@@ -1193,40 +1102,14 @@ VARIABLES
 ===================================================== */
 
 let player;
-
 let gameRunning=false;
-
 let playerLane=1;
-
 let score=0;
-
 let coins=0;
-
 let level=1;
-
 let gameTime=0;
 
-
-/*
-MISMA VELOCIDAD QUE AIRPORT
-
-Nivel 1 = 4.6
-Nivel 2 = 5.0
-Nivel 3 = 5.4
-Nivel 4 = 5.8
-Nivel 5 = 6.2
-
-Nivel 6 = 7.0
-Nivel 7 = 7.5
-Nivel 8 = 8.0
-Nivel 9 = 8.5
-Nivel 10 = 9.0
-Nivel 11 = 9.5
-Nivel 12+ = 10.0
-*/
-
 let obstacleSpeed=4.6;
-
 let spawnDelay=1100;
 
 let hardMode=false;
@@ -1236,7 +1119,6 @@ let obstacles=[];
 let recentChallengePatterns=[];
 
 let rewardActive=false;
-
 let rewardObject=null;
 
 let shieldActive=false;
@@ -1251,15 +1133,10 @@ localStorage.getItem(
 );
 
 let spawnTimer=null;
-
 let difficultyTimer=null;
-
 let scoreTimer=null;
-
 let gameTimeTimer=null;
-
 let coinTimer=null;
-
 let adTimer=null;
 
 
@@ -1287,89 +1164,51 @@ START
 function startGame(){
 
 clearAllTimers();
-
 removeObjects();
 
+document.getElementById("menu").style.display="none";
 
-document
-.getElementById("menu")
-.style.display="none";
+document.getElementById("gameScreen").style.display="block";
 
+document.getElementById("gameOver").style.display="none";
 
-document
-.getElementById("gameScreen")
-.style.display="block";
+document.getElementById("adOverlay").style.display="none";
 
-
-document
-.getElementById("gameOver")
-.style.display="none";
-
-
-document
-.getElementById("adOverlay")
-.style.display="none";
-
-
-document
-.getElementById("continueScreen")
-.style.display="none";
-
+document.getElementById("continueScreen").style.display="none";
 
 score=0;
-
 coins=0;
-
 level=1;
-
 gameTime=0;
 
 playerLane=1;
 
-
 obstacleSpeed=4.6;
-
 spawnDelay=1100;
 
 hardMode=false;
-
 recentChallengePatterns=[];
 
 obstacles=[];
 
 rewardActive=false;
-
 rewardObject=null;
 
 shieldActive=false;
-
 continueUsed=false;
 
-
 updateHUD();
-
 updateLevel();
-
 updateShield();
-
 changeWorld();
-
 positionPlayer();
 
-
-player.classList.add(
-"running"
-);
-
-player.classList.remove(
-"shielded"
-);
-
+player.classList.add("running");
+player.classList.remove("shielded");
 
 updateContinueButton();
 
 gameRunning=true;
-
 
 spawnTimer=
 setTimeout(
@@ -1377,22 +1216,16 @@ spawnObstacle,
 750
 );
 
-
 startScore();
-
 startDifficulty();
-
 startCoins();
-
 
 gameTimeTimer=
 setInterval(
 function(){
 
 if(gameRunning){
-
 gameTime++;
-
 }
 
 },
@@ -1470,15 +1303,11 @@ document.addEventListener(
 function(e){
 
 if(e.key==="ArrowLeft"){
-
 moveLeft();
-
 }
 
 if(e.key==="ArrowRight"){
-
 moveRight();
-
 }
 
 }
@@ -1521,7 +1350,6 @@ function getAvailableLanes(){
 
 let available=[];
 
-
 for(
 let lane=0;
 lane<3;
@@ -1530,7 +1358,6 @@ lane++
 
 let blocked=false;
 
-
 for(
 const obstacle of obstacles
 ){
@@ -1538,11 +1365,8 @@ const obstacle of obstacles
 if(
 obstacle.lane!==lane
 ){
-
 continue;
-
 }
-
 
 if(
 obstacle.y>-190 &&
@@ -1550,22 +1374,17 @@ obstacle.y<330
 ){
 
 blocked=true;
-
 break;
 
 }
 
 }
 
-
 if(!blocked){
-
 available.push(lane);
-
 }
 
 }
-
 
 return available;
 
@@ -1581,15 +1400,11 @@ function createNormalPattern(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
-
 return [];
-
 }
-
 
 const lane=
 available[
@@ -1598,7 +1413,6 @@ Math.random()*
 available.length
 )
 ];
-
 
 return [lane];
 
@@ -1614,18 +1428,16 @@ function createChallengePattern(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
-
 return [];
-
 }
-
 
 let possiblePatterns=[];
 
+
+/* UNA AMENAZA */
 
 available.forEach(
 function(lane){
@@ -1637,6 +1449,8 @@ lane
 }
 );
 
+
+/* DOS AMENAZAS */
 
 if(
 available.length>=2
@@ -1666,6 +1480,8 @@ available[j]
 }
 
 
+/* ELIMINAR PATRONES RECIENTES */
+
 let freshPatterns=
 possiblePatterns.filter(
 function(pattern){
@@ -1680,7 +1496,6 @@ return a-b;
 )
 .join("-");
 
-
 return !recentChallengePatterns.includes(
 key
 );
@@ -1688,6 +1503,8 @@ key
 }
 );
 
+
+/* SI SE AGOTAN */
 
 if(
 freshPatterns.length===0
@@ -1707,7 +1524,6 @@ return a-b;
 )
 .join("-");
 
-
 return (
 recentChallengePatterns.length===0 ||
 key!==recentChallengePatterns[
@@ -1721,6 +1537,8 @@ recentChallengePatterns.length-1
 }
 
 
+/* SEGURIDAD */
+
 if(
 freshPatterns.length===0
 ){
@@ -1731,6 +1549,8 @@ possiblePatterns;
 }
 
 
+/* ELECCIÓN */
+
 const selected=
 freshPatterns[
 Math.floor(
@@ -1739,6 +1559,8 @@ freshPatterns.length
 )
 ];
 
+
+/* GUARDAR HISTORIAL */
 
 const selectedKey=
 selected
@@ -1750,11 +1572,9 @@ return a-b;
 )
 .join("-");
 
-
 recentChallengePatterns.push(
 selectedKey
 );
-
 
 if(
 recentChallengePatterns.length>3
@@ -1764,6 +1584,8 @@ recentChallengePatterns.shift();
 
 }
 
+
+/* ORDEN ALEATORIO */
 
 return selected.sort(
 function(){
@@ -1801,10 +1623,8 @@ function spawnObstacle(){
 
 if(!gameRunning)return;
 
-
 const lanes=
 createObstaclePattern();
-
 
 if(
 lanes.length>0
@@ -1820,7 +1640,6 @@ createZombie(lane);
 
 }
 
-
 scheduleObstacle();
 
 }
@@ -1830,9 +1649,7 @@ scheduleObstacle();
 CREAR ZOMBIE
 ===================================================== */
 
-function createZombie(
-lane
-){
+function createZombie(lane){
 
 const area=
 document.getElementById(
@@ -1842,18 +1659,14 @@ document.getElementById(
 const laneWidth=
 area.clientWidth/3;
 
-
 const zombie=
 document.createElement(
 "div"
 );
 
-zombie.className=
-"zombie";
+zombie.className="zombie";
 
-zombie.textContent=
-"🧟";
-
+zombie.textContent="🧟";
 
 zombie.style.left=
 (
@@ -1862,37 +1675,21 @@ laneWidth/2-
 21
 )+"px";
 
-
 let y=-105;
 
-zombie.style.top=
-y+"px";
+zombie.style.top=y+"px";
 
-
-area.appendChild(
-zombie
-);
-
+area.appendChild(zombie);
 
 const object={
-
 element:zombie,
-
 lane:lane,
-
 y:y
-
 };
 
+obstacles.push(object);
 
-obstacles.push(
-object
-);
-
-
-animateObstacle(
-object
-);
+animateObstacle(object);
 
 }
 
@@ -1905,10 +1702,8 @@ function scheduleObstacle(){
 
 if(!gameRunning)return;
 
-
 const variation=
 Math.random()*120-60;
-
 
 const delay=
 Math.max(
@@ -1916,7 +1711,6 @@ Math.max(
 spawnDelay+
 variation
 );
-
 
 spawnTimer=
 setTimeout(
@@ -1931,37 +1725,27 @@ delay
 ANIMAR ZOMBIE
 ===================================================== */
 
-function animateObstacle(
-obstacle
-){
+function animateObstacle(obstacle){
 
 if(!gameRunning){
 
-removeObstacle(
-obstacle
-);
+removeObstacle(obstacle);
 
 return;
 
 }
 
-
-obstacle.y+=
-obstacleSpeed;
-
+obstacle.y+=obstacleSpeed;
 
 obstacle.element.style.top=
 obstacle.y+"px";
 
-
 const playerRect=
 player.getBoundingClientRect();
-
 
 const obstacleRect=
 obstacle.element
 .getBoundingClientRect();
-
 
 if(
 playerRect.left<
@@ -1981,21 +1765,17 @@ if(shieldActive){
 
 useShield();
 
-removeObstacle(
-obstacle
-);
+removeObstacle(obstacle);
 
 return;
 
 }
-
 
 endGame();
 
 return;
 
 }
-
 
 if(
 obstacle.y<
@@ -2008,18 +1788,14 @@ document
 requestAnimationFrame(
 function(){
 
-animateObstacle(
-obstacle
-);
+animateObstacle(obstacle);
 
 }
 );
 
 }else{
 
-removeObstacle(
-obstacle
-);
+removeObstacle(obstacle);
 
 }
 
@@ -2030,15 +1806,12 @@ obstacle
 ELIMINAR
 ===================================================== */
 
-function removeObstacle(
-obstacle
-){
+function removeObstacle(obstacle){
 
 const index=
 obstacles.indexOf(
 obstacle
 );
-
 
 if(index!==-1){
 
@@ -2048,7 +1821,6 @@ index,
 );
 
 }
-
 
 if(
 obstacle.element &&
@@ -2074,16 +1846,16 @@ function(){
 
 if(!gameRunning)return;
 
-
 level++;
 
+
+/* NIVELES 1-5 */
 
 if(level<=5){
 
 obstacleSpeed=
 4.6+
 (level-1)*0.4;
-
 
 spawnDelay=
 Math.max(
@@ -2095,10 +1867,11 @@ Math.max(
 }
 
 
+/* MODO DESAFÍO */
+
 if(level>=6){
 
 hardMode=true;
-
 
 obstacleSpeed=
 Math.min(
@@ -2107,14 +1880,12 @@ Math.min(
 (level-6)*0.5
 );
 
-
 spawnDelay=
 Math.max(
 280,
 850-
 (level-6)*60
 );
-
 
 if(level===6){
 
@@ -2125,7 +1896,6 @@ showChallengeMessage(
 }
 
 }
-
 
 changeWorld();
 
@@ -2146,9 +1916,7 @@ updateHUD();
 MENSAJE DESAFÍO
 ===================================================== */
 
-function showChallengeMessage(
-text
-){
+function showChallengeMessage(text){
 
 const message=
 document.createElement(
@@ -2158,18 +1926,13 @@ document.createElement(
 message.className=
 "challengeMessage";
 
-message.textContent=
-text;
-
+message.textContent=text;
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-message
-);
-
+.appendChild(message);
 
 setTimeout(
 function(){
@@ -2194,7 +1957,6 @@ setInterval(
 function(){
 
 if(!gameRunning)return;
-
 
 score++;
 
@@ -2243,7 +2005,6 @@ function chooseCoinLane(){
 const available=
 getAvailableLanes();
 
-
 if(
 available.length===0
 ){
@@ -2251,7 +2012,6 @@ available.length===0
 return -1;
 
 }
-
 
 return available[
 Math.floor(
@@ -2271,13 +2031,10 @@ function spawnCoin(){
 
 if(rewardActive)return;
 
-
 const lane=
 chooseCoinLane();
 
-
 if(lane===-1)return;
-
 
 const area=
 document.getElementById(
@@ -2287,18 +2044,14 @@ document.getElementById(
 const laneWidth=
 area.clientWidth/3;
 
-
 const coin=
 document.createElement(
 "div"
 );
 
-coin.className=
-"antidote";
+coin.className="antidote";
 
-coin.textContent=
-"🧪";
-
+coin.textContent="🧪";
 
 coin.style.left=
 (
@@ -2307,17 +2060,11 @@ laneWidth/2-
 15
 )+"px";
 
-
 let y=-60;
 
-coin.style.top=
-y+"px";
+coin.style.top=y+"px";
 
-
-area.appendChild(
-coin
-);
-
+area.appendChild(coin);
 
 rewardActive=true;
 
@@ -2334,22 +2081,15 @@ return;
 
 }
 
+y+=obstacleSpeed;
 
-y+=
-obstacleSpeed;
-
-
-coin.style.top=
-y+"px";
-
+coin.style.top=y+"px";
 
 const playerRect=
 player.getBoundingClientRect();
 
-
 const coinRect=
 coin.getBoundingClientRect();
-
 
 if(
 playerRect.left<
@@ -2371,7 +2111,6 @@ return;
 
 }
 
-
 if(
 y<
 area.clientHeight+
@@ -2390,7 +2129,6 @@ finishCoin();
 
 }
 
-
 requestAnimationFrame(
 animateCoin
 );
@@ -2406,7 +2144,6 @@ function collectCoin(){
 
 if(!rewardObject)return;
 
-
 const coin=
 rewardObject;
 
@@ -2414,17 +2151,20 @@ rewardObject=null;
 
 rewardActive=false;
 
-
 coin.remove();
 
+
+/*
+CON ESCUDO:
+las recogidas no cuentan para
+el siguiente escudo.
+*/
 
 if(shieldActive){
 
 score+=50;
 
-showReward(
-"🧪 +1"
-);
+showReward("🧪 +1");
 
 updateHUD();
 
@@ -2439,11 +2179,12 @@ coins++;
 
 score+=75;
 
+showReward("🧪 +1");
 
-showReward(
-"🧪 +1"
-);
 
+/*
+25 ANTÍDOTOS = ESCUDO
+*/
 
 if(
 coins>=25 &&
@@ -2455,7 +2196,6 @@ coins=0;
 activateShield();
 
 }
-
 
 updateHUD();
 
@@ -2479,7 +2219,6 @@ rewardObject.remove();
 
 }
 
-
 rewardObject=null;
 
 rewardActive=false;
@@ -2495,14 +2234,11 @@ function activateShield(){
 
 shieldActive=true;
 
-
 player.classList.add(
 "shielded"
 );
 
-
 updateShield();
-
 
 showReward(
 "🛡️ ¡ESCUDO!"
@@ -2521,16 +2257,13 @@ shieldActive=false;
 
 coins=0;
 
-
 player.classList.remove(
 "shielded"
 );
 
-
 updateShield();
 
 updateHUD();
-
 
 showReward(
 "💥 ¡ESCUDO ROTO!"
@@ -2549,7 +2282,6 @@ const shield=
 document.getElementById(
 "shield"
 );
-
 
 if(shieldActive){
 
@@ -2588,7 +2320,6 @@ document.getElementById(
 "world"
 );
 
-
 world.classList.remove(
 "world1",
 "world2",
@@ -2598,12 +2329,10 @@ world.classList.remove(
 "world6"
 );
 
-
 let worldNumber=
 Math.floor(
 (level-1)/2
 )+1;
-
 
 worldNumber=
 Math.min(
@@ -2611,29 +2340,21 @@ Math.min(
 worldNumber
 );
 
-
 world.classList.add(
 "world"+
 worldNumber
 );
 
-
 const names=[
 
 "☀️ CIUDAD INFECTADA",
-
 "🏚️ BARRIO ABANDONADO",
-
 "🌙 CIUDAD DE NOCHE",
-
 "🌧️ ZONA DE TORMENTA",
-
 "🔥 CIUDAD EN RUINAS",
-
 "☣️ ZONA DE CUARENTENA"
 
 ];
-
 
 document
 .getElementById(
@@ -2643,7 +2364,6 @@ document
 names[
 worldNumber-1
 ];
-
 
 if(
 level>1 &&
@@ -2665,9 +2385,7 @@ worldNumber-1
 MENSAJE ESCENARIO
 ===================================================== */
 
-function showAirportMessage(
-text
-){
+function showAirportMessage(text){
 
 const message=
 document.createElement(
@@ -2677,18 +2395,13 @@ document.createElement(
 message.className=
 "airportMessage";
 
-message.textContent=
-text;
-
+message.textContent=text;
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-message
-);
-
+.appendChild(message);
 
 setTimeout(
 function(){
@@ -2706,30 +2419,22 @@ message.remove();
 RECOMPENSA
 ===================================================== */
 
-function showReward(
-text
-){
+function showReward(text){
 
 const reward=
 document.createElement(
 "div"
 );
 
-reward.className=
-"reward";
+reward.className="reward";
 
-reward.textContent=
-text;
-
+reward.textContent=text;
 
 document
 .getElementById(
 "gameScreen"
 )
-.appendChild(
-reward
-);
-
+.appendChild(reward);
 
 setTimeout(
 function(){
@@ -2755,7 +2460,6 @@ document
 )
 .textContent=
 score;
-
 
 document
 .getElementById(
@@ -2793,46 +2497,21 @@ function endGame(){
 
 if(!gameRunning)return;
 
-
 gameRunning=false;
 
+clearTimeout(spawnTimer);
+clearInterval(difficultyTimer);
+clearInterval(scoreTimer);
+clearInterval(gameTimeTimer);
+clearInterval(coinTimer);
 
-clearTimeout(
-spawnTimer
-);
-
-clearInterval(
-difficultyTimer
-);
-
-clearInterval(
-scoreTimer
-);
-
-clearInterval(
-gameTimeTimer
-);
-
-clearInterval(
-coinTimer
-);
+player.classList.remove("running");
+player.classList.remove("shielded");
 
 
-player.classList.remove(
-"running"
-);
-
-player.classList.remove(
-"shielded"
-);
-
-
-if(
-score>highScore
-){
+if(score>highScore){
 
 highScore=score;
-
 
 localStorage.setItem(
 "zombie_rush_high_score",
@@ -2852,7 +2531,6 @@ score+
 " • Récord: "+
 highScore;
 
-
 document
 .getElementById(
 "finalCoins"
@@ -2861,9 +2539,7 @@ document
 "🧪 Antídotos: "+
 coins;
 
-
 updateContinueButton();
-
 
 document
 .getElementById(
@@ -2887,17 +2563,14 @@ document
 "watchAdButton"
 );
 
-
 if(continueUsed){
 
 button.textContent=
 "📺 CONTINUACIÓN USADA";
 
-
 button.classList.add(
 "disabled"
 );
-
 
 button.disabled=true;
 
@@ -2906,11 +2579,9 @@ button.disabled=true;
 button.textContent=
 "📺 VER ANUNCIO Y CONTINUAR";
 
-
 button.classList.remove(
 "disabled"
 );
-
 
 button.disabled=false;
 
@@ -2927,12 +2598,9 @@ function watchAd(){
 
 if(continueUsed)return;
 
-
 continueUsed=true;
 
-
 updateContinueButton();
-
 
 document
 .getElementById(
@@ -2941,7 +2609,6 @@ document
 .style.display=
 "none";
 
-
 document
 .getElementById(
 "adOverlay"
@@ -2949,9 +2616,7 @@ document
 .style.display=
 "flex";
 
-
 let seconds=5;
-
 
 document
 .getElementById(
@@ -2960,11 +2625,7 @@ document
 .textContent=
 seconds;
 
-
-clearInterval(
-adTimer
-);
-
+clearInterval(adTimer);
 
 adTimer=
 setInterval(
@@ -2972,7 +2633,6 @@ function(){
 
 seconds--;
 
-
 document
 .getElementById(
 "adCountdown"
@@ -2980,13 +2640,9 @@ document
 .textContent=
 seconds;
 
-
 if(seconds<=0){
 
-clearInterval(
-adTimer
-);
-
+clearInterval(adTimer);
 
 document
 .getElementById(
@@ -2994,7 +2650,6 @@ document
 )
 .style.display=
 "none";
-
 
 document
 .getElementById(
@@ -3025,7 +2680,6 @@ document
 .style.display=
 "none";
 
-
 document
 .querySelectorAll(
 ".zombie"
@@ -3034,7 +2688,6 @@ document
 element=>
 element.remove()
 );
-
 
 document
 .querySelectorAll(
@@ -3045,47 +2698,24 @@ element=>
 element.remove()
 );
 
-
 obstacles=[];
 
 rewardActive=false;
-
 rewardObject=null;
-
 
 playerLane=1;
 
 positionPlayer();
 
-
-clearTimeout(
-spawnTimer
-);
-
-clearInterval(
-difficultyTimer
-);
-
-clearInterval(
-scoreTimer
-);
-
-clearInterval(
-gameTimeTimer
-);
-
-clearInterval(
-coinTimer
-);
-
+clearTimeout(spawnTimer);
+clearInterval(difficultyTimer);
+clearInterval(scoreTimer);
+clearInterval(gameTimeTimer);
+clearInterval(coinTimer);
 
 gameRunning=true;
 
-
-player.classList.add(
-"running"
-);
-
+player.classList.add("running");
 
 spawnTimer=
 setTimeout(
@@ -3093,13 +2723,9 @@ spawnObstacle,
 1400
 );
 
-
 startScore();
-
 startDifficulty();
-
 startCoins();
-
 
 gameTimeTimer=
 setInterval(
@@ -3114,7 +2740,6 @@ gameTime++;
 },
 1000
 );
-
 
 updateShield();
 
@@ -3135,14 +2760,12 @@ clearAllTimers();
 
 removeObjects();
 
-
 document
 .getElementById(
 "gameOver"
 )
 .style.display=
 "none";
-
 
 document
 .getElementById(
@@ -3151,14 +2774,12 @@ document
 .style.display=
 "none";
 
-
 document
 .getElementById(
 "continueScreen"
 )
 .style.display=
 "none";
-
 
 startGame();
 
@@ -3171,29 +2792,17 @@ LIMPIAR TIMERS
 
 function clearAllTimers(){
 
-clearTimeout(
-spawnTimer
-);
+clearTimeout(spawnTimer);
 
-clearInterval(
-difficultyTimer
-);
+clearInterval(difficultyTimer);
 
-clearInterval(
-scoreTimer
-);
+clearInterval(scoreTimer);
 
-clearInterval(
-gameTimeTimer
-);
+clearInterval(gameTimeTimer);
 
-clearInterval(
-coinTimer
-);
+clearInterval(coinTimer);
 
-clearInterval(
-adTimer
-);
+clearInterval(adTimer);
 
 }
 
@@ -3212,7 +2821,6 @@ document
 element=>
 element.remove()
 );
-
 
 obstacles=[];
 
